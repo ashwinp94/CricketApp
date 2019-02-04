@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom"
+import BatterList from "./batters/BatterList";
+import BatterManager from "../modules/BatterManager";
 
 export default class ApplicationViews extends Component {
   state = {
@@ -10,16 +12,19 @@ export default class ApplicationViews extends Component {
     friends: [],
   };
   componentDidMount() {
+    BatterManager.getAll().then(allBatters => {
+      this.setState({
+        batters: allBatters
+      });
+    });
   }
   render() {
     return (
       <React.Fragment>
-        <Route exact path="/news" render={(props) => {
-          return <NewsList {...props} newsitems={this.state.newsitems}
-            deleteNews={this.deleteNews} />
-        }} />
-        <Route path="/news/new" render={(props) => {
-          return <NewsForm {...props} addNews={this.addNews} />
+        <Route exact path="/batters"
+          render={(props) => {
+          return <BatterList {...props}
+            batters={this.state.batters}/>
         }} />
       </React.Fragment>
     )

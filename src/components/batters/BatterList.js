@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-
-
 export default class BatterList extends Component {
   render() {
     const sortedBatterItems = [].concat(this.props.batters)
