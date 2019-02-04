@@ -6,11 +6,11 @@ export default class BatterList extends Component {
                           .map(batter =>
                                   <div key={batter.id} className="card">
                                     <div className="card-body">
+                                      <p>{batter.batDate}</p>
                                       <p>{batter.runsScored}</p>
                                       <p>{batter.ballsFaced}</p>
                                       <p>{batter.numberofFours}</p>
                                       <p>{batter.numberofSixes}</p>
-                                      <p>{batter.batDate}</p>
                                       {/* <Link className="nav-link" to={`/batters/${batter.id}/edit`}>Edit</Link> */}
                                     </div>
                                   </div>
