@@ -10,8 +10,8 @@ export default {
   getYourbowlers(id){
     return fetch(`${remoteURL}/bowlers?userId=${id}`).then(e => e.json());
   },
-  put(batterId, existingBowlers) {
-    return fetch(`${remoteURL}/bowlers/${batterId}`, {
+  put(bowlerId, existingBowlers) {
+    return fetch(`${remoteURL}/bowlers/${bowlerId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/JSON"

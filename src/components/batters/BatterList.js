@@ -11,26 +11,32 @@ export default class BatterList extends Component {
                                       <p>{batter.ballsFaced}</p>
                                       <p>{batter.numberofFours}</p>
                                       <p>{batter.numberofSixes}</p>
+                                      <button type="button"
+                                          id="deleteButton"
+                                          onClick={() => this.props.deleteBatter(batter.id)}
+                                          className="btn btn-success">
+                                          Delete
+                                      </button>
                                       {/* <Link className="nav-link" to={`/batters/${batter.id}/edit`}>Edit</Link> */}
                                     </div>
                                   </div>
                           )
-
     return (
       <React.Fragment>
-          {/* <div className="eventBtn">
+          <div className="batterBtn">
             <button type="button"
                     className="btn btn-success"
                     onClick={() => {
-                      this.props.history.push("/events/new")}
+                      this.props.history.push("/batters/new")}
                     }>
-                    Add Event
+                    Add Session
             </button>
-          </div> */}
+          </div>
 
           <section className="batters">
           <h2>Your Batting Practices</h2>
-            <div className="card-items">{sortedBatterItems}</div>
+            <div className="card-items">
+            {sortedBatterItems}</div>
           </section>
 
       </React.Fragment>
