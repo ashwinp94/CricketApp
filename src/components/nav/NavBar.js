@@ -15,10 +15,10 @@ class NavBar extends Component {
                         <Link className="nav-link" to="/bowlers">Bowling Practice</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/events">Events</Link>
+                        <Link className="nav-link" to="/friends">Your Friends</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/friends">Your Friends</Link>
+                        <Link className="nav-link" to="/events">Events</Link>
                     </li>
                 </ul>
             </nav>
