@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 export default class BatterList extends Component {
   render() {
     const sortedBatterItems = [].concat(this.props.batters)
@@ -17,7 +19,7 @@ export default class BatterList extends Component {
                                           className="btn btn-success">
                                           Delete
                                       </button>
-                                      {/* <Link className="nav-link" to={`/batters/${batter.id}/edit`}>Edit</Link> */}
+                                      <Link className="nav-link" to={`/batters/${batter.id}/edit`}>Edit</Link>
                                     </div>
                                   </div>
                           )

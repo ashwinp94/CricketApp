@@ -9,6 +9,8 @@ import BowlerForm from './bowlers/BowlerForm'
 import Login from './authentication/Login'
 import LoginManager from "../modules/LoginManager";
 import LoginForm from './authentication/LoginForm'
+import EditBowling from "./bowlers/EditBowling";
+import EditBatter from "./batters/EditBatter";
 
 export default class ApplicationViews extends Component {
   state = {
@@ -64,6 +66,7 @@ export default class ApplicationViews extends Component {
           batters: batter
         })
       )
+
       //delete functions
   deleteBatter = id => {
     return fetch(`http://localhost:5002/batters/${id}`, {
@@ -92,6 +95,28 @@ export default class ApplicationViews extends Component {
         })
       );
   };
+
+  //Edit Functions
+  updateBatter = (batterId, editedBatterObj) => {
+    return BatterManager.put(batterId, editedBatterObj)
+    .then(()=> BatterManager.getYourbatters(this.state.userId))
+    .then(batter =>{
+      this.setState({
+        batters:batter
+      })
+    })
+  }
+
+  updateBowler = (bowlerId, editedBowlerObj) => {
+    return BowlerManager.put(bowlerId, editedBowlerObj)
+    .then(()=> BowlerManager.getYourbowlers(this.state.userId))
+    .then(bowler =>{
+      this.setState({
+        bowlers:bowler
+      })
+    })
+  }
+
   // verify function
   verifyUser = (username, password) => {
     LoginManager.getUsernameAndPassword(username, password)
@@ -146,6 +171,15 @@ export default class ApplicationViews extends Component {
                 }
               }} />
 
+        <Route exact path='/batters/:batterId(\d+)/edit' render={(props => {
+          if (this.isAuthenticated()) {
+            return <EditBatter {...props}
+              updateBatter={this.updateBatter} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        })} />
+
               {/* Bowling Sections */}
 
         <Route exact path="/bowlers"
@@ -171,6 +205,15 @@ export default class ApplicationViews extends Component {
               return <Redirect to="/login" />
             }
           }} />
+
+        <Route exact path='/bowlers/:bowlerId(\d+)/edit' render={(props => {
+          if (this.isAuthenticated()) {
+            return <EditBowling {...props}
+              updateBowler={this.updateBowler} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        })} />
 
 
       </React.Fragment>

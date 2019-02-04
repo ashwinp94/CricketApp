@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 export default class BowlerList extends Component {
   render() {
     const sortedBowlerItems = [].concat(this.props.bowlers)
@@ -7,8 +8,8 @@ export default class BowlerList extends Component {
                                   <div key={bowler.id} className="card">
                                     <div className="card-body">
                                       <p>{bowler.bowlDate}</p>
-                                      <p>{bowler.oversBowled}</p>
                                       <p>{bowler.runsConceded}</p>
+                                      <p>{bowler.oversBowled}</p>
                                       <p>{bowler.wickets}</p>
                                       <p>{bowler.extras}</p>
                                       <button type="button"
@@ -17,8 +18,8 @@ export default class BowlerList extends Component {
                                           className="btn btn-success">
                                           Delete
                                       </button>
-                                      {/* <Link className="nav-link" to={`/batters/${batter.id}/edit`}>Edit</Link> */}
-                                    </div>
+                                      <Link className="nav link" to={`/bowlers/${bowler.id}/edit`}>Edit</Link>
+                                      </div>
                                   </div>
                           )
 
