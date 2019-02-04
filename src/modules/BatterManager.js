@@ -19,13 +19,13 @@ export default {
       body: JSON.stringify(existingBatters)
     }).then(data => data.json())
   },
-  post(newNews) {
+  post(newBatters) {
     return fetch(`${remoteURL}/batters`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(newNews)
+      body: JSON.stringify(newBatters)
     }).then(data => data.json());
   }
 };
