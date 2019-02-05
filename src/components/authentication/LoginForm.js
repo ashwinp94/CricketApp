@@ -60,14 +60,6 @@ export default class LoginForm extends Component {
                                placeholder="Password" />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="role">Player Role</label>
-                        <input type="text" required
-                               className="form-control"
-                               onChange={this.handleFieldChange}
-                               id="role"
-                               placeholder="Role" />
-                    </div>
-                    <div className="form-group">
                         <label htmlFor="age">Age</label>
                         <input type="text" required
                                className="form-control"
@@ -75,33 +67,17 @@ export default class LoginForm extends Component {
                                id="age"
                                placeholder="Age" />
                     </div>
-                    {/* <div className="form-group">
-                        <div className="form-header">
-                            <div className="dd-header-title">Player Role</div>
-                        </div>
-                        <ul className="dd-list">
-                            <li className="dd-list-item"
-                            onChange={this.handleFieldChange}>Batsmen</li>
-                            <li className="dd-list-item"
-                            onChange={this.handleFieldChange}>Bowler</li>
-                            <li className="dd-list-item"
-                            onChange={this.handleFieldChange}>All-Rounder</li>
-                        </ul>
-                    </div> */}
-
-                    {/* <div className="form-group">
-                        <label htmlFor="employee">Assign to caretaker</label>
-                        <select
-                        defaultValue=""
-                        name="employee"
-                        id="employee"
+                    <div className="form-group">
+                        <label htmlFor="role">Select a Role</label>
+                        <select defaultValue="" name="role" id="role"
                                 onChange={this.handleFieldChange}>
-                            <option value="">Select an employee</option>
+                            <option value="">Select a Role</option>
                         {
-                            this.props.employees.map(e => <option key={e.id} id={e.id}>{e.name}</option>)
+                            this.props.roles.map(role => <option key={role.id} id={role.id}>{role.name}</option>)
                         }
                         </select>
-                    </div> */}
+                    </div>
+
                     <button type="submit" onClick={this.constructNewUser} className="btn btn-primary">Submit</button>
                 </form>
             </React.Fragment>

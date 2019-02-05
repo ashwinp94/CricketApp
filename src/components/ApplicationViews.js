@@ -15,6 +15,7 @@ import SearchResults from './search/SearchResults'
 import SearchInput from './search/SearchInput'
 import BatterDetail from "./batters/BatterDetail";
 import BowlerDetail from "./bowlers/BowlerDetail";
+import RolesManager from "../modules/RolesManager";
 
 export default class ApplicationViews extends Component {
   isAuthenticated = () => sessionStorage.getItem("user") !== null
@@ -24,6 +25,7 @@ export default class ApplicationViews extends Component {
     bowlers: [],
     events: [],
     friends: [],
+    roles: [],
     userId: sessionStorage.getItem("user")
   };
 
@@ -39,7 +41,11 @@ export default class ApplicationViews extends Component {
         bowlers: allBowlers
       });
     });
-
+    RolesManager.getAll().then(allRoles => {
+      this.setState({
+        roles: allRoles
+      })
+    })
   }
 
   //addFunctions
@@ -135,7 +141,7 @@ export default class ApplicationViews extends Component {
 
         {/* login sections */}
 
-        <Route path="/login"
+        <Route exact path="/login"
         render={(props) => {
 
           return <Login {...props} component={Login}
@@ -148,6 +154,7 @@ export default class ApplicationViews extends Component {
           return <LoginForm {...props}
             users={this.state.users}
             addUser={this.addUser}
+            roles ={this.state.roles}
             userId={this.state.userId} />
         }} />
 
