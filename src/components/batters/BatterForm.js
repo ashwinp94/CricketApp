@@ -56,7 +56,7 @@ export default class BatterForm extends Component {
                                placeholder="runsScored" />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="ballsFaced">BallsFaced</label>
+                        <label htmlFor="ballsFaced">Balls Faced</label>
                         <input type="text" required
                                className="form-control"
                                onChange={this.handleFieldChange}

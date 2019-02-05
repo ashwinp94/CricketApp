@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
+import SearchInput from '../search/SearchInput'
 
 
 class NavBar extends Component {
@@ -15,6 +16,9 @@ class NavBar extends Component {
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/friends">Your Friends</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/searchInput">Find Friends</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/events">Events</Link>

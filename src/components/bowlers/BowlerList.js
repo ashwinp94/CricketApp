@@ -1,24 +1,26 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 export default class BowlerList extends Component {
   render() {
     const sortedBowlerItems = [].concat(this.props.bowlers)
                           .sort((a,b) => {return new Date(a.bowlDate) - new Date(b.bowlDate)})
+                          .reverse()
                           .map(bowler =>
                                   <div key={bowler.id} className="card">
                                     <div className="card-body">
-                                      <p>{bowler.bowlDate}</p>
-                                      <p>{bowler.oversBowled}</p>
-                                      <p>{bowler.runsConceded}</p>
-                                      <p>{bowler.wickets}</p>
-                                      <p>{bowler.extras}</p>
+                                      <p>Date: {bowler.bowlDate}</p>
+                                      <p>Runs Conceded: {bowler.runsConceded}</p>
+                                      <p>Total Overs Bowled: {bowler.oversBowled}</p>
+                                      <p>Wickets: {bowler.wickets}</p>
+                                      <p>Extras: {bowler.extras}</p>
                                       <button type="button"
                                           id="deleteButton"
                                           onClick={() => this.props.deleteBowler(bowler.id)}
                                           className="btn btn-success">
                                           Delete
                                       </button>
-                                      {/* <Link className="nav-link" to={`/batters/${batter.id}/edit`}>Edit</Link> */}
-                                    </div>
+                                      <Link className="nav link" to={`/bowlers/${bowler.id}/edit`}>Edit</Link>
+                                      </div>
                                   </div>
                           )
 
