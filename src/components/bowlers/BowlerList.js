@@ -9,16 +9,13 @@ export default class BowlerList extends Component {
                                   <div key={bowler.id} className="card">
                                     <div className="card-body">
                                       <p>Date: {bowler.bowlDate}</p>
-                                      <p>Runs Conceded: {bowler.runsConceded}</p>
-                                      <p>Total Overs Bowled: {bowler.oversBowled}</p>
-                                      <p>Wickets: {bowler.wickets}</p>
-                                      <p>Extras: {bowler.extras}</p>
                                       <button type="button"
                                           id="deleteButton"
                                           onClick={() => this.props.deleteBowler(bowler.id)}
                                           className="btn btn-success">
                                           Delete
                                       </button>
+                                      <Link className="nav-link" to={`/bowlers/${bowler.id}`}>  Details </Link>
                                       <Link className="nav link" to={`/bowlers/${bowler.id}/edit`}>Edit</Link>
                                       </div>
                                   </div>

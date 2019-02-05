@@ -13,6 +13,8 @@ import EditBowling from "./bowlers/EditBowling";
 import EditBatter from "./batters/EditBatter";
 import SearchResults from './search/SearchResults'
 import SearchInput from './search/SearchInput'
+import BatterDetail from "./batters/BatterDetail";
+import BowlerDetail from "./bowlers/BowlerDetail";
 
 export default class ApplicationViews extends Component {
   isAuthenticated = () => sessionStorage.getItem("user") !== null
@@ -172,6 +174,16 @@ export default class ApplicationViews extends Component {
             return <Redirect to="/login" />
                 }
               }} />
+          <Route  path="/batters/:batterId(\d+)"
+          render={(props) => {
+            if (this.isAuthenticated()){
+                  return <BatterDetail {...props}
+                  deleteBatter={this.deleteBatter}
+                  batters={this.state.batters} />
+                } else {
+                  return <Redirect to="/login" />
+                      }
+                }} />
 
         <Route exact path='/batters/:batterId(\d+)/edit' render={(props => {
           if (this.isAuthenticated()) {
@@ -207,6 +219,16 @@ export default class ApplicationViews extends Component {
               return <Redirect to="/login" />
             }
           }} />
+        <Route  path="/bowlers/:bowlerId(\d+)"
+          render={(props) => {
+            if (this.isAuthenticated()){
+                  return <BowlerDetail {...props}
+                  deleteBatter={this.deleteBowler}
+                  bowlers={this.state.bowlers} />
+                } else {
+                  return <Redirect to="/login" />
+                      }
+                }} />
 
         <Route exact path='/bowlers/:bowlerId(\d+)/edit' render={(props => {
           if (this.isAuthenticated()) {

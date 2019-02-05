@@ -10,17 +10,14 @@ export default class BatterList extends Component {
                                   <div key={batter.id} className="card">
                                     <div className="card-body">
                                       <p>Date: {batter.batDate}</p>
-                                      <p>Runs Scored: {batter.runsScored}</p>
-                                      <p>Total Balls Played: {batter.ballsFaced}</p>
-                                      <p>Number of Fours Hit: {batter.numberofFours}</p>
-                                      <p>Number of Sixes: {batter.numberofSixes}</p>
                                       <button type="button"
                                           id="deleteButton"
                                           onClick={() => this.props.deleteBatter(batter.id)}
                                           className="btn btn-success">
                                           Delete
                                       </button>
-                                      <Link className="nav-link" to={`/batters/${batter.id}/edit`}>Edit</Link>
+                                      <Link className="nav-link" to={`/batters/${batter.id}/edit`}> Edit     </Link>
+                                      <Link className="nav-link" to={`/batters/${batter.id}`}>  Details </Link>
                                     </div>
                                   </div>
                           )
