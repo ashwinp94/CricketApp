@@ -8,11 +8,11 @@ export default class BatterList extends Component {
                           .map(batter =>
                                   <div key={batter.id} className="card">
                                     <div className="card-body">
-                                      <p>{batter.batDate}</p>
-                                      <p>{batter.runsScored}</p>
-                                      <p>{batter.ballsFaced}</p>
-                                      <p>{batter.numberofFours}</p>
-                                      <p>{batter.numberofSixes}</p>
+                                      <p>Date: {batter.batDate}</p>
+                                      <p>Runs Scored: {batter.runsScored}</p>
+                                      <p>Total Balls Played: {batter.ballsFaced}</p>
+                                      <p>Number of Fours Hit: {batter.numberofFours}</p>
+                                      <p>Number of Sixes: {batter.numberofSixes}</p>
                                       <button type="button"
                                           id="deleteButton"
                                           onClick={() => this.props.deleteBatter(batter.id)}

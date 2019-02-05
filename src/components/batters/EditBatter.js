@@ -56,20 +56,20 @@ export default class EditBatter extends Component {
         <React.Fragment>
           <form className="batters">
             <div className="batter">
-              <label htmlFor="ballsFaced">Balls Faces: </label>
-              <input type="text" required
-                    className="form-control"
-                    onChange={this.handleFieldChange}
-                    id="ballsFaced"
-                    value={this.state.ballsFaced} />
-            </div>
-            <div className="batter">
               <label htmlFor="runsScored">Runs Scored: </label>
               <input type="text" required
                     className="form-control"
                     onChange={this.handleFieldChange}
                     id="runsScored"
                     value={this.state.runsScored} />
+            </div>
+            <div className="batter">
+              <label htmlFor="ballsFaced">Balls Faces: </label>
+              <input type="text" required
+                    className="form-control"
+                    onChange={this.handleFieldChange}
+                    id="ballsFaced"
+                    value={this.state.ballsFaced} />
             </div>
             <div className="batter">
               <label htmlFor="numberofFours">Number Of Fours: </label>

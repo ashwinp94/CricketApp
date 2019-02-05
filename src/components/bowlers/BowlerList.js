@@ -7,11 +7,11 @@ export default class BowlerList extends Component {
                           .map(bowler =>
                                   <div key={bowler.id} className="card">
                                     <div className="card-body">
-                                      <p>{bowler.bowlDate}</p>
-                                      <p>{bowler.runsConceded}</p>
-                                      <p>{bowler.oversBowled}</p>
-                                      <p>{bowler.wickets}</p>
-                                      <p>{bowler.extras}</p>
+                                      <p>Date: {bowler.bowlDate}</p>
+                                      <p>Runs Conceded: {bowler.runsConceded}</p>
+                                      <p>Total Overs Bowled: {bowler.oversBowled}</p>
+                                      <p>Wickets: {bowler.wickets}</p>
+                                      <p>Extras: {bowler.extras}</p>
                                       <button type="button"
                                           id="deleteButton"
                                           onClick={() => this.props.deleteBowler(bowler.id)}

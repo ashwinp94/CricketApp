@@ -11,6 +11,7 @@ import LoginManager from "../modules/LoginManager";
 import LoginForm from './authentication/LoginForm'
 import EditBowling from "./bowlers/EditBowling";
 import EditBatter from "./batters/EditBatter";
+import SearchResults from './search/SearchResults'
 
 export default class ApplicationViews extends Component {
   state = {
@@ -214,8 +215,15 @@ export default class ApplicationViews extends Component {
             return <Redirect to="/login" />
           }
         })} />
-
-
+        <Route
+          path="/search"
+          render={props => {
+            return (
+              <SearchResults {...this.props}
+              />
+            );
+          }}
+        />
       </React.Fragment>
     )
   }
