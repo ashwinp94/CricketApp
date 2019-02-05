@@ -62,9 +62,8 @@ render() {
                 Sign in
             </button>
             <button className="registerButton" type="button"
-                        onClick={()=> this.props.history.push("/login/new")}
-                        className="btn btn-success">
-                    Register
+                        onClick={()=> this.props.history.push("/login/new")}>
+                  Register
                 </button>
         </form>
     )

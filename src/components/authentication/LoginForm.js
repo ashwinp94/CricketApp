@@ -67,6 +67,14 @@ export default class LoginForm extends Component {
                                id="role"
                                placeholder="Role" />
                     </div>
+                    <div className="form-group">
+                        <label htmlFor="age">Age</label>
+                        <input type="text" required
+                               className="form-control"
+                               onChange={this.handleFieldChange}
+                               id="age"
+                               placeholder="Age" />
+                    </div>
                     {/* <div className="form-group">
                         <div className="form-header">
                             <div className="dd-header-title">Player Role</div>
@@ -81,14 +89,6 @@ export default class LoginForm extends Component {
                         </ul>
                     </div> */}
 
-                    <div className="form-group">
-                        <label htmlFor="age">Age</label>
-                        <input type="text" required
-                               className="form-control"
-                               onChange={this.handleFieldChange}
-                               id="age"
-                               placeholder="Age" />
-                    </div>
                     {/* <div className="form-group">
                         <label htmlFor="employee">Assign to caretaker</label>
                         <select

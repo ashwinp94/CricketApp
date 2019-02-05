@@ -25,6 +25,7 @@ class SearchInput extends Component {
     return (
       <React.Fragment>
         <form className="searchForm" onSubmit={this.handleSearch}>
+        <label>Find Friends!</label>
         {/* The id of the input matches the key of the property that reflects the user input in state so that we can write a reusable method (handleFieldChange) to update state for all input fields */}
           <input
             type="text"
