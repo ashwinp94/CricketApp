@@ -5,6 +5,7 @@ export default class BatterList extends Component {
   render() {
     const sortedBatterItems = [].concat(this.props.batters)
                           .sort((a,b) => {return new Date(a.batDate) - new Date(b.batDate)})
+                          .reverse()
                           .map(batter =>
                                   <div key={batter.id} className="card">
                                     <div className="card-body">

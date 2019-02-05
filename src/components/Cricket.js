@@ -6,7 +6,6 @@ import SearchManager from '../modules/SearchManager'
 class Cricket extends Component {
     state = {
         users: [],
-
       }
 
       searchAllData = (searchQuery) => {
@@ -20,8 +19,9 @@ class Cricket extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar searchAllData = {this.searchAllData}/>
-        <ApplicationViews users={this.state.users}/>
+        <NavBar />
+        <ApplicationViews users={this.state.users}
+                        searchAllData = {this.searchAllData}/>
       </React.Fragment>
     );
   }

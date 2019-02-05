@@ -33,7 +33,7 @@ onLogin = (evt) => {
                         }
                     if (loggedIn === true){
                         sessionStorage.setItem("user", user.id);
-                        this.props.history.push("/news");
+                        this.props.history.push("/batters");
                     }
                 })
             }

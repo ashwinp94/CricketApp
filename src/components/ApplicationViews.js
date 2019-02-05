@@ -12,8 +12,10 @@ import LoginForm from './authentication/LoginForm'
 import EditBowling from "./bowlers/EditBowling";
 import EditBatter from "./batters/EditBatter";
 import SearchResults from './search/SearchResults'
+import SearchInput from './search/SearchInput'
 
 export default class ApplicationViews extends Component {
+  isAuthenticated = () => sessionStorage.getItem("user") !== null
   state = {
     users: [],
     batters: [],
@@ -22,7 +24,6 @@ export default class ApplicationViews extends Component {
     friends: [],
     userId: sessionStorage.getItem("user")
   };
-  isAuthenticated = () => sessionStorage.getItem("user") !== null
 
   componentDidMount() {
     BatterManager.getYourbatters(this.state.userId).then(allBatters => {
@@ -166,7 +167,7 @@ export default class ApplicationViews extends Component {
                 if (this.isAuthenticated()){
                   return <BatterForm {...props}
                   addBatter={this.addBatter}
-                  userId={this.state.userId}/>
+                  />
           } else {
             return <Redirect to="/login" />
                 }
@@ -216,12 +217,29 @@ export default class ApplicationViews extends Component {
           }
         })} />
         <Route
+          path="/searchInput"
+          render={props => {
+            if (this.isAuthenticated()) {
+            return (
+              <SearchInput {...this.props}/>
+            );
+          } else {
+            return <Redirect to="/login" />
+          }
+          }}
+        />
+        <Route
           path="/search"
           render={props => {
+            if (this.isAuthenticated()) {
+
             return (
               <SearchResults {...this.props}
               />
             );
+          } else {
+            return <Redirect to="/login" />
+          }
           }}
         />
       </React.Fragment>

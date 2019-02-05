@@ -4,6 +4,7 @@ export default class BowlerList extends Component {
   render() {
     const sortedBowlerItems = [].concat(this.props.bowlers)
                           .sort((a,b) => {return new Date(a.bowlDate) - new Date(b.bowlDate)})
+                          .reverse()
                           .map(bowler =>
                                   <div key={bowler.id} className="card">
                                     <div className="card-body">
