@@ -7,7 +7,7 @@ export default class Login extends Component {
     state = {
         username: "",
         password: "",
-
+        userId: sessionStorage.getItem("user")
     }
 
 
@@ -32,6 +32,7 @@ onLogin = (evt) => {
                             loggedIn= true;
                         }
                     if (loggedIn === true){
+                        window.location.reload()
                         sessionStorage.setItem("user", user.id);
                         this.props.history.push("/batters");
                     }
@@ -61,9 +62,8 @@ render() {
                 Sign in
             </button>
             <button className="registerButton" type="button"
-                        onClick={()=> this.props.history.push("/login/new")}
-                        className="btn btn-success">
-                    Register
+                        onClick={()=> this.props.history.push("/login/new")}>
+                  Register
                 </button>
         </form>
     )

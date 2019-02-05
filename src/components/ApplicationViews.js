@@ -132,11 +132,13 @@ export default class ApplicationViews extends Component {
   render() {
     return (
       <React.Fragment>
+
+        {/* login sections */}
+
         <Route path="/login"
         render={(props) => {
 
           return <Login {...props} component={Login}
-
             verifyUser={this.verifyUser}
             users={this.state.users} />
         }} />
@@ -174,7 +176,7 @@ export default class ApplicationViews extends Component {
             return <Redirect to="/login" />
                 }
               }} />
-          <Route  path="/batters/:batterId(\d+)"
+          <Route  exact path="/batters/:batterId(\d+)"
           render={(props) => {
             if (this.isAuthenticated()){
                   return <BatterDetail {...props}
@@ -219,12 +221,14 @@ export default class ApplicationViews extends Component {
               return <Redirect to="/login" />
             }
           }} />
-        <Route  path="/bowlers/:bowlerId(\d+)"
+
+        <Route  exact path="/bowlers/:bowlerId(\d+)"
           render={(props) => {
             if (this.isAuthenticated()){
                   return <BowlerDetail {...props}
-                  deleteBatter={this.deleteBowler}
+                  deleteBowler={this.deleteBowler}
                   bowlers={this.state.bowlers} />
+
                 } else {
                   return <Redirect to="/login" />
                       }
@@ -234,10 +238,14 @@ export default class ApplicationViews extends Component {
           if (this.isAuthenticated()) {
             return <EditBowling {...props}
               updateBowler={this.updateBowler} />
+
           } else {
             return <Redirect to="/login" />
           }
         })} />
+
+        {/* search routing */}
+
         <Route
           path="/searchInput"
           render={props => {
@@ -246,6 +254,7 @@ export default class ApplicationViews extends Component {
               <SearchInput {...this.props}/>
             );
           } else {
+
             return <Redirect to="/login" />
           }
           }}
@@ -260,6 +269,7 @@ export default class ApplicationViews extends Component {
               />
             );
           } else {
+
             return <Redirect to="/login" />
           }
           }}
