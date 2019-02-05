@@ -32,6 +32,7 @@ onLogin = (evt) => {
                             loggedIn= true;
                         }
                     if (loggedIn === true){
+                        window.location.reload()
                         sessionStorage.setItem("user", user.id);
                         this.props.history.push("/batters");
                     }
