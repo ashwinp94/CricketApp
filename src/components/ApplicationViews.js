@@ -136,7 +136,6 @@ export default class ApplicationViews extends Component {
         render={(props) => {
 
           return <Login {...props} component={Login}
-
             verifyUser={this.verifyUser}
             users={this.state.users} />
         }} />

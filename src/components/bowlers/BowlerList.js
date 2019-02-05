@@ -8,7 +8,7 @@ export default class BowlerList extends Component {
                           .map(bowler =>
                                   <div key={bowler.id} className="card">
                                     <div className="card-body">
-                                      <p>Date: {bowler.bowlDate}</p>
+                                      <h3>Date: {bowler.bowlDate}</h3>
                                       <button type="button"
                                           id="deleteButton"
                                           onClick={() => this.props.deleteBowler(bowler.id)}
