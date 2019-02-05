@@ -46,6 +46,11 @@ export default class ApplicationViews extends Component {
         roles: allRoles
       })
     })
+    LoginManager.getAll().then(allUsers=>{
+      this.setState({
+        users: allUsers
+      })
+    })
   }
 
   //addFunctions

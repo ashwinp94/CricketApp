@@ -26,9 +26,9 @@ export default class BowlerDetail extends Component {
                         <a href="#"
                             onClick={() => this.props.deleteBowler(bowler.id)
                             .then(() => this.props.history.push("/bowlers"))}
-                            className="card-link">Delete </a>
+                            className="card-link">Delete</a>
                         <Link className="nav-link" to={`/bowlers/${bowler.id}/edit`}>Edit</Link>
-                        <Link className="nav-link" to={`/bowlers`}>  Go Back </Link>
+                        <Link className="nav-link" to={`/bowlers`}>Go Back </Link>
 
                     </div>
                 </div>

@@ -26,9 +26,9 @@ export default class BatterDetail extends Component {
                         <a href="#"
                             onClick={() => this.props.deleteBatter(batter.id)
                             .then(() => this.props.history.push("/batters"))}
-                            className="card-link">Delete </a>
+                            className="card-link">Delete</a>
                         <Link className="nav-link" to={`/batters/${batter.id}/edit`}>Edit</Link>
-                        <Link className="nav-link" to={`/batters`}>  Go Back </Link>
+                        <Link className="nav-link" to={`/batters`}>Go Back </Link>
 
                     </div>
                 </div>
