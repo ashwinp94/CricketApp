@@ -5,7 +5,7 @@ export default class BowlerForm extends Component {
     // Set initial state
 
     state = {
-        userId: sessionStorage.getItem("user"),
+        userId: Number(sessionStorage.getItem("user")),
         oversBowled: [],
         runsConceded: [],
         wickets: [],
@@ -30,7 +30,7 @@ export default class BowlerForm extends Component {
     constructNewSession = evt => {
         evt.preventDefault()
             const Bowler = {
-                userId: sessionStorage.getItem("user"),
+                userId: this.state.userId,
                 oversBowled: this.state.oversBowled,
                 runsConceded: this.state.runsConceded,
                 wickets: this.state.wickets,

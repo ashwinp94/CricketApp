@@ -4,7 +4,7 @@ import BatterManager from "../../modules/BatterManager"
 export default class EditBatter extends Component {
 
     state = {
-        userId: sessionStorage.getItem("user"),
+        userId: Number(sessionStorage.getItem("user")),
         runsScored: "",
         ballsFaced: "",
         numberofFours: "",

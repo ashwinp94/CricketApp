@@ -4,7 +4,7 @@ import BowlerManager from "../../modules/BowlerManager"
 export default class EditBowling extends Component {
 
     state = {
-        userId: sessionStorage.getItem("user"),
+        userId: Number(sessionStorage.getItem("user")),
         oversBowled: "",
         runsConceded: "",
         wickets: "",

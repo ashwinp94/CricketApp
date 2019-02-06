@@ -4,7 +4,7 @@ export default class BatterForm extends Component {
     // Set initial state
 
     state = {
-        userId: sessionStorage.getItem("user"),
+        userId: Number(sessionStorage.getItem("user")),
         runsScored: [],
         ballsFaced: [],
         numberofFours: [],
@@ -29,7 +29,7 @@ export default class BatterForm extends Component {
     constructNewSession = evt => {
         evt.preventDefault()
             const Batter = {
-                userId: sessionStorage.getItem("user"),
+                userId: this.state.userId,
                 runsScored: this.state.runsScored,
                 ballsFaced: this.state.ballsFaced,
                 numberofFours: this.state.numberofFours,
