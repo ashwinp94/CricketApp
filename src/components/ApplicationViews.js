@@ -20,6 +20,8 @@ import EventManager from '../modules/EventManager'
 import EventList from "./events/EventList"
 import EventForm from "./events/EventForm"
 import EventEdit from "./events/EventEdit"
+import FriendList from "./friends/FriendList"
+import FriendManager from "../modules/FriendManager";
 
 export default class ApplicationViews extends Component {
   isAuthenticated = () => sessionStorage.getItem("user") !== null
@@ -45,16 +47,25 @@ export default class ApplicationViews extends Component {
         bowlers: allBowlers
       });
     });
+
     EventManager.getYourEvents(this.state.userId).then(allEvents => {
       this.setState({
         events: allEvents
       })
     })
+
+    FriendManager.getYourFriends(this.state.userId).then(allFriends => {
+      this.setState({
+        friends: allFriends
+      })
+    })
+
     RolesManager.getAll().then(allRoles => {
       this.setState({
         roles: allRoles
       })
     })
+
     LoginManager.getAll().then(allUsers=>{
       this.setState({
         users: allUsers
@@ -326,6 +337,18 @@ export default class ApplicationViews extends Component {
             return <Redirect to="/login" />
           }
           }} />
+
+          {/*friends routing */}
+
+          <Route exact path="/friends" render={props => {
+            if (this.isAuthenticated()) {
+              return <FriendList {...props}
+              friends = {this.state.friends}/>
+              // Remove null and return the component which will show list of friends
+            } else {
+              return <Redirect to="/login" />
+            }
+            }} />
 
         {/* search routing */}
 
