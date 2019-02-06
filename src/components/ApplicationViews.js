@@ -16,6 +16,10 @@ import SearchInput from './search/SearchInput'
 import BatterDetail from "./batters/BatterDetail";
 import BowlerDetail from "./bowlers/BowlerDetail";
 import RolesManager from "../modules/RolesManager";
+import EventManager from '../modules/EventManager'
+import EventList from "./events/EventList"
+import EventForm from "./events/EventForm"
+import EventEdit from "./events/EventEdit"
 
 export default class ApplicationViews extends Component {
   isAuthenticated = () => sessionStorage.getItem("user") !== null
@@ -30,17 +34,22 @@ export default class ApplicationViews extends Component {
   };
 
   componentDidMount() {
-    BatterManager.getYourbatters(this.state.userId).then(allBatters => {
+    BatterManager.getYourBatters(this.state.userId).then(allBatters => {
       this.setState({
         batters: allBatters
       });
     });
 
-    BowlerManager.getYourbowlers(this.state.userId).then(allBowlers => {
+    BowlerManager.getYourBowlers(this.state.userId).then(allBowlers => {
       this.setState({
         bowlers: allBowlers
       });
     });
+    EventManager.getYourEvents(this.state.userId).then(allEvents => {
+      this.setState({
+        events: allEvents
+      })
+    })
     RolesManager.getAll().then(allRoles => {
       this.setState({
         roles: allRoles
@@ -66,7 +75,7 @@ export default class ApplicationViews extends Component {
 
   addBowler = newBowler =>
     BowlerManager.post(newBowler)
-      .then(() => BowlerManager.getYourbowlers(this.state.userId))
+      .then(() => BowlerManager.getYourBowlers(this.state.userId))
       .then(bowler =>
         this.setState({
           bowlers: bowler
@@ -75,11 +84,18 @@ export default class ApplicationViews extends Component {
 
   addBatter = newBatter =>
     BatterManager.post(newBatter)
-      .then(() => BatterManager.getYourbatters(this.state.userId))
+      .then(() => BatterManager.getYourBatters(this.state.userId))
       .then(batter =>
         this.setState({
           batters: batter
         })
+      )
+  addEvent = event =>
+    EventManager.post(event)
+      .then(() => EventManager.getYourEvents(this.state.userId))
+      .then(events => this.setState({
+        events: events
+      })
       )
 
       //delete functions
@@ -93,6 +109,20 @@ export default class ApplicationViews extends Component {
       .then(batter =>
         this.setState({
           batters: batter
+        })
+      );
+  };
+
+  deleteEvent = id => {
+    return fetch(`http://localhost:5002/events/${id}`, {
+      method: "DELETE"
+    })
+      .then(response => response.json())
+      .then(() => fetch(`http://localhost:5002/events?userId=${this.state.userId}`))
+      .then(response => response.json())
+      .then(event =>
+        this.setState({
+          events: event
         })
       );
   };
@@ -114,7 +144,7 @@ export default class ApplicationViews extends Component {
   //Edit Functions
   updateBatter = (batterId, editedBatterObj) => {
     return BatterManager.put(batterId, editedBatterObj)
-    .then(()=> BatterManager.getYourbatters(this.state.userId))
+    .then(()=> BatterManager.getYourBatters(this.state.userId))
     .then(batter =>{
       this.setState({
         batters:batter
@@ -124,14 +154,22 @@ export default class ApplicationViews extends Component {
 
   updateBowler = (bowlerId, editedBowlerObj) => {
     return BowlerManager.put(bowlerId, editedBowlerObj)
-    .then(()=> BowlerManager.getYourbowlers(this.state.userId))
+    .then(()=> BowlerManager.getYourBowlers(this.state.userId))
     .then(bowler =>{
       this.setState({
         bowlers:bowler
       })
     })
   }
-
+  updateEvent = (eventId, editedEventObj) => {
+    return EventManager.put(eventId, editedEventObj)
+      .then(() => EventManager.getYourEvents(this.state.userId))
+      .then(event => {
+        this.setState({
+          events: event
+        })
+      })
+  }
   // verify function
   verifyUser = (username, password) => {
     LoginManager.getUsernameAndPassword(username, password)
@@ -246,7 +284,8 @@ export default class ApplicationViews extends Component {
                       }
                 }} />
 
-        <Route exact path='/bowlers/:bowlerId(\d+)/edit' render={(props => {
+        <Route exact path='/bowlers/:bowlerId(\d+)/edit'
+          render={(props => {
           if (this.isAuthenticated()) {
             return <EditBowling {...props}
               updateBowler={this.updateBowler} />
@@ -255,6 +294,38 @@ export default class ApplicationViews extends Component {
             return <Redirect to="/login" />
           }
         })} />
+
+        {/*BEGIN EVENT ROUTING*/}
+
+        <Route exact path="/events" render={(props) => {
+          if (this.isAuthenticated()) {
+            return <EventList {...props}
+              events={this.state.events}
+              deleteEvent={this.deleteEvent}
+              userId={this.state.userId}/>
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+
+        <Route exact path="/events/new" render={(props) => {
+          if (this.isAuthenticated()) {
+            return <EventForm {...props}
+              addEvent={this.addEvent} />
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+
+        <Route exact path="/events/:eventId(\d+)/edit" render={props => {
+          if (this.isAuthenticated()) {
+            return <EventEdit {...props}
+            updateEvent={this.updateEvent} />
+          } else {
+
+            return <Redirect to="/login" />
+          }
+          }} />
 
         {/* search routing */}
 

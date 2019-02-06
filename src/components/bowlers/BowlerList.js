@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
 export default class BowlerList extends Component {
   render() {
     const sortedBowlerItems = [].concat(this.props.bowlers)

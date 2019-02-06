@@ -7,7 +7,7 @@ export default {
   getAll() {
     return fetch(`${remoteURL}/bowlers`).then(e => e.json());
   },
-  getYourbowlers(id){
+  getYourBowlers(id){
     return fetch(`${remoteURL}/bowlers?userId=${id}`).then(e => e.json());
   },
   put(bowlerId, existingBowlers) {

@@ -7,7 +7,7 @@ export default {
   getAll() {
     return fetch(`${remoteURL}/batters`).then(e => e.json());
   },
-  getYourbatters(id){
+  getYourBatters(id){
     return fetch(`${remoteURL}/batters?userId=${id}`).then(e => e.json());
   },
   put(batterId, existingBatters) {
