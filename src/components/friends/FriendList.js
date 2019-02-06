@@ -1,15 +1,29 @@
 import React, { Component } from 'react'
+import FriendManager from "../../modules/FriendManager";
 
 
 
-componentDidMount() {
-    BatterManager.getYourBatters(this.state.userId).then(allBatters => {
-      this.setState({
-        batters: allBatters
-      });
-    });
-}
+
 export default class FriendList extends Component {
+    state= {
+        friendsPractices: [],
+        friends: [],
+        userId: Number(sessionStorage.getItem("user"))
+    }
+
+    componentDidMount() {
+        FriendManager.getFriendsPractice(this.state.userId).then(friend => {
+            this.setState({
+                friends: friend
+            });
+          });
+
+        FriendManager.getFriendsPractice(friend.user.id).then(friendP => {
+          this.setState({
+            friendsPractices: friendP
+          });
+        });
+    }
     render() {
         return (
             <section className="friends">
