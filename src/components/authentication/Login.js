@@ -7,7 +7,7 @@ export default class Login extends Component {
     state = {
         username: "",
         password: "",
-        userId: sessionStorage.getItem("user")
+        userId: Number(sessionStorage.getItem("user"))
     }
 
 
