@@ -6,7 +6,7 @@ export default class EventForm extends Component {
     eventDate: [],
     eventTime: [],
     eventLocation: [],
-    userId: sessionStorage.getItem("user")
+    userId: Number(sessionStorage.getItem("user"))
 }
 
   handleFieldChange = evt => {
@@ -23,7 +23,7 @@ export default class EventForm extends Component {
       eventDate: this.state.eventDate,
       eventTime: this.state.eventTime,
       eventLocation: this.state.eventLocation,
-      userId: sessionStorage.getItem("user")
+      userId: this.state.userId,
     }
 
     this.props.addEvent(event).then(() => this.props.history.push("/events"))

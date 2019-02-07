@@ -18,7 +18,7 @@ class NavBar extends Component {
                         <Link className="nav-link" to="/events">Events</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/searchInput">Find Friends</Link>
+                        <Link className="nav-link" to="/search">Find Friends</Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/friends">Your Friends</Link>

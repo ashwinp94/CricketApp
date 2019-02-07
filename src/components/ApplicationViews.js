@@ -355,7 +355,7 @@ export default class ApplicationViews extends Component {
         {/* search routing */}
 
         <Route
-          path="/searchInput"
+          path="/search"
           render={props => {
             if (this.isAuthenticated()) {
             return (
