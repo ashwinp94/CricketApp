@@ -4,6 +4,15 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 
 class NavBar extends Component {
+
+    logOut = evt => {
+        evt.preventDefault()
+        sessionStorage.removeItem("user");
+        window.location.reload()
+    }
+
+
+
     render() {
         return (
             <nav className="navbar navbar-dark bg-dark light-blue flex-md-nowrap p-0 shadow">
@@ -22,6 +31,9 @@ class NavBar extends Component {
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/friends">Your Friends</Link>
+                    </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/login" onClick={this.logOut}>Sign out</Link>
                     </li>
                 </ul>
             </nav>

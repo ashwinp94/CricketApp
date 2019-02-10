@@ -26,7 +26,8 @@ export default class EventForm extends Component {
       userId: this.state.userId,
     }
 
-    this.props.addEvent(event).then(() => this.props.history.push("/events"))
+    this.props.addEvent(event).then(() =>
+    this.props.history.push("/events"))
   }
 
 

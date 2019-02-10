@@ -182,9 +182,16 @@ export default class ApplicationViews extends Component {
         })
       })
   }
-  // verify function
+  // verify functions
   verifyUser = (username, password) => {
     LoginManager.getUsernameAndPassword(username, password)
+      .then(allUsers => this.setState({
+        users: allUsers
+      }))
+  }
+
+  verifyNewUser = (username) => {
+    LoginManager.getUsername(username)
       .then(allUsers => this.setState({
         users: allUsers
       }))
@@ -199,7 +206,8 @@ export default class ApplicationViews extends Component {
         <Route exact path="/login"
         render={(props) => {
 
-          return <Login {...props} component={Login}
+          return <Login {...props}
+          component={Login}
             verifyUser={this.verifyUser}
             users={this.state.users} />
         }} />
@@ -209,6 +217,7 @@ export default class ApplicationViews extends Component {
           return <LoginForm {...props}
             users={this.state.users}
             addUser={this.addUser}
+            verifyNewUser={this.verifyNewUser}
             roles ={this.state.roles}
             userId={this.state.userId} />
         }} />
