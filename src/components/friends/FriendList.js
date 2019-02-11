@@ -1,31 +1,23 @@
 import React, { Component } from 'react'
-// import FriendManager from "../../modules/FriendManager";
-
-
-
+import FriendManager from "../../modules/FriendManager";
 
 export default class FriendList extends Component {
-    // state= {
-    //     friendsPractices: [],
-    //     friends: [],
-    //     userId: Number(sessionStorage.getItem("user"))
-    // }
 
-    // componentDidMount() {
-    //     FriendManager.getFriendsPractice(this.state.userId).then(friend => {
-    //         this.setState({
-    //             friends: friend
-    //         });
-    //       });
+    showFriends(id){
 
-    //     FriendManager.getFriendsPractice(friend.user.id).then(friendP => {
-    //       this.setState({
-    //         friendsPractices: friendP
-    //       });
-    //     });
-    // }
+        FriendManager.getFriendsPractice(id)
+        // .then(allPractices => {
+        //     this.setState({
+        //         friendsPractices: allPractices
+        //     })
+        //   })
+    }
+
+
     render() {
+
         return (
+            <div>
             <section className="friends">
             {
                 this.props.friends.map(friend =>
@@ -33,7 +25,8 @@ export default class FriendList extends Component {
                     <h4>{friend.user.username}</h4>
                         <h5>{friend.user.age}</h5>
                         <h5>{friend.user.role}</h5>
-                        <p>{friend.user.id}</p>
+                        <h6>{this.showFriends(friend.user.id)}</h6>
+
                     </div>,
                     // this.props.friendPractices.map(friendPractice =>
                     //     <p>{friendPractice.batters.runsScored}</p>
@@ -41,6 +34,15 @@ export default class FriendList extends Component {
                 )
             }
             </section>
+
+            {/* <section className="practice">
+            {
+                this.friendsPractices.map(friendsPractice =>
+                    <div key={friendsPractice.userId}></div>
+                    )
+            }
+            </section> */}
+            </div>
         );
     }
 }

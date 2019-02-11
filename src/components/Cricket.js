@@ -7,7 +7,15 @@ import FriendManager from "../modules/FriendManager";
 class Cricket extends Component {
     state = {
         users: [],
+        friends: [],
         currentUserId: Number(sessionStorage.getItem("users"))
+      }
+      componentDidMount() {
+        FriendManager.getYourFriends(this.state.currentUserId).then(allFriends => {
+          this.setState({
+            friends: allFriends
+          })
+        })
       }
 
       searchAllData = (searchQuery) => {
@@ -19,10 +27,11 @@ class Cricket extends Component {
 
       addFriend = newFriend =>
       SearchManager.post(newFriend)
+
       .then(() => FriendManager.getYourFriends(this.state.currentUserId))
-      .then(user =>
+      .then(friend =>
         this.setState({
-          currentUserId: user
+          friends: friend
         })
       );
 
@@ -33,7 +42,8 @@ class Cricket extends Component {
           <NavBar/>
         <ApplicationViews users={this.state.users}
                         searchAllData = {this.searchAllData}
-                        addFriend = {this.addFriend}/>
+                        addFriend = {this.addFriend}
+                        friends= {this.state.friends}/>
       </React.Fragment>
     );
   }

@@ -32,7 +32,6 @@ export default class ApplicationViews extends Component {
     events: [],
     friends: [],
     roles: [],
-    friendsPractices: [],
     userId: sessionStorage.getItem("user")
   };
 
@@ -72,6 +71,7 @@ export default class ApplicationViews extends Component {
         users: allUsers
       })
     })
+
 
   }
 
@@ -354,8 +354,7 @@ export default class ApplicationViews extends Component {
           <Route exact path="/friends" render={props => {
             if (this.isAuthenticated()) {
               return <FriendList {...props}
-              friends = {this.state.friends}
-              friendsPractices = {this.state.friendsPractices}/>
+              friends = {this.state.friends}/>
               // Remove null and return the component which will show list of friends
             } else {
               return <Redirect to="/login" />
