@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
 export default class BatterList extends Component {
+
   render() {
     const sortedBatterItems = [].concat(this.props.batters)
                           .sort((a,b) => {return new Date(a.batDate) - new Date(b.batDate)})

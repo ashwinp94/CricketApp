@@ -7,7 +7,7 @@ export default class Login extends Component {
     state = {
         username: "",
         password: "",
-        userId: sessionStorage.getItem("user")
+        userId: Number(sessionStorage.getItem("user"))
     }
 
 
@@ -18,16 +18,17 @@ handleFieldChange = (evt) => {
     this.setState(stateToChange)
 }
 
-    // Simplistic handler for login submit
+    // Simplistic handler for regiter submit
 onLogin = (evt) => {
     evt.preventDefault();
     this.props.verifyUser(this.state.username, this.state.password)
             if(this.props.users.length < 1) {
                 alert("We can't seem to find you! Try registering below")
+
             } else {
-                // if(this.props.users.length < 1) {
                 this.props.users.forEach(user => {
                     let loggedIn= false;
+
                     if (this.state.username === user.username && this.state.password === user.password) {
                             loggedIn= true;
                         }

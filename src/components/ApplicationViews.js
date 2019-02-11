@@ -20,6 +20,8 @@ import EventManager from '../modules/EventManager'
 import EventList from "./events/EventList"
 import EventForm from "./events/EventForm"
 import EventEdit from "./events/EventEdit"
+import FriendList from "./friends/FriendList"
+import FriendManager from "../modules/FriendManager";
 
 export default class ApplicationViews extends Component {
   isAuthenticated = () => sessionStorage.getItem("user") !== null
@@ -30,6 +32,7 @@ export default class ApplicationViews extends Component {
     events: [],
     friends: [],
     roles: [],
+    friendsPractices: [],
     userId: sessionStorage.getItem("user")
   };
 
@@ -45,21 +48,31 @@ export default class ApplicationViews extends Component {
         bowlers: allBowlers
       });
     });
+
     EventManager.getYourEvents(this.state.userId).then(allEvents => {
       this.setState({
         events: allEvents
       })
     })
+
+    FriendManager.getYourFriends(this.state.userId).then(allFriends => {
+      this.setState({
+        friends: allFriends
+      })
+    })
+
     RolesManager.getAll().then(allRoles => {
       this.setState({
         roles: allRoles
       })
     })
+
     LoginManager.getAll().then(allUsers=>{
       this.setState({
         users: allUsers
       })
     })
+
   }
 
   //addFunctions
@@ -170,9 +183,16 @@ export default class ApplicationViews extends Component {
         })
       })
   }
-  // verify function
+  // verify functions
   verifyUser = (username, password) => {
     LoginManager.getUsernameAndPassword(username, password)
+      .then(allUsers => this.setState({
+        users: allUsers
+      }))
+  }
+
+  checkUsername = (username) => {
+    LoginManager.getUsername(username)
       .then(allUsers => this.setState({
         users: allUsers
       }))
@@ -187,7 +207,8 @@ export default class ApplicationViews extends Component {
         <Route exact path="/login"
         render={(props) => {
 
-          return <Login {...props} component={Login}
+          return <Login {...props}
+          component={Login}
             verifyUser={this.verifyUser}
             users={this.state.users} />
         }} />
@@ -197,6 +218,7 @@ export default class ApplicationViews extends Component {
           return <LoginForm {...props}
             users={this.state.users}
             addUser={this.addUser}
+            checkUsername={this.checkUsername}
             roles ={this.state.roles}
             userId={this.state.userId} />
         }} />
@@ -327,10 +349,23 @@ export default class ApplicationViews extends Component {
           }
           }} />
 
+          {/*friends routing */}
+
+          <Route exact path="/friends" render={props => {
+            if (this.isAuthenticated()) {
+              return <FriendList {...props}
+              friends = {this.state.friends}
+              friendsPractices = {this.state.friendsPractices}/>
+              // Remove null and return the component which will show list of friends
+            } else {
+              return <Redirect to="/login" />
+            }
+            }} />
+
         {/* search routing */}
 
         <Route
-          path="/searchInput"
+          path="/search"
           render={props => {
             if (this.isAuthenticated()) {
             return (
