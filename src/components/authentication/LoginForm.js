@@ -29,8 +29,8 @@ export default class LoginForm extends Component {
         };
 
         this.props.verifyNewUser(this.state.username)
-        if (this.props.users.length < 1) {
-            this.props.users.forEach(user => {
+        if (this.props.users.length <= 1) {
+            this.props.users.map(user => {
                 let register = false;
                 if (this.state.username !==  user.username) {
                     register = true;
