@@ -72,6 +72,7 @@ export default class ApplicationViews extends Component {
         users: allUsers
       })
     })
+
   }
 
   //addFunctions
@@ -190,7 +191,7 @@ export default class ApplicationViews extends Component {
       }))
   }
 
-  verifyNewUser = (username) => {
+  checkUsername = (username) => {
     LoginManager.getUsername(username)
       .then(allUsers => this.setState({
         users: allUsers
@@ -217,7 +218,7 @@ export default class ApplicationViews extends Component {
           return <LoginForm {...props}
             users={this.state.users}
             addUser={this.addUser}
-            verifyNewUser={this.verifyNewUser}
+            checkUsername={this.checkUsername}
             roles ={this.state.roles}
             userId={this.state.userId} />
         }} />

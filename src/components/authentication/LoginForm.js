@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-
+import LoginManager from '../../modules/LoginManager'
 
 export default class LoginForm extends Component {
     // Set initial state
@@ -9,7 +9,16 @@ export default class LoginForm extends Component {
         password: [],
         role: [],
         age: [],
+        users: [],
     }
+
+    componentDidUpdate(){
+
+        LoginManager.getUsername(this.state.username)
+            .then(allUsers => this.setState({
+            users: allUsers
+            }))
+        }
 
 
     // Update state whenever an input field is edited
@@ -28,21 +37,15 @@ export default class LoginForm extends Component {
             age: this.state.age
         };
 
-        this.props.verifyNewUser(this.state.username)
-        if (this.props.users.length <= 1) {
-            this.props.users.map(user => {
-                let register = false;
-                if (this.state.username !==  user.username) {
-                    register = true;
-                }
-                if (register === true) {
-                    this.props.addUser(User)
-                        .then(() => this.props.history.push("/login"));
-                }
-            })
-        } else {
+        this.props.checkUsername(this.state.username)
+        console.log(this.state.users)
 
+        if (this.state.users.length === 1) {
             alert("Username Already Taken! Choose Another")
+
+        } else {
+            this.props.addUser(User)
+            .then(() => this.props.history.push("/login"));
         }
     }
 
@@ -86,7 +89,7 @@ export default class LoginForm extends Component {
                             </select>
                         </div>
 
-                        <button type="submit"  onClick={this.onRegister} className="btn btn-primary">Submit</button>
+                        <button type="submit"  className="btn btn-primary">Submit</button>
                     </form>
                 </React.Fragment>
             )
