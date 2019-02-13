@@ -398,14 +398,12 @@ export default class ApplicationViews extends Component {
             }} />
 
           <Route  exact path="/friends/:id(\d+)"
-                    render={(props) => {
+                    render={props => {
             if (this.isAuthenticated()){
                   return <FriendDetail {...props}
                   friends ={this.state.friends}
                   users ={this.state.users}
                   friendsPractices={this.state.friendsPractices}
-
-
                    />
                 } else {
                   return <Redirect to="/login" />

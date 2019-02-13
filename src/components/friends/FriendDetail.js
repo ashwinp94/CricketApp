@@ -5,7 +5,6 @@ import "./FriendDetail.css"
 export default class FriendDetail extends Component {
 
     state = {
-
     friendsBattingPractices: [],
     friendsBowlingPractices: [],
     friendsEvents:[],
@@ -18,10 +17,10 @@ showBatting(){
         .then(allPractices => {
             friendsData.push(allPractices)
         })
-
-        this.setState({
+        .then(() => this.setState({
             friendsBattingPractices: friendsData
-    });
+    }))
+
 }
 
 showBowling(){
@@ -31,9 +30,9 @@ showBowling(){
         friendsData.push(allPractices)
     })
 
-    this.setState({
+    .then(() => this.setState({
         friendsBowlingPractices: friendsData
-    });
+    }));
 }
 
 showEvents(){
@@ -43,9 +42,9 @@ showEvents(){
             friendsData.push(allEvents)
         })
 
-        this.setState({
+        .then(() => this.setState({
             friendsEvents: friendsData
-    });
+    }));
 }
 
 

@@ -37,7 +37,7 @@ export default class SearchResults extends Component {
             <div key={result.id}>
             <p>{result.username}</p>
             <Link type="button"
-          onClick={() => this.saveFriend(result.id)}
+            onClick={() => this.saveFriend(result.id)}
             to = "/friends"
             className="btn btn-primary">Save</Link>
           </div>

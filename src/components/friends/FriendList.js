@@ -29,7 +29,7 @@ export default class FriendList extends Component {
     render() {
         return (
             <div>
-            <Link className="nav-link" to="/search">Add Friend</Link>
+            <Link type="button" className="nav-link" to="/search">Add Friend</Link>
             <section className="friends">
             {
                 this.state.friends.map(friend =>
@@ -37,6 +37,7 @@ export default class FriendList extends Component {
                         <p>{friend.user.username}</p>
 
                         <Link className="nav-link" to={`/friends/${friend.user.id}`}
+
                         >Details</Link>
                         <a href=""
                             onClick={() => this.props.deleteFriend(friend.id)
