@@ -11,13 +11,17 @@ export default class FriendList extends Component {
             <section className="friends">
             {
                 this.props.friends.map(friend =>
-                    <div id ={friend.user.id} key={friend.user.id}>
+                    <div id ={friend.id} key={friend.user.id}>
                         <p>{friend.user.username}</p>
 
                         <Link className="nav-link" to={`/friends/${friend.user.id}`}
                         >  Details </Link>
-
+                        <a href=""
+                            onClick={() => this.props.deleteFriend(friend.id)
+                            .then(() => this.props.history.push("/friends"))}
+                            className="card-link">Delete</a>
                     </div>
+
             )}
             </section>
             </div>

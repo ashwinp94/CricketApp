@@ -33,7 +33,6 @@ export default class ApplicationViews extends Component {
     events: [],
     friends: [],
     roles: [],
-    friendsId:[],
     userId: Number(sessionStorage.getItem("user"))
   };
 
@@ -73,11 +72,7 @@ export default class ApplicationViews extends Component {
         users: allUsers
       })
     })
-    FriendManager.getFriendsId(this.state.userId).then(allFriendsId => {
-      this.setState({
-        friendsId: allFriendsId
-      })
-    })
+
     // this.showFriends();
 
   }
@@ -157,6 +152,20 @@ export default class ApplicationViews extends Component {
       .then(bowler =>
         this.setState({
           bowlers: bowler
+        })
+      );
+  };
+
+  deleteFriend = id => {
+    return fetch(`http://localhost:5002/friends/${id}`, {
+      method: "DELETE"
+    })
+      .then(response => response.json())
+      .then(() => fetch(`http://localhost:5002/friends?currentUserId=${this.state.userId}`))
+      .then(response => response.json())
+      .then(friend =>
+        this.setState({
+          friends: friend
         })
       );
   };
@@ -377,9 +386,9 @@ export default class ApplicationViews extends Component {
           <Route exact path="/friends" render={props => {
             if (this.isAuthenticated()) {
               return <FriendList {...props}
+              deleteFriend={this.deleteFriend}
               friends = {this.state.friends}
               users = {this.state.users}
-              friendsId = {this.state.friendsId}
               friendsPractices= {this.state.friendsPractices}
               />
               // Remove null and return the component which will show list of friends
