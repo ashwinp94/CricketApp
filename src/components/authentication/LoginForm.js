@@ -12,7 +12,7 @@ export default class LoginForm extends Component {
         users: [],
     }
 
-    componentDidUpdate(){
+     componentDidUpdate(){
 
         LoginManager.getUsername(this.state.username)
             .then(allUsers => this.setState({

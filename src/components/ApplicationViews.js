@@ -21,6 +21,7 @@ import EventList from "./events/EventList"
 import EventForm from "./events/EventForm"
 import EventEdit from "./events/EventEdit"
 import FriendList from "./friends/FriendList"
+import FriendDetail from "./friends/FriendDetail"
 import FriendManager from "../modules/FriendManager";
 
 export default class ApplicationViews extends Component {
@@ -32,11 +33,12 @@ export default class ApplicationViews extends Component {
     events: [],
     friends: [],
     roles: [],
-    userId: sessionStorage.getItem("user")
+    friendsId:[],
+    userId: Number(sessionStorage.getItem("user"))
   };
 
   componentDidMount() {
-    BatterManager.getYourBatters(this.state.userId).then(allBatters => {
+    BatterManager.getYourBatters(Number(sessionStorage.getItem("user"))).then(allBatters => {
       this.setState({
         batters: allBatters
       });
@@ -71,7 +73,12 @@ export default class ApplicationViews extends Component {
         users: allUsers
       })
     })
-
+    FriendManager.getFriendsId(this.state.userId).then(allFriendsId => {
+      this.setState({
+        friendsId: allFriendsId
+      })
+    })
+    // this.showFriends();
 
   }
 
@@ -197,6 +204,22 @@ export default class ApplicationViews extends Component {
         users: allUsers
       }))
   }
+  // show functions
+
+
+// showFriends(){
+//     let friendsData = [];
+//     this.state.friends.forEach(friend => {
+//         FriendManager.getFriendsPractice(friend.userId)
+//         .then(allPractices => {
+//             console.log(allPractices)
+//             friendsData.push(allPractices)
+//         })
+//         this.setState({
+//             friendsPractices: friendsData
+//         })
+//     });
+// }
 
   render() {
     return (
@@ -354,12 +377,31 @@ export default class ApplicationViews extends Component {
           <Route exact path="/friends" render={props => {
             if (this.isAuthenticated()) {
               return <FriendList {...props}
-              friends = {this.state.friends}/>
+              friends = {this.state.friends}
+              users = {this.state.users}
+              friendsId = {this.state.friendsId}
+              friendsPractices= {this.state.friendsPractices}
+              />
               // Remove null and return the component which will show list of friends
             } else {
               return <Redirect to="/login" />
             }
             }} />
+
+          <Route  exact path="/friends/:id(\d+)"
+                    render={(props) => {
+            if (this.isAuthenticated()){
+                  return <FriendDetail {...props}
+                  friends ={this.state.friends}
+                  users ={this.state.users}
+                  friendsPractices={this.state.friendsPractices}
+
+
+                   />
+                } else {
+                  return <Redirect to="/login" />
+                      }
+                }} />
 
         {/* search routing */}
 

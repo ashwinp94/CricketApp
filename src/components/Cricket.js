@@ -40,7 +40,8 @@ class Cricket extends Component {
     return (
       <React.Fragment>
           <NavBar/>
-        <ApplicationViews users={this.state.users}
+        <ApplicationViews
+                        users={this.state.users}
                         searchAllData = {this.searchAllData}
                         addFriend = {this.addFriend}
                         friends= {this.state.friends}/>
