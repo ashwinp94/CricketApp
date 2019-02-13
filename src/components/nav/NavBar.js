@@ -8,7 +8,6 @@ class NavBar extends Component {
     logOut = evt => {
         evt.preventDefault()
         sessionStorage.removeItem("user");
-        window.location.reload()
     }
 
 
