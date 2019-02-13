@@ -8,7 +8,7 @@ class NavBar extends Component {
     logOut = evt => {
         evt.preventDefault()
         sessionStorage.removeItem("user");
-    }
+        }
 
 
 
@@ -25,14 +25,14 @@ class NavBar extends Component {
                     <li className="nav-item">
                         <Link className="nav-link" to="/events">Events</Link>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <Link className="nav-link" to="/search">Find Friends</Link>
-                    </li>
+                    </li> */}
                     <li className="nav-item">
                         <Link className="nav-link" to="/friends">Your Friends</Link>
                     </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/login" onClick={this.logOut}>Sign out</Link>
+                    <li onClick={this.logOut} className="nav-item">
+                        <Link  className="nav-link" to="/login" >Sign out</Link>
                     </li>
                 </ul>
             </nav>

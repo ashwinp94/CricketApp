@@ -5,26 +5,55 @@ import "./FriendDetail.css"
 export default class FriendDetail extends Component {
 
     state = {
-    friendsPractices: []
+    friendsBattingPractices: [],
+    friendsBowlingPractices: [],
+    friendsEvents:[],
 }
 
 
-showFriends(){
-
+showBatting(){
     let friendsData = [];
     FriendManager.getFriendsPractice(this.props.match.params.id)
         .then(allPractices => {
             friendsData.push(allPractices)
         })
+        .then(() => this.setState({
+            friendsBattingPractices: friendsData
+    }))
 
-        this.setState({
-            friendsPractices: friendsData
-    });
 }
+
+showBowling(){
+    let friendsData = [];
+    FriendManager.getFriendsOtherPractice(this.props.match.params.id)
+    .then(allPractices => {
+        friendsData.push(allPractices)
+    })
+
+    .then(() => this.setState({
+        friendsBowlingPractices: friendsData
+    }));
+}
+
+showEvents(){
+    let friendsData = [];
+    FriendManager.getFriendsEvents(this.props.match.params.id)
+        .then(allEvents => {
+            friendsData.push(allEvents)
+        })
+
+        .then(() => this.setState({
+            friendsEvents: friendsData
+    }));
+}
+
 
 componentDidMount(){
-    this.showFriends();
+    this.showBatting();
+    this.showEvents();
+    this.showBowling();
 }
+
 
     render() {
         /*
@@ -33,66 +62,85 @@ componentDidMount(){
                 FriendManager.getFriendsPractice(friendId)
                 .then(allPractices => {
                     this.setState({
-                        friendsPractices: allPractices
+                        friendsBattingPractices: allPractices
                     })
                   })
             }
             user clicked on by looking at the `this.props.animals`
             collection that was passed down from ApplicationViews
         */
-        const friend = this.state.friendsPractices.filter(o => o.id === parseInt(this.props.match.params.id))
-        console.log(friend)
-
+        const friends = this.state.friendsBattingPractices.filter(o => o.id === parseInt(this.props.match.params.id))
+        const bowling = this.state.friendsBowlingPractices.filter(o => o.id === parseInt(this.props.match.params.id))
+        const events = this.state.friendsEvents.filter(o => o.id === parseInt(this.props.match.params.id))
         return (
-            <section className="friend">
+            <section className="friendsData">
             {
-                friend.map(friend =>
+                friends.map(friend =>
                 <div key={friend.id} className="card">
-                    <h5>{friend.username}</h5>
-                    <h5>{friend.age}</h5>
-                    <h5>{friend.role}</h5>
-                    <h5>{friend.username}'s Practices</h5>
-                    <div>
-                    {
-                        friend.batters.map(bat =>
-                        <section key = {bat.id} id= "battingSection">
-                        <h5>{bat.batDate}</h5>
-                        <h5>{"Runs Scored:"}{bat.runsScored}</h5>
-                        <h5>{"Balls Faced:"}{bat.ballsFaced}</h5>
-                        <h5>{"# of 4's:"}{bat.numberofFours}</h5>
-                        <h5>{"# of 6's:"}{bat.numberofSixes}</h5>
-                        </section>
-                    )}
-                    </div>
-                    <div className="card-body">
-                    <Link className="nav-link" to={`/friends`}>Go Back </Link>
-
-                    </div>
+                    <h4>{friend.username}</h4>
+                    <h4>{friend.age}</h4>
+                    <h4 id ="roles">{friend.role}</h4>
+                    <h5>Batting Stats</h5>
+                        {
+                            friend.batters.map(bat =>
+                                <section key = {bat.id} id= "practices">
+                                    <h5>{bat.batDate}</h5>
+                                    <h5>{"Runs Scored: "}{bat.runsScored}</h5>
+                                    <h5>{"Balls Faced: "}{bat.ballsFaced}</h5>
+                                    <h5>{"# of 4's: "}{bat.numberofFours}</h5>
+                                    <h5>{"# of 6's: "}{bat.numberofSixes}</h5>
+                                </section>
+                        )}
                 </div>
                 )}
+
+                {/* bowling section  */}
+
+                <h5> Bowling Stats
+                {
+                    bowling.map(bowler=>
+                    <div key={bowler.id} className="card">
+
+                        {
+                            bowler.bowlers.map(bowl =>
+                                <section id= "practices">
+                                    <h5>{bowl.bowlDate}</h5>
+                                    <h5>{"Overs Bowled: "}{bowl.oversBowled}</h5>
+                                    <h5>{"Runs Conceded: "}{bowl.runsConceded}</h5>
+                                    <h5>{"Wickets: "}{bowl.wickets}</h5>
+                                    <h5>{"Extras: "}{bowl.extras}</h5>
+                                </section>
+                        )}
+
+                    </div>
+                )}
+                </h5>
+
+                {/* events section */}
+
+                <h5> Their Events
+                {
+                    events.map(event=>
+                    <div key={event.id} className="card">
+
+                        {
+                            event.events.map(even =>
+                                <section id= "practices">
+                                    <h5>{even.eventDate}</h5>
+                                    <h5>{"Event Name: "}{even.eventName}</h5>
+                                    <h5>{"Event Time: "}{even.eventTime}</h5>
+                                    <h5>{"Location: "}{even.eventLocation}</h5>
+                                </section>
+                        )}
+
+                    </div>
+                )}
+                </h5>
+
+                <div className="card-body">
+                        <Link className="nav-link" to={`/friends`}>Go Back </Link>
+                    </div>
             </section>
         )
     }
 }
-// state ={
-//     friendsPractices:[]
-// }
-
-
-// showFriends(){
-//     let friendsData = [];
-//     this.props.friends.forEach(userIds => {
-//         FriendManager.getFriendsPractice(userIds.userId)
-//         .then(allPractices => {
-//             console.log(allPractices)
-//             friendsData.push(allPractices)
-//         })
-//         this.setState({
-//             friendsPractices: friendsData
-//         })
-//     });
-// }
-
-// componentDidMount(){
-//     this.showFriends();
-// }

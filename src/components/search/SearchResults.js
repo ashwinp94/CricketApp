@@ -1,7 +1,21 @@
 import React, { Component } from "react";
-
+import {Link} from "react-router-dom"
+// import FriendManager from "../../modules/FriendManager"
 export default class SearchResults extends Component {
 
+  // state ={
+  //   friends: [{
+  //     currentUserId: Number(sessionStorage.getItem("user")),
+  //     userId: [],
+  //   }],
+  // }
+// componentDidMount(){
+//   FriendManager.getYourFriends(Number(sessionStorage.getItem("user"))).then(allFriends => {
+//     this.setState({
+//       friends: allFriends
+//     })
+//   })
+// }
 
   saveFriend = (userId) => {
 
@@ -11,8 +25,8 @@ export default class SearchResults extends Component {
     }
 
     this.props.addFriend(friend)
-    // window.location.reload()
   }
+    // window.location.reload()
 
   render() {
     return (
@@ -22,10 +36,10 @@ export default class SearchResults extends Component {
           {this.props.users.map(result => (
             <div key={result.id}>
             <p>{result.username}</p>
-            <button type="button"
-
+            <Link type="button"
             onClick={() => this.saveFriend(result.id)}
-            className="btn btn-primary">Save</button>
+            to = "/friends"
+            className="btn btn-primary">Save</Link>
           </div>
           ))}
         </section>
