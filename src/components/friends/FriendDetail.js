@@ -5,6 +5,7 @@ import "./FriendDetail.css"
 export default class FriendDetail extends Component {
 
     state = {
+
     friendsBattingPractices: [],
     friendsBowlingPractices: [],
     friendsEvents:[],
@@ -53,6 +54,7 @@ componentDidMount(){
     this.showEvents();
     this.showBowling();
 }
+
 
     render() {
         /*

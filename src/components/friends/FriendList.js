@@ -1,21 +1,43 @@
 import React, { Component } from 'react'
-// import FriendManager from "../../modules/FriendManager";
+import FriendManager from "../../modules/FriendManager";
 import {Link} from 'react-router-dom'
 export default class FriendList extends Component {
+    state ={
+      friends: [],
+    }
+    componentDidMount(){
 
+        FriendManager.getYourFriends(Number(sessionStorage.getItem("user")))
+        .then(allFriends => {
+          this.setState({
+            friends: allFriends
+          })
+        })
+     }
+
+  componentDidUpdate(){
+
+    FriendManager.getYourFriends(Number(sessionStorage.getItem("user")))
+    .then(allFriends => {
+      this.setState({
+        friends: allFriends
+      })
+    })
+ }
 
 
     render() {
         return (
             <div>
+            <Link className="nav-link" to="/search">Add Friend</Link>
             <section className="friends">
             {
-                this.props.friends.map(friend =>
+                this.state.friends.map(friend =>
                     <div id ={friend.id} key={friend.user.id}>
                         <p>{friend.user.username}</p>
 
                         <Link className="nav-link" to={`/friends/${friend.user.id}`}
-                        >  Details </Link>
+                        >Details</Link>
                         <a href=""
                             onClick={() => this.props.deleteFriend(friend.id)
                             .then(() => this.props.history.push("/friends"))}

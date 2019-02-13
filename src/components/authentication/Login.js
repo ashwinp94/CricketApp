@@ -7,6 +7,8 @@ export default class Login extends Component {
     state = {
         username: "",
         password: "",
+        users: [],
+        batters: [],
         userId: Number(sessionStorage.getItem("user"))
     }
 
@@ -41,11 +43,12 @@ onLogin = (evt) => {
                         }
                     if (loggedIn === true){
                         sessionStorage.setItem("user", user.id);
-                        BatterManager.getYourBatters(this.state.userId).then(()=> this.props.history.push("/batters"))
+                        BatterManager.getYourBatters(this.state.userId)
+                        .then(()=> this.props.history.push("/batters"))
                     }
-                })
-            }
-        }
+                    }
+            )}
+    }
 
 render() {
     return (

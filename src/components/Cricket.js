@@ -10,8 +10,8 @@ class Cricket extends Component {
         friends: [],
         currentUserId: Number(sessionStorage.getItem("users"))
       }
-      componentDidMount() {
-        FriendManager.getYourFriends(this.state.currentUserId).then(allFriends => {
+      componentDidMount(){
+        FriendManager.getYourFriends(this.state.userId).then(allFriends => {
           this.setState({
             friends: allFriends
           })
@@ -25,15 +25,20 @@ class Cricket extends Component {
         .then(() => this.setState(newSearchResults))
       }
 
-      addFriend = newFriend =>
+      addFriend = newFriend => {
       SearchManager.post(newFriend)
-
       .then(() => FriendManager.getYourFriends(this.state.currentUserId))
       .then(friend =>
         this.setState({
           friends: friend
         })
-      );
+      )
+      }
+      // .then(friend =>
+      //   this.setState({
+      //     friends: friend
+
+
 
 
   render() {
