@@ -8,6 +8,12 @@ getYourFriends(id) {
 getFriendsPractice(id){
     return fetch(`${remoteURL}/users/${id}?_embed=batters`).then(e => e.json());
     },
+getFriendsOtherPractice(id){
+    return fetch(`${remoteURL}/users/${id}?_embed=bowlers`).then(e => e.json());
+    },
+getFriendsEvents(id){
+    return fetch(`${remoteURL}/users/${id}?_embed=events`).then(e => e.json());
+    },
 
 getFriendsId(id){
     return fetch(`${remoteURL}/friends?currentUserId=${id}`).then(e => e.json());
