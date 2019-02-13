@@ -76,18 +76,18 @@ componentDidMount(){
             {
                 friends.map(friend =>
                 <div key={friend.id} className="card">
-                    <h5>{friend.username}</h5>
-                    <h5>{friend.age}</h5>
-                    <h5 id ="roles">{friend.role}</h5>
+                    <h4>{friend.username}</h4>
+                    <h4>{friend.age}</h4>
+                    <h4 id ="roles">{friend.role}</h4>
                     <h5>Batting Stats</h5>
                         {
                             friend.batters.map(bat =>
                                 <section key = {bat.id} id= "practices">
                                     <h5>{bat.batDate}</h5>
-                                    <h5>{"Runs Scored:"}{bat.runsScored}</h5>
-                                    <h5>{"Balls Faced:"}{bat.ballsFaced}</h5>
-                                    <h5>{"# of 4's:"}{bat.numberofFours}</h5>
-                                    <h5>{"# of 6's:"}{bat.numberofSixes}</h5>
+                                    <h5>{"Runs Scored: "}{bat.runsScored}</h5>
+                                    <h5>{"Balls Faced: "}{bat.ballsFaced}</h5>
+                                    <h5>{"# of 4's: "}{bat.numberofFours}</h5>
+                                    <h5>{"# of 6's: "}{bat.numberofSixes}</h5>
                                 </section>
                         )}
                 </div>
@@ -104,10 +104,10 @@ componentDidMount(){
                             bowler.bowlers.map(bowl =>
                                 <section id= "practices">
                                     <h5>{bowl.bowlDate}</h5>
-                                    <h5>{"Overs Bowled:"}{bowl.oversBowled}</h5>
-                                    <h5>{"Runs Conceded:"}{bowl.runsConceded}</h5>
-                                    <h5>{"Wickets:"}{bowl.wickets}</h5>
-                                    <h5>{"Extras:"}{bowl.extras}</h5>
+                                    <h5>{"Overs Bowled: "}{bowl.oversBowled}</h5>
+                                    <h5>{"Runs Conceded: "}{bowl.runsConceded}</h5>
+                                    <h5>{"Wickets: "}{bowl.wickets}</h5>
+                                    <h5>{"Extras: "}{bowl.extras}</h5>
                                 </section>
                         )}
 
@@ -126,9 +126,9 @@ componentDidMount(){
                             event.events.map(even =>
                                 <section id= "practices">
                                     <h5>{even.eventDate}</h5>
-                                    <h5>{"Overs Bowled:"}{even.eventName}</h5>
-                                    <h5>{"Runs Conceded:"}{even.eventTime}</h5>
-                                    <h5>{"Wickets:"}{even.eventLocation}</h5>
+                                    <h5>{"Event Name: "}{even.eventName}</h5>
+                                    <h5>{"Event Time: "}{even.eventTime}</h5>
+                                    <h5>{"Location: "}{even.eventLocation}</h5>
                                 </section>
                         )}
 

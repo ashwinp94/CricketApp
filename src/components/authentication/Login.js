@@ -25,7 +25,7 @@ handleFieldChange = (evt) => {
     this.setState(stateToChange)
 }
 
-    // Simplistic handler for regiter submit
+    // Simplistic handler for login submit
 onLogin = (evt) => {
     evt.preventDefault();
     this.props.verifyUser(this.state.username, this.state.password)
