@@ -216,26 +216,27 @@ export default class ApplicationViews extends Component {
   }
   //misc functions
 
-  updateState(){
+  updateState = () => {
+
     BatterManager.getYourBatters(Number(sessionStorage.getItem("user"))).then(allBatters => {
       this.setState({
         batters: allBatters
       });
     });
 
-    BowlerManager.getYourBowlers(this.state.userId).then(allBowlers => {
+    BowlerManager.getYourBowlers(Number(sessionStorage.getItem("user"))).then(allBowlers => {
       this.setState({
         bowlers: allBowlers
       });
     });
 
-    EventManager.getYourEvents(this.state.userId).then(allEvents => {
+    EventManager.getYourEvents(Number(sessionStorage.getItem("user"))).then(allEvents => {
       this.setState({
         events: allEvents
       })
     })
 
-    FriendManager.getYourFriends(this.state.userId).then(allFriends => {
+    FriendManager.getYourFriends(Number(sessionStorage.getItem("user"))).then(allFriends => {
       this.setState({
         friends: allFriends
       })
@@ -264,7 +265,7 @@ export default class ApplicationViews extends Component {
     friends: [],
     roles: [],
     })
-    }
+  }
 
 
   // show functions

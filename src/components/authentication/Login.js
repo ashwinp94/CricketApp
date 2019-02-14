@@ -34,13 +34,13 @@ onLogin = (evt) => {
                             loggedIn= true;
                         }
                     if (loggedIn === true){
-                        sessionStorage.setItem("user", user.id);
+                        sessionStorage.setItem("user", user.id)
                         this.props.updateState()
-                        .then(()=> this.props.history.push("/batters"))
+                        this.props.history.push("/batters")
                     }
-                }
-            )}
-    }
+                })
+            }
+        }
 
 render() {
     return (
