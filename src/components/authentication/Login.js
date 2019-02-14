@@ -1,13 +1,16 @@
 import React, { Component } from "react"
 import "./Login.css"
-import BatterManager from "../../modules/BatterManager"
 export default class Login extends Component {
 
     // Set initial state
     state = {
         username: "",
         password: "",
-        userId: Number(sessionStorage.getItem("user"))
+        batters: [],
+        bowlers: [],
+        events: [],
+        friends: [],
+        userId: Number(sessionStorage.getItem("user")),
     }
 
 
