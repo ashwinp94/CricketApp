@@ -13,7 +13,8 @@ export default class BowlerDetail extends Component {
         const bowler = this.props.bowlers.find(o => o.id === parseInt(this.props.match.params.bowlerId)) || {}
 
         return (
-            <section className="bowler">
+            <React.Fragment>
+                             <section className="bowler">
                 <div key={bowler.id} className="card">
                     <div className="card-body">
                         <div className="card-title">
@@ -22,6 +23,8 @@ export default class BowlerDetail extends Component {
                         <p>Total Overs Bowled: {bowler.oversBowled}</p>
                         <p>Wickets: {bowler.wickets}</p>
                         <p>Extras: {bowler.extras}</p>
+                        <p>Final Figures: {bowler.wickets}{"/"}{(bowler.extras + bowler.runsConceded)}</p>
+                        <p>Average: {(bowler.extras + bowler.runsConceded)/ bowler.oversBowled}</p>
                         </div>
                         <a href="#"
                             onClick={() => this.props.deleteBowler(bowler.id)
@@ -33,6 +36,7 @@ export default class BowlerDetail extends Component {
                     </div>
                 </div>
             </section>
+            </React.Fragment>
         )
     }
 }

@@ -7,18 +7,10 @@ export default class Login extends Component {
     state = {
         username: "",
         password: "",
-        users: [],
-        batters: [],
         userId: Number(sessionStorage.getItem("user"))
     }
 
-    componentDidMount(){
-        BatterManager.getYourBatters(this.state.userId).then(allBatters => {
-            this.setState({
-              batters: allBatters
-            });
-          });
-    }
+
 
 // Update state whenever an input field is edited
 handleFieldChange = (evt) => {
@@ -43,10 +35,10 @@ onLogin = (evt) => {
                         }
                     if (loggedIn === true){
                         sessionStorage.setItem("user", user.id);
-                        BatterManager.getYourBatters(this.state.userId)
+                        this.props.updateState()
                         .then(()=> this.props.history.push("/batters"))
                     }
-                    }
+                }
             )}
     }
 

@@ -23,6 +23,7 @@ import EventEdit from "./events/EventEdit"
 import FriendList from "./friends/FriendList"
 import FriendDetail from "./friends/FriendDetail"
 import FriendManager from "../modules/FriendManager";
+import NavBar from "./nav/NavBar";
 
 export default class ApplicationViews extends Component {
   isAuthenticated = () => sessionStorage.getItem("user") !== null
@@ -213,6 +214,59 @@ export default class ApplicationViews extends Component {
         users: allUsers
       }))
   }
+  //misc functions
+
+  updateState(){
+    BatterManager.getYourBatters(Number(sessionStorage.getItem("user"))).then(allBatters => {
+      this.setState({
+        batters: allBatters
+      });
+    });
+
+    BowlerManager.getYourBowlers(this.state.userId).then(allBowlers => {
+      this.setState({
+        bowlers: allBowlers
+      });
+    });
+
+    EventManager.getYourEvents(this.state.userId).then(allEvents => {
+      this.setState({
+        events: allEvents
+      })
+    })
+
+    FriendManager.getYourFriends(this.state.userId).then(allFriends => {
+      this.setState({
+        friends: allFriends
+      })
+    })
+
+    RolesManager.getAll().then(allRoles => {
+      this.setState({
+        roles: allRoles
+      })
+    })
+
+    LoginManager.getAll().then(allUsers=>{
+      this.setState({
+        users: allUsers
+      })
+    })
+  }
+
+  logOut = evt => {
+    evt.preventDefault()
+    sessionStorage.removeItem("user");
+    this.setState({
+    batters: [],
+    bowlers: [],
+    events: [],
+    friends: [],
+    roles: [],
+    })
+    }
+
+
   // show functions
 
 
@@ -233,6 +287,8 @@ export default class ApplicationViews extends Component {
   render() {
     return (
       <React.Fragment>
+        <NavBar {...this.props}
+        logOut={this.logOut}/>
 
         {/* login sections */}
 
@@ -240,6 +296,7 @@ export default class ApplicationViews extends Component {
         render={(props) => {
 
           return <Login {...props}
+          updateState={this.updateState}
           component={Login}
             verifyUser={this.verifyUser}
             users={this.state.users} />
@@ -440,6 +497,7 @@ export default class ApplicationViews extends Component {
           }
           }}
         />
+
       </React.Fragment>
     )
   }

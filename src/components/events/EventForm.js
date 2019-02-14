@@ -35,7 +35,7 @@ export default class EventForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <form className="eventForm">
+                 <form className="eventForm">
           <div className="form-group">
             <label htmlFor="eventName">Name</label>
             <input type="text" required

@@ -30,12 +30,12 @@ export default class BowlerForm extends Component {
     constructNewSession = evt => {
         evt.preventDefault()
             const Bowler = {
-                userId: this.state.userId,
-                oversBowled: this.state.oversBowled,
-                runsConceded: this.state.runsConceded,
-                wickets: this.state.wickets,
-                extras: this.state.extras,
-                bowlDate: new Date()
+                userId: parseInt(this.state.userId),
+                oversBowled: parseInt(this.state.oversBowled),
+                runsConceded: parseInt(this.state.runsConceded),
+                wickets: parseInt(this.state.wickets),
+                extras: parseInt(this.state.extras),
+                bowlDate: this.state.bowlDate
             };
 
             // Create the animal and redirect user to animal list
@@ -46,38 +46,46 @@ export default class BowlerForm extends Component {
     render() {
         return (
             <React.Fragment>
-                <form className="BowlerForm">
+                                 <form className="BowlerForm">
                     <div className="form-group">
                         <label htmlFor="oversBowled">Add Overs: </label>
-                        <input type="text" required
+                        <input type="number" required
                                className="form-control"
                                onChange={this.handleFieldChange}
                                id="oversBowled"
-                               placeholder="oversBowled" />
+                               placeholder="" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="runsConceded">Runs Conceded</label>
-                        <input type="text" required
+                        <input type="number" required
                                className="form-control"
                                onChange={this.handleFieldChange}
                                id="runsConceded"
-                               placeholder="runsConceded" />
+                               placeholder="" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="wickets">Wickets: </label>
-                        <input type="text" required
+                        <input type="number" required
                                className="form-control"
                                onChange={this.handleFieldChange}
                                id="wickets"
-                               placeholder="wickets" />
+                               placeholder="" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="extras">Extras: </label>
-                        <input type="text" required
+                        <input type="number" required
                                className="form-control"
                                onChange={this.handleFieldChange}
                                id="extras"
-                               placeholder="extras" />
+                               placeholder="" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="">Date</label>
+                        <input type="date" required
+                        className="form-control"
+                        onChange={this.handleFieldChange}
+                        id="bowlDate"
+                        placeholder="" />
                     </div>
 
                     {/* <div className="form-group">

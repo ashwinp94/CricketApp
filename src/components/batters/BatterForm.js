@@ -12,7 +12,7 @@ export default class BatterForm extends Component {
         batDate: [],
     }
 
-    // this.constructNewAnimal = this.constructNewAnimal.bind(this)
+    // this.constructNewAnimal = this.constructNewAnimal.bi`nd(this)
 
 
     // Update state whenever an input field is edited
@@ -29,12 +29,12 @@ export default class BatterForm extends Component {
     constructNewSession = evt => {
         evt.preventDefault()
             const Batter = {
-                userId: this.state.userId,
-                runsScored: this.state.runsScored,
-                ballsFaced: this.state.ballsFaced,
-                numberofFours: this.state.numberofFours,
-                numberofSixes: this.state.numberofSixes,
-                batDate: new Date()
+                userId: parseInt(this.state.userId),
+                runsScored: parseInt(this.state.runsScored),
+                ballsFaced: parseInt(this.state.ballsFaced),
+                numberofFours: parseInt(this.state.numberofFours),
+                numberofSixes: parseInt(this.state.numberofSixes),
+                batDate: this.state.batDate
             };
 
             // Create the animal and redirect user to animal list
@@ -45,38 +45,46 @@ export default class BatterForm extends Component {
     render() {
         return (
             <React.Fragment>
-                <form className="BatterForm">
+                                 <form className="BatterForm">
                     <div className="form-group">
                         <label htmlFor="runsScored">Add Runs: </label>
-                        <input type="text" required
+                        <input type="number" required
                                className="form-control"
                                onChange={this.handleFieldChange}
                                id="runsScored"
-                               placeholder="runsScored" />
+                               placeholder="" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="ballsFaced">Balls Faced</label>
-                        <input type="text" required
+                        <input type="number" required
                                className="form-control"
                                onChange={this.handleFieldChange}
                                id="ballsFaced"
-                               placeholder="ballsFaced" />
+                               placeholder="" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="numberofFours">4's: </label>
-                        <input type="text" required
+                        <input type="number" required
                                className="form-control"
                                onChange={this.handleFieldChange}
                                id="numberofFours"
-                               placeholder="numberofFours" />
+                               placeholder="" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="numberofSixes">6's: </label>
-                        <input type="text" required
+                        <input type="number" required
                                className="form-control"
                                onChange={this.handleFieldChange}
                                id="numberofSixes"
-                               placeholder="numberofSixes" />
+                               placeholder="" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="">Date</label>
+                        <input type="date" required
+                        className="form-control"
+                        onChange={this.handleFieldChange}
+                        id="batDate"
+                        placeholder="" />
                     </div>
 
                     {/* <div className="form-group">
