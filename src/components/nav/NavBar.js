@@ -3,13 +3,8 @@ import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 
 
+
 class NavBar extends Component {
-
-    logOut = evt => {
-        evt.preventDefault()
-        sessionStorage.removeItem("user");
-        }
-
 
 
     render() {
@@ -31,7 +26,7 @@ class NavBar extends Component {
                     <li className="nav-item">
                         <Link className="nav-link" to="/friends">Your Friends</Link>
                     </li>
-                    <li onClick={this.logOut} className="nav-item">
+                    <li onClick={this.props.logOut} className="nav-item">
                         <Link  className="nav-link" to="/login" >Sign out</Link>
                     </li>
                 </ul>

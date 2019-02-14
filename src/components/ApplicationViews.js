@@ -23,6 +23,7 @@ import EventEdit from "./events/EventEdit"
 import FriendList from "./friends/FriendList"
 import FriendDetail from "./friends/FriendDetail"
 import FriendManager from "../modules/FriendManager";
+import NavBar from "./nav/NavBar";
 
 export default class ApplicationViews extends Component {
   isAuthenticated = () => sessionStorage.getItem("user") !== null
@@ -43,19 +44,19 @@ export default class ApplicationViews extends Component {
       });
     });
 
-    BowlerManager.getYourBowlers(this.state.userId).then(allBowlers => {
+    BowlerManager.getYourBowlers(Number(sessionStorage.getItem("user"))).then(allBowlers => {
       this.setState({
         bowlers: allBowlers
       });
     });
 
-    EventManager.getYourEvents(this.state.userId).then(allEvents => {
+    EventManager.getYourEvents(Number(sessionStorage.getItem("user"))).then(allEvents => {
       this.setState({
         events: allEvents
       })
     })
 
-    FriendManager.getYourFriends(this.state.userId).then(allFriends => {
+    FriendManager.getYourFriends(Number(sessionStorage.getItem("user"))).then(allFriends => {
       this.setState({
         friends: allFriends
       })
@@ -67,7 +68,7 @@ export default class ApplicationViews extends Component {
       })
     })
 
-    LoginManager.getAll().then(allUsers=>{
+    LoginManager.getAll().then(allUsers => {
       this.setState({
         users: allUsers
       })
@@ -90,7 +91,7 @@ export default class ApplicationViews extends Component {
 
   addBowler = newBowler =>
     BowlerManager.post(newBowler)
-      .then(() => BowlerManager.getYourBowlers(this.state.userId))
+      .then(() => BowlerManager.getYourBowlers(Number(sessionStorage.getItem("user"))))
       .then(bowler =>
         this.setState({
           bowlers: bowler
@@ -99,7 +100,7 @@ export default class ApplicationViews extends Component {
 
   addBatter = newBatter =>
     BatterManager.post(newBatter)
-      .then(() => BatterManager.getYourBatters(this.state.userId))
+      .then(() => BatterManager.getYourBatters(Number(sessionStorage.getItem("user"))))
       .then(batter =>
         this.setState({
           batters: batter
@@ -107,19 +108,19 @@ export default class ApplicationViews extends Component {
       )
   addEvent = event =>
     EventManager.post(event)
-      .then(() => EventManager.getYourEvents(this.state.userId))
+      .then(() => EventManager.getYourEvents(Number(sessionStorage.getItem("user"))))
       .then(events => this.setState({
         events: events
       })
       )
 
-      //delete functions
+  //delete functions
   deleteBatter = id => {
     return fetch(`http://localhost:5002/batters/${id}`, {
       method: "DELETE"
     })
       .then(response => response.json())
-      .then(() => fetch(`http://localhost:5002/batters?userId=${this.state.userId}`))
+      .then(() => fetch(`http://localhost:5002/batters?userId=${Number(sessionStorage.getItem("user"))}`))
       .then(response => response.json())
       .then(batter =>
         this.setState({
@@ -133,7 +134,7 @@ export default class ApplicationViews extends Component {
       method: "DELETE"
     })
       .then(response => response.json())
-      .then(() => fetch(`http://localhost:5002/events?userId=${this.state.userId}`))
+      .then(() => fetch(`http://localhost:5002/events?userId=${Number(sessionStorage.getItem("user"))}`))
       .then(response => response.json())
       .then(event =>
         this.setState({
@@ -147,7 +148,7 @@ export default class ApplicationViews extends Component {
       method: "DELETE"
     })
       .then(response => response.json())
-      .then(() => fetch(`http://localhost:5002/bowlers?userId=${this.state.userId}`))
+      .then(() => fetch(`http://localhost:5002/bowlers?userId=${Number(sessionStorage.getItem("user"))}`))
       .then(response => response.json())
       .then(bowler =>
         this.setState({
@@ -161,7 +162,7 @@ export default class ApplicationViews extends Component {
       method: "DELETE"
     })
       .then(response => response.json())
-      .then(() => fetch(`http://localhost:5002/friends?currentUserId=${this.state.userId}`))
+      .then(() => fetch(`http://localhost:5002/friends?currentUserId=${Number(sessionStorage.getItem("user"))}`))
       .then(response => response.json())
       .then(friend =>
         this.setState({
@@ -173,26 +174,26 @@ export default class ApplicationViews extends Component {
   //Edit Functions
   updateBatter = (batterId, editedBatterObj) => {
     return BatterManager.put(batterId, editedBatterObj)
-    .then(()=> BatterManager.getYourBatters(this.state.userId))
-    .then(batter =>{
-      this.setState({
-        batters:batter
+      .then(() => BatterManager.getYourBatters(Number(sessionStorage.getItem("user"))))
+      .then(batter => {
+        this.setState({
+          batters: batter
+        })
       })
-    })
   }
 
   updateBowler = (bowlerId, editedBowlerObj) => {
     return BowlerManager.put(bowlerId, editedBowlerObj)
-    .then(()=> BowlerManager.getYourBowlers(this.state.userId))
-    .then(bowler =>{
-      this.setState({
-        bowlers:bowler
+      .then(() => BowlerManager.getYourBowlers(Number(sessionStorage.getItem("user"))))
+      .then(bowler => {
+        this.setState({
+          bowlers: bowler
+        })
       })
-    })
   }
   updateEvent = (eventId, editedEventObj) => {
     return EventManager.put(eventId, editedEventObj)
-      .then(() => EventManager.getYourEvents(this.state.userId))
+      .then(() => EventManager.getYourEvents(Number(sessionStorage.getItem("user"))))
       .then(event => {
         this.setState({
           events: event
@@ -213,83 +214,140 @@ export default class ApplicationViews extends Component {
         users: allUsers
       }))
   }
+  //misc functions
+
+  updateState = () => {
+
+    BatterManager.getYourBatters(Number(sessionStorage.getItem("user"))).then(allBatters => {
+      this.setState({
+        batters: allBatters
+      });
+    });
+
+    BowlerManager.getYourBowlers(Number(sessionStorage.getItem("user"))).then(allBowlers => {
+      this.setState({
+        bowlers: allBowlers
+      });
+    });
+
+    EventManager.getYourEvents(Number(sessionStorage.getItem("user"))).then(allEvents => {
+      this.setState({
+        events: allEvents
+      })
+    })
+
+    FriendManager.getYourFriends(Number(sessionStorage.getItem("user"))).then(allFriends => {
+      this.setState({
+        friends: allFriends
+      })
+    })
+
+    RolesManager.getAll().then(allRoles => {
+      this.setState({
+        roles: allRoles
+      })
+    })
+
+    LoginManager.getAll().then(allUsers => {
+      this.setState({
+        users: allUsers
+      })
+    })
+  }
+
+  logOut = evt => {
+    evt.preventDefault()
+    sessionStorage.removeItem("user");
+    this.setState({
+      batters: [],
+      bowlers: [],
+      events: [],
+      friends: [],
+    })
+  }
+
+
   // show functions
 
 
-// showFriends(){
-//     let friendsData = [];
-//     this.state.friends.forEach(friend => {
-//         FriendManager.getFriendsPractice(friend.userId)
-//         .then(allPractices => {
-//             console.log(allPractices)
-//             friendsData.push(allPractices)
-//         })
-//         this.setState({
-//             friendsPractices: friendsData
-//         })
-//     });
-// }
+  // showFriends(){
+  //     let friendsData = [];
+  //     this.state.friends.forEach(friend => {
+  //         FriendManager.getFriendsPractice(friend.userId)
+  //         .then(allPractices => {
+  //             console.log(allPractices)
+  //             friendsData.push(allPractices)
+  //         })
+  //         this.setState({
+  //             friendsPractices: friendsData
+  //         })
+  //     });
+  // }
 
   render() {
     return (
       <React.Fragment>
 
+        <NavBar {...this.props}
+          logOut={this.logOut} />
+
         {/* login sections */}
 
         <Route exact path="/login"
-        render={(props) => {
+          render={(props) => {
 
-          return <Login {...props}
-          component={Login}
-            verifyUser={this.verifyUser}
-            users={this.state.users} />
-        }} />
+            return <Login {...props}
+              updateState={this.updateState}
+              component={Login}
+              verifyUser={this.verifyUser}
+              users={this.state.users} />
+          }} />
 
         <Route exact path="/login/new"
           render={(props) => {
-          return <LoginForm {...props}
-            users={this.state.users}
-            addUser={this.addUser}
-            checkUsername={this.checkUsername}
-            roles ={this.state.roles}
-            userId={this.state.userId} />
-        }} />
+            return <LoginForm {...props}
+              users={this.state.users}
+              addUser={this.addUser}
+              checkUsername={this.checkUsername}
+              roles={this.state.roles}
+              userId={Number(sessionStorage.getItem("user"))} />
+          }} />
 
-            {/* Battting sections */}
+        {/* Battting sections */}
 
-        <Route  exact path="/batters"
+        <Route exact path="/batters"
           render={(props) => {
             if (this.isAuthenticated()) {
-            return <BatterList {...props}
-              batters={this.state.batters}
-              deleteBatter={this.deleteBatter}
-              userId={this.state.userId}/>
+              return <BatterList {...props}
+                batters={this.state.batters}
+                deleteBatter={this.deleteBatter}
+                userId={Number(sessionStorage.getItem("user"))} />
 
             } else {
               return <Redirect to="/login" />
             }
           }} />
 
-          <Route exact path="/batters/new"
+        <Route exact path="/batters/new"
           render={(props) => {
-                if (this.isAuthenticated()){
-                  return <BatterForm {...props}
-                  addBatter={this.addBatter}
-                  />
-          } else {
-            return <Redirect to="/login" />
-                }
-              }} />
-          <Route  exact path="/batters/:batterId(\d+)"
+            if (this.isAuthenticated()) {
+              return <BatterForm {...props}
+                addBatter={this.addBatter}
+              />
+            } else {
+              return <Redirect to="/login" />
+            }
+          }} />
+        <Route exact path="/batters/:batterId(\d+)"
           render={(props) => {
-            if (this.isAuthenticated()){
-                  return <BatterDetail {...props}
-                  deleteBatter={this.deleteBatter}
-                  batters={this.state.batters} />
-                } else {
-                  return <Redirect to="/login" />
-                      }
-                }} />
+            if (this.isAuthenticated()) {
+              return <BatterDetail {...props}
+                deleteBatter={this.deleteBatter}
+                batters={this.state.batters} />
+            } else {
+              return <Redirect to="/login" />
+            }
+          }} />
 
         <Route exact path='/batters/:batterId(\d+)/edit' render={(props => {
           if (this.isAuthenticated()) {
@@ -300,15 +358,15 @@ export default class ApplicationViews extends Component {
           }
         })} />
 
-              {/* Bowling Sections */}
+        {/* Bowling Sections */}
 
         <Route exact path="/bowlers"
           render={(props) => {
             if (this.isAuthenticated()) {
               return <BowlerList {...props}
-              deleteBowler={this.deleteBowler}
+                deleteBowler={this.deleteBowler}
                 bowlers={this.state.bowlers}
-                userId={this.state.userId} />
+                userId={Number(sessionStorage.getItem("user"))} />
 
             } else {
               return <Redirect to="/login" />
@@ -319,35 +377,35 @@ export default class ApplicationViews extends Component {
           render={(props) => {
             if (this.isAuthenticated()) {
               return <BowlerForm {...props}
-                addBowler={this.addBowler}/>
+                addBowler={this.addBowler} />
 
             } else {
               return <Redirect to="/login" />
             }
           }} />
 
-        <Route  exact path="/bowlers/:bowlerId(\d+)"
+        <Route exact path="/bowlers/:bowlerId(\d+)"
           render={(props) => {
-            if (this.isAuthenticated()){
-                  return <BowlerDetail {...props}
-                  deleteBowler={this.deleteBowler}
-                  bowlers={this.state.bowlers} />
+            if (this.isAuthenticated()) {
+              return <BowlerDetail {...props}
+                deleteBowler={this.deleteBowler}
+                bowlers={this.state.bowlers} />
 
-                } else {
-                  return <Redirect to="/login" />
-                      }
-                }} />
+            } else {
+              return <Redirect to="/login" />
+            }
+          }} />
 
         <Route exact path='/bowlers/:bowlerId(\d+)/edit'
           render={(props => {
-          if (this.isAuthenticated()) {
-            return <EditBowling {...props}
-              updateBowler={this.updateBowler} />
+            if (this.isAuthenticated()) {
+              return <EditBowling {...props}
+                updateBowler={this.updateBowler} />
 
-          } else {
-            return <Redirect to="/login" />
-          }
-        })} />
+            } else {
+              return <Redirect to="/login" />
+            }
+          })} />
 
         {/*BEGIN EVENT ROUTING*/}
 
@@ -356,7 +414,7 @@ export default class ApplicationViews extends Component {
             return <EventList {...props}
               events={this.state.events}
               deleteEvent={this.deleteEvent}
-              userId={this.state.userId}/>
+              userId={Number(sessionStorage.getItem("user"))} />
           } else {
             return <Redirect to="/login" />
           }
@@ -374,41 +432,41 @@ export default class ApplicationViews extends Component {
         <Route exact path="/events/:eventId(\d+)/edit" render={props => {
           if (this.isAuthenticated()) {
             return <EventEdit {...props}
-            updateEvent={this.updateEvent} />
+              updateEvent={this.updateEvent} />
           } else {
 
             return <Redirect to="/login" />
           }
-          }} />
+        }} />
 
-          {/*friends routing */}
+        {/*friends routing */}
 
-          <Route exact path="/friends" render={props => {
-            if (this.isAuthenticated()) {
-              return <FriendList {...props}
+        <Route exact path="/friends" render={props => {
+          if (this.isAuthenticated()) {
+            return <FriendList {...props}
               deleteFriend={this.deleteFriend}
-              friends = {this.state.friends}
-              users = {this.state.users}
-              friendsPractices= {this.state.friendsPractices}
+              friends={this.state.friends}
+              users={this.state.users}
+              friendsPractices={this.state.friendsPractices}
+            />
+            // Remove null and return the component which will show list of friends
+          } else {
+            return <Redirect to="/login" />
+          }
+        }} />
+
+        <Route exact path="/friends/:id(\d+)"
+          render={props => {
+            if (this.isAuthenticated()) {
+              return <FriendDetail {...props}
+                friends={this.state.friends}
+                users={this.state.users}
+                friendsPractices={this.state.friendsPractices}
               />
-              // Remove null and return the component which will show list of friends
             } else {
               return <Redirect to="/login" />
             }
-            }} />
-
-          <Route  exact path="/friends/:id(\d+)"
-                    render={props => {
-            if (this.isAuthenticated()){
-                  return <FriendDetail {...props}
-                  friends ={this.state.friends}
-                  users ={this.state.users}
-                  friendsPractices={this.state.friendsPractices}
-                   />
-                } else {
-                  return <Redirect to="/login" />
-                      }
-                }} />
+          }} />
 
         {/* search routing */}
 
@@ -416,13 +474,13 @@ export default class ApplicationViews extends Component {
           path="/search"
           render={props => {
             if (this.isAuthenticated()) {
-            return (
-              <SearchInput {...this.props}/>
-            );
-          } else {
+              return (
+                <SearchInput {...this.props} />
+              );
+            } else {
 
-            return <Redirect to="/login" />
-          }
+              return <Redirect to="/login" />
+            }
           }}
         />
         <Route
@@ -430,16 +488,17 @@ export default class ApplicationViews extends Component {
           render={props => {
             if (this.isAuthenticated()) {
 
-            return (
-              <SearchResults {...this.props}
-              />
-            );
-          } else {
+              return (
+                <SearchResults {...this.props}
+                />
+              );
+            } else {
 
-            return <Redirect to="/login" />
-          }
+              return <Redirect to="/login" />
+            }
           }}
         />
+
       </React.Fragment>
     )
   }

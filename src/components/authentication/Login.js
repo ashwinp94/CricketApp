@@ -1,24 +1,19 @@
 import React, { Component } from "react"
 import "./Login.css"
-import BatterManager from "../../modules/BatterManager"
 export default class Login extends Component {
 
     // Set initial state
     state = {
         username: "",
         password: "",
-        users: [],
         batters: [],
-        userId: Number(sessionStorage.getItem("user"))
+        bowlers: [],
+        events: [],
+        friends: [],
+        userId: Number(sessionStorage.getItem("user")),
     }
 
-    componentDidMount(){
-        BatterManager.getYourBatters(this.state.userId).then(allBatters => {
-            this.setState({
-              batters: allBatters
-            });
-          });
-    }
+
 
 // Update state whenever an input field is edited
 handleFieldChange = (evt) => {
@@ -42,13 +37,13 @@ onLogin = (evt) => {
                             loggedIn= true;
                         }
                     if (loggedIn === true){
-                        sessionStorage.setItem("user", user.id);
-                        BatterManager.getYourBatters(this.state.userId)
-                        .then(()=> this.props.history.push("/batters"))
+                        sessionStorage.setItem("user", user.id)
+                        this.props.updateState()
+                        this.props.history.push("/batters")
                     }
-                    }
-            )}
-    }
+                })
+            }
+        }
 
 render() {
     return (

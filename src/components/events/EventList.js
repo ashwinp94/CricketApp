@@ -27,6 +27,12 @@ export default class EventList extends Component {
 
     return (
       <React.Fragment>
+                   <section className="events">
+          <h2>Upcoming Events</h2>
+            <div className="card-items">
+            {sortedEventItems}
+            </div>
+          </section>
           <div className="eventBtn">
             <button type="button"
                     className="btn btn-success"
@@ -36,13 +42,6 @@ export default class EventList extends Component {
                     Add Event
             </button>
           </div>
-
-          <section className="events">
-          <h2>Upcoming Events</h2>
-            <div className="card-items">
-            {sortedEventItems}
-            </div>
-          </section>
 
       </React.Fragment>
     )

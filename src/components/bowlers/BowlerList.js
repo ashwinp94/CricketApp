@@ -24,6 +24,10 @@ export default class BowlerList extends Component {
 
     return (
       <React.Fragment>
+                   <section className="bowlers">
+          <h2>Your Bowling Practice Sessions</h2>
+            <div className="card-items">{sortedBowlerItems}</div>
+          </section>
           <div className="eventBtn">
             <button type="button"
                     className="btn btn-success"
@@ -33,11 +37,6 @@ export default class BowlerList extends Component {
                     Add Bowling Session
             </button>
           </div>
-
-          <section className="bowlers">
-          <h2>Your Bowling Practice Sessions</h2>
-            <div className="card-items">{sortedBowlerItems}</div>
-          </section>
 
       </React.Fragment>
     )

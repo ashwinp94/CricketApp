@@ -54,7 +54,7 @@ export default class EditBatter extends Component {
     render() {
       return (
         <React.Fragment>
-          <form className="batters">
+                     <form className="batters">
             <div className="batter">
               <label htmlFor="runsScored">Runs Scored: </label>
               <input type="text" required

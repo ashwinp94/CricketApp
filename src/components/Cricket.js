@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import NavBar from "./nav/NavBar";
 import ApplicationViews from "./ApplicationViews";
 import SearchManager from '../modules/SearchManager'
 import FriendManager from "../modules/FriendManager";
@@ -10,6 +9,8 @@ class Cricket extends Component {
         friends: [],
         currentUserId: Number(sessionStorage.getItem("users"))
       }
+
+
       componentDidMount(){
         FriendManager.getYourFriends(this.state.userId).then(allFriends => {
           this.setState({
@@ -44,7 +45,6 @@ class Cricket extends Component {
   render() {
     return (
       <React.Fragment>
-          <NavBar/>
         <ApplicationViews
                         users={this.state.users}
                         searchAllData = {this.searchAllData}

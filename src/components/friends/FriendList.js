@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import FriendManager from "../../modules/FriendManager";
 import {Link} from 'react-router-dom'
+import "./FriendList.css"
+
 export default class FriendList extends Component {
     state ={
       friends: [],
@@ -28,26 +30,28 @@ export default class FriendList extends Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
+                             <div>
             <Link type="button" className="nav-link" to="/search">Add Friend</Link>
             <section className="friends">
             {
                 this.state.friends.map(friend =>
-                    <div id ={friend.id} key={friend.user.id}>
-                        <p>{friend.user.username}</p>
+                <div id = "card">
+                    <div className="card-body" id ={friend.id} key={friend.user.id}>
+                        <h2>{friend.user.username}</h2>
 
-                        <Link className="nav-link" to={`/friends/${friend.user.id}`}
-
-                        >Details</Link>
-                        <a href=""
+                        <Link className="nav-link" to={`/friends/${friend.user.id}`}>Details</Link>
+                        <button
+                            type="button"
                             onClick={() => this.props.deleteFriend(friend.id)
                             .then(() => this.props.history.push("/friends"))}
-                            className="card-link">Delete</a>
+                            className="card-link">Delete</button>
                     </div>
-
+                </div>
             )}
             </section>
             </div>
+            </React.Fragment>
         );
     }
 }

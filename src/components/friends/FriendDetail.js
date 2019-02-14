@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import {Link} from "react-router-dom"
 import FriendManager from "../../modules/FriendManager"
 import "./FriendDetail.css"
+
 export default class FriendDetail extends Component {
 
     state = {
@@ -73,7 +74,8 @@ componentDidMount(){
         const bowling = this.state.friendsBowlingPractices.filter(o => o.id === parseInt(this.props.match.params.id))
         const events = this.state.friendsEvents.filter(o => o.id === parseInt(this.props.match.params.id))
         return (
-            <section className="friendsData">
+            <React.Fragment>
+                             <section className="friendsData">
             {
                 friends.map(friend =>
                 <div key={friend.id} className="card">
@@ -141,6 +143,7 @@ componentDidMount(){
                         <Link className="nav-link" to={`/friends`}>Go Back </Link>
                     </div>
             </section>
+            </React.Fragment>
         )
     }
 }

@@ -11,7 +11,8 @@ export default class BatterDetail extends Component {
         const batter = this.props.batters.find(o => o.id === parseInt(this.props.match.params.batterId)) || {}
 
         return (
-            <section className="batter">
+            <React.Fragment>
+                             <section className="batter">
                 <div key={batter.id} className="card">
                     <div className="card-body">
                         <div className="card-title">
@@ -20,6 +21,7 @@ export default class BatterDetail extends Component {
                         <p>Total Balls Played: {batter.ballsFaced}</p>
                         <p>Number of Fours Hit: {batter.numberofFours}</p>
                         <p>Number of Sixes: {batter.numberofSixes}</p>
+                        <p>Average: {batter.runsScored / batter.ballsFaced * 100}</p>
                         </div>
                         <a href="#"
                             onClick={() => this.props.deleteBatter(batter.id)
@@ -31,6 +33,7 @@ export default class BatterDetail extends Component {
                     </div>
                 </div>
             </section>
+            </React.Fragment>
         )
     }
 }

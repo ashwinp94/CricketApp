@@ -24,6 +24,11 @@ export default class BatterList extends Component {
                           )
     return (
       <React.Fragment>
+                   <section className="batters">
+          <h2>Your Batting Practices</h2>
+            <div className="card-items">
+            {sortedBatterItems}</div>
+          </section>
           <div className="batterBtn">
             <button type="button"
                     className="btn btn-success"
@@ -34,11 +39,6 @@ export default class BatterList extends Component {
             </button>
           </div>
 
-          <section className="batters">
-          <h2>Your Batting Practices</h2>
-            <div className="card-items">
-            {sortedBatterItems}</div>
-          </section>
 
       </React.Fragment>
     )

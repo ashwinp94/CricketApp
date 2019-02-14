@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Link} from "react-router-dom"
+
 // import FriendManager from "../../modules/FriendManager"
 export default class SearchResults extends Component {
 
@@ -31,7 +32,7 @@ export default class SearchResults extends Component {
   render() {
     return (
       <React.Fragment>
-        <section className="search--results">
+                 <section className="search--results">
           <h3>{Object.keys(this.props)[0]}</h3>
           {this.props.users.map(result => (
             <div key={result.id}>
