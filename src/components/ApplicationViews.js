@@ -268,7 +268,12 @@ export default class ApplicationViews extends Component {
 
 
   // show functions
-
+  showNav = () => {
+		if (this.isAuthenticated()) {
+			return <NavBar {...this.props}
+      logOut={this.logOut} />
+    }
+  }
 
   // showFriends(){
   //     let friendsData = [];
@@ -288,8 +293,7 @@ export default class ApplicationViews extends Component {
     return (
       <React.Fragment>
 
-        <NavBar {...this.props}
-          logOut={this.logOut} />
+       {this.showNav()}
 
         {/* login sections */}
 

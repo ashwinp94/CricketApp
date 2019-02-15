@@ -86,7 +86,7 @@ componentDidMount(){
                         {
                             friend.batters.map(bat =>
                                 <section key = {bat.id} id= "practices">
-                                    <h5>{bat.batDate}</h5>
+                                    <h4>{bat.batDate}</h4>
                                     <h5>{"Runs Scored: "}{bat.runsScored}</h5>
                                     <h5>{"Balls Faced: "}{bat.ballsFaced}</h5>
                                     <h5>{"# of 4's: "}{bat.numberofFours}</h5>
@@ -106,7 +106,7 @@ componentDidMount(){
                         {
                             bowler.bowlers.map(bowl =>
                                 <section id= "practices">
-                                    <h5>{bowl.bowlDate}</h5>
+                                    <h4>{bowl.bowlDate}</h4>
                                     <h5>{"Overs Bowled: "}{bowl.oversBowled}</h5>
                                     <h5>{"Runs Conceded: "}{bowl.runsConceded}</h5>
                                     <h5>{"Wickets: "}{bowl.wickets}</h5>
@@ -128,7 +128,7 @@ componentDidMount(){
                         {
                             event.events.map(even =>
                                 <section id= "practices">
-                                    <h5>{even.eventDate}</h5>
+                                    <h4>{even.eventDate}</h4>
                                     <h5>{"Event Name: "}{even.eventName}</h5>
                                     <h5>{"Event Time: "}{even.eventTime}</h5>
                                     <h5>{"Location: "}{even.eventLocation}</h5>
