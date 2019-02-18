@@ -12,6 +12,9 @@ class NavBar extends Component {
             <nav className="navbar navbar-dark bg-dark light-blue flex-md-nowrap p-0 shadow">
                 <ul className="nav nav-pills nav-fill">
                     <li className="nav-item">
+                        <Link className="nav-link" to="/profile">Profile</Link>
+                    </li>
+                    <li className="nav-item">
                         <Link className="nav-link" to="/batters">Batting Practice</Link>
                     </li>
                     <li className="nav-item">

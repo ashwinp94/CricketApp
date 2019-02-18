@@ -1,7 +1,7 @@
 const remoteURL = "http://localhost:5002";
 
 export default {
-  get(id) {
+  getUser(id) {
     return fetch(`${remoteURL}/users/${id}`).then(e => e.json());
   },
   getAll() {
@@ -14,6 +14,15 @@ export default {
   getUsername(username) {
     return fetch(`${remoteURL}/users?username=${username}`)
       .then(response => response.json())
+  },
+  put(id, existingUser) {
+    return fetch(`${remoteURL}/users/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/JSON"
+      },
+      body: JSON.stringify(existingUser)
+    }).then(data => data.json())
   },
 
   post(newUser) {

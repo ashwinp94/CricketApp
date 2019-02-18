@@ -10,6 +10,7 @@ export default class Login extends Component {
         bowlers: [],
         events: [],
         friends: [],
+        currentUser: [],
         userId: Number(sessionStorage.getItem("user")),
     }
 
@@ -39,7 +40,7 @@ onLogin = (evt) => {
                     if (loggedIn === true){
                         sessionStorage.setItem("user", user.id)
                         this.props.updateState()
-                        this.props.history.push("/batters")
+                        this.props.history.push("/profile")
                     }
                 })
             }

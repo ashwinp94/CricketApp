@@ -1,28 +1,36 @@
 import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom"
+// {List Components}
 import BatterList from "./batters/BatterList";
-import BatterManager from "../modules/BatterManager";
-import BatterForm from './batters/BatterForm'
-import BowlerManager from "../modules/BowlerManager";
 import BowlerList from "./bowlers/BowlerList";
+import EventList from "./events/EventList"
+import FriendList from "./friends/FriendList"
+// {Form Components}
+import BatterForm from './batters/BatterForm'
 import BowlerForm from './bowlers/BowlerForm'
-import Login from './authentication/Login'
-import LoginManager from "../modules/LoginManager";
+import EventForm from "./events/EventForm"
 import LoginForm from './authentication/LoginForm'
+// {Edit Components}
 import EditBowling from "./bowlers/EditBowling";
 import EditBatter from "./batters/EditBatter";
-import SearchResults from './search/SearchResults'
-import SearchInput from './search/SearchInput'
+import EventEdit from "./events/EventEdit"
+import EditProfile from "./profile/EditProfile"
+// {Detail Components}
 import BatterDetail from "./batters/BatterDetail";
 import BowlerDetail from "./bowlers/BowlerDetail";
+import FriendDetail from "./friends/FriendDetail"
+// {Data Modules}
+import LoginManager from "../modules/LoginManager";
+import BowlerManager from "../modules/BowlerManager";
 import RolesManager from "../modules/RolesManager";
 import EventManager from '../modules/EventManager'
-import EventList from "./events/EventList"
-import EventForm from "./events/EventForm"
-import EventEdit from "./events/EventEdit"
-import FriendList from "./friends/FriendList"
-import FriendDetail from "./friends/FriendDetail"
+import BatterManager from "../modules/BatterManager";
 import FriendManager from "../modules/FriendManager";
+// {Random Components}
+import Login from './authentication/Login'
+import SearchResults from './search/SearchResults'
+import SearchInput from './search/SearchInput'
+import ProfilePage from "./profile/ProfilePage"
 import NavBar from "./nav/NavBar";
 
 export default class ApplicationViews extends Component {
@@ -34,6 +42,7 @@ export default class ApplicationViews extends Component {
     events: [],
     friends: [],
     roles: [],
+    currentUser:[],
     userId: Number(sessionStorage.getItem("user"))
   };
 
@@ -59,6 +68,11 @@ export default class ApplicationViews extends Component {
     FriendManager.getYourFriends(Number(sessionStorage.getItem("user"))).then(allFriends => {
       this.setState({
         friends: allFriends
+      })
+    })
+    LoginManager.getUser(Number(sessionStorage.getItem("user"))).then(currentUsers => {
+      this.setState({
+        currentUser: currentUsers
       })
     })
 
@@ -174,10 +188,19 @@ export default class ApplicationViews extends Component {
   //Edit Functions
   updateBatter = (batterId, editedBatterObj) => {
     return BatterManager.put(batterId, editedBatterObj)
-      .then(() => BatterManager.getYourBatters(Number(sessionStorage.getItem("user"))))
-      .then(batter => {
+      .then(() => LoginManager.getUser(Number(sessionStorage.getItem("user"))))
+      .then(user => {
         this.setState({
-          batters: batter
+          currentUser: user
+        })
+      })
+  }
+  updateUser = (id, editedUserObj) => {
+    return LoginManager.put(id, editedUserObj)
+      .then(() => LoginManager.getUser(Number(sessionStorage.getItem("user"))))
+      .then(user => {
+        this.setState({
+          currentUser: user
         })
       })
   }
@@ -242,6 +265,12 @@ export default class ApplicationViews extends Component {
       })
     })
 
+    LoginManager.getUser(Number(sessionStorage.getItem("user"))).then(currentUsers => {
+      this.setState({
+        currentUser: currentUsers
+      })
+    })
+
     RolesManager.getAll().then(allRoles => {
       this.setState({
         roles: allRoles
@@ -263,6 +292,7 @@ export default class ApplicationViews extends Component {
       bowlers: [],
       events: [],
       friends: [],
+      currentUser:[],
     })
   }
 
@@ -274,20 +304,6 @@ export default class ApplicationViews extends Component {
       logOut={this.logOut} />
     }
   }
-
-  // showFriends(){
-  //     let friendsData = [];
-  //     this.state.friends.forEach(friend => {
-  //         FriendManager.getFriendsPractice(friend.userId)
-  //         .then(allPractices => {
-  //             console.log(allPractices)
-  //             friendsData.push(allPractices)
-  //         })
-  //         this.setState({
-  //             friendsPractices: friendsData
-  //         })
-  //     });
-  // }
 
   render() {
     return (
@@ -316,6 +332,30 @@ export default class ApplicationViews extends Component {
               roles={this.state.roles}
               userId={Number(sessionStorage.getItem("user"))} />
           }} />
+
+        {/* {profile section} */}
+
+        <Route exact path="/profile"
+          render={(props) => {
+            if (this.isAuthenticated()) {
+              return <ProfilePage {...props}
+                currentUser={this.state.currentUser}
+                userId={Number(sessionStorage.getItem("user"))} />
+
+            } else {
+              return <Redirect to="/login" />
+            }
+          }} />
+
+        <Route exact path='/profile/:id(\d+)/edit' render={(props => {
+          if (this.isAuthenticated()) {
+            return <EditProfile {...props}
+              updateUser={this.updateUser}
+              roles={this.state.roles}/>
+          } else {
+            return <Redirect to="/login" />
+          }
+          })} />
 
         {/* Battting sections */}
 
