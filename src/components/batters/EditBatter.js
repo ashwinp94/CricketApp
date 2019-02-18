@@ -64,7 +64,7 @@ export default class EditBatter extends Component {
                     value={this.state.runsScored} />
             </div>
             <div className="batter">
-              <label htmlFor="ballsFaced">Balls Faces: </label>
+              <label htmlFor="ballsFaced">Total Balls Played: </label>
               <input type="text" required
                     className="form-control"
                     onChange={this.handleFieldChange}
