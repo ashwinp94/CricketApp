@@ -31,7 +31,7 @@ export default class FriendList extends Component {
     render() {
         return (
             <React.Fragment>
-                             <div>
+            <div>
             <Link type="button" className="nav-link" to="/search">Add Friend</Link>
             <section className="friends">
             {

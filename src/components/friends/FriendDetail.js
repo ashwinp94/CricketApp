@@ -73,6 +73,7 @@ componentDidMount(){
         const friends = this.state.friendsBattingPractices.filter(o => o.id === parseInt(this.props.match.params.id))
         const bowling = this.state.friendsBowlingPractices.filter(o => o.id === parseInt(this.props.match.params.id))
         const events = this.state.friendsEvents.filter(o => o.id === parseInt(this.props.match.params.id))
+
         return (
             <React.Fragment>
                              <section className="friendsData">
@@ -82,15 +83,16 @@ componentDidMount(){
                     <h4>{friend.username}</h4>
                     <h4>{friend.age}</h4>
                     <h4 id ="roles">{friend.role}</h4>
-                    <h5>Batting Stats</h5>
+                    <h4>Batting Stats</h4>
                         {
                             friend.batters.map(bat =>
                                 <section key = {bat.id} id= "practices">
-                                    <h5>{bat.batDate}</h5>
-                                    <h5>{"Runs Scored: "}{bat.runsScored}</h5>
-                                    <h5>{"Balls Faced: "}{bat.ballsFaced}</h5>
-                                    <h5>{"# of 4's: "}{bat.numberofFours}</h5>
-                                    <h5>{"# of 6's: "}{bat.numberofSixes}</h5>
+                                    <h3>{bat.batDate}</h3>
+                                    <p>{"Runs Scored: "}{bat.runsScored}</p>
+                                    <p>{"Balls Faced: "}{bat.ballsFaced}</p>
+                                    <p>{"# of 4's: "}{bat.numberofFours}</p>
+                                    <p>{"# of 6's: "}{bat.numberofSixes}</p>
+                                    <p>Average: {bat.runsScored / bat.ballsFaced * 100}</p>
                                 </section>
                         )}
                 </div>
@@ -98,7 +100,7 @@ componentDidMount(){
 
                 {/* bowling section  */}
 
-                <h5> Bowling Stats
+                <section> Bowling Stats
                 {
                     bowling.map(bowler=>
                     <div key={bowler.id} className="card">
@@ -106,21 +108,23 @@ componentDidMount(){
                         {
                             bowler.bowlers.map(bowl =>
                                 <section id= "practices">
-                                    <h5>{bowl.bowlDate}</h5>
-                                    <h5>{"Overs Bowled: "}{bowl.oversBowled}</h5>
-                                    <h5>{"Runs Conceded: "}{bowl.runsConceded}</h5>
-                                    <h5>{"Wickets: "}{bowl.wickets}</h5>
-                                    <h5>{"Extras: "}{bowl.extras}</h5>
+                                    <h3>{bowl.bowlDate}</h3>
+                                    <p>{"Overs Bowled: "}{bowl.oversBowled}</p>
+                                    <p>{"Runs Conceded: "}{bowl.runsConceded}</p>
+                                    <p>{"Wickets: "}{bowl.wickets}</p>
+                                    <p>{"Extras: "}{bowl.extras}</p>
+                                    <p>Final Figures: {bowl.wickets}{"/"}{(bowl.extras + bowl.runsConceded)}</p>
+                                    <p>Average: {(bowl.extras + bowl.runsConceded)/ bowl.oversBowled}</p>
                                 </section>
                         )}
 
                     </div>
                 )}
-                </h5>
+                </section>
 
                 {/* events section */}
 
-                <h5> Their Events
+                <section> Their Events
                 {
                     events.map(event=>
                     <div key={event.id} className="card">
@@ -128,16 +132,16 @@ componentDidMount(){
                         {
                             event.events.map(even =>
                                 <section id= "practices">
-                                    <h5>{even.eventDate}</h5>
-                                    <h5>{"Event Name: "}{even.eventName}</h5>
-                                    <h5>{"Event Time: "}{even.eventTime}</h5>
-                                    <h5>{"Location: "}{even.eventLocation}</h5>
+                                    <h3>{even.eventDate}</h3>
+                                    <p>{"Event Name: "}{even.eventName}</p>
+                                    <p>{"Event Time: "}{even.eventTime}</p>
+                                    <p>{"Location: "}{even.eventLocation}</p>
                                 </section>
                         )}
 
                     </div>
                 )}
-                </h5>
+                </section>
 
                 <div className="card-body">
                         <Link className="nav-link" to={`/friends`}>Go Back </Link>
