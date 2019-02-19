@@ -45,7 +45,8 @@ export default class BowlerForm extends Component {
     render() {
         return (
             <React.Fragment>
-                                 <form className="BowlerForm">
+                <div id="home">
+                <form className="BowlerForm">
                     <div className="form-group">
                         <label htmlFor="oversBowled">Add Overs: </label>
                         <input type="number" required
@@ -93,8 +94,8 @@ export default class BowlerForm extends Component {
                         defaultValue=""
                         name="employee"
                         id="employee"
-                                onChange={this.handleFieldChange}>
-                            <option value="">Select an employee</option>
+                        onChange={this.handleFieldChange}>
+                        <option value="">Select an employee</option>
                         {
                             this.props.employees.map(e => <option key={e.id} id={e.id}>{e.name}</option>)
                         }
@@ -102,6 +103,7 @@ export default class BowlerForm extends Component {
                     </div> */}
                     <button type="submit" onClick={this.constructNewSession} className="btn btn-primary">Submit</button>
                 </form>
+            </div>
             </React.Fragment>
         )
     }

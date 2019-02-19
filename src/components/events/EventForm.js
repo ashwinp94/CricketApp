@@ -35,6 +35,7 @@ export default class EventForm extends Component {
   render() {
     return (
       <React.Fragment>
+        <div id="home">
                  <form className="eventForm">
           <div className="form-group">
             <label htmlFor="eventName">Name</label>
@@ -72,6 +73,7 @@ export default class EventForm extends Component {
           <button type="submit" onClick={this.saveEvent} className="btn btn-primary">Save</button>
 
         </form>
+                   </div>
       </React.Fragment>
     )
   }

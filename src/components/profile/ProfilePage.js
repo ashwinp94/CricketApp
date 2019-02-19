@@ -7,6 +7,7 @@ export default class ProfilePage extends Component {
     render() {
         return (
             <React.Fragment>
+                <div id="home">
             <div>
             <Link type="button" className="nav-link" to="/search">Add Friend</Link>
             <section className="friends">
@@ -23,6 +24,7 @@ export default class ProfilePage extends Component {
                 </div>
             </section>
             </div>
+                        </div>
             </React.Fragment>
         );
     }

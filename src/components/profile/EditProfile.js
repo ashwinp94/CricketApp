@@ -51,6 +51,7 @@ export default class EditProfile extends Component {
     render() {
         return (
           <React.Fragment>
+              <div id="home">
                        <form className="users">
               <div className="user">
                 <label htmlFor="username">New Username: </label>
@@ -83,6 +84,7 @@ export default class EditProfile extends Component {
 
               <button type="submit" onClick={this.updateExistingUser} className="btn btn-primary">Update</button>
             </form>
+                    </div>
           </React.Fragment>
         )
       }

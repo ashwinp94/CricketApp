@@ -32,6 +32,7 @@ export default class BatterList extends Component {
 
     return (
       <React.Fragment>
+        <div id="home">
                    <section className="batters">
           <h2>Your Batting Practices</h2>
             <div className="card-items">
@@ -48,8 +49,7 @@ export default class BatterList extends Component {
                     Add Session
             </button>
           </div>
-
-
+      </div>
       </React.Fragment>
     )
   }

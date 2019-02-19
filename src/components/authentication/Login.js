@@ -49,6 +49,7 @@ onLogin = (evt) => {
 
 render() {
     return (
+    <div id="home">
         <form className="logInForm" onSubmit={this.onLogin}>
         <img src={logo} alt="Logo" />
             <h1 className="h3 mb-3 font-weight-normal title">Please sign in</h1>
@@ -74,6 +75,7 @@ render() {
                   Register
                 </button>
         </form>
+        </div>
     )
 }
 }

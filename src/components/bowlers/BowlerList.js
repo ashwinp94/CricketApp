@@ -24,6 +24,7 @@ export default class BowlerList extends Component {
 
     return (
       <React.Fragment>
+        <div id="home">
                    <section className="bowlers">
           <h2>Your Bowling Practice Sessions</h2>
             <div className="card-items">{sortedBowlerItems}</div>
@@ -37,7 +38,7 @@ export default class BowlerList extends Component {
                     Add Bowling Session
             </button>
           </div>
-
+        </div>
       </React.Fragment>
     )
   }

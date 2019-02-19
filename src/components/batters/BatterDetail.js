@@ -12,7 +12,8 @@ export default class BatterDetail extends Component {
 
         return (
             <React.Fragment>
-                             <section className="batter">
+            <div id="home">
+     <section className="batter">
                 <div key={batter.id} className="card">
                     <div className="card-body">
                         <div className="card-title">
@@ -25,14 +26,15 @@ export default class BatterDetail extends Component {
                         </div>
                         <a href="#"
                             onClick={() => this.props.deleteBatter(batter.id)
-                            .then(() => this.props.history.push("/batters"))}
-                            className="card-link">Delete</a>
+                                .then(() => this.props.history.push("/batters"))}
+                                className="card-link">Delete</a>
                         <Link className="nav-link" to={`/batters/${batter.id}/edit`}>Edit</Link>
                         <Link className="nav-link" to={`/batters`}>Go Back </Link>
 
                     </div>
                 </div>
             </section>
+            </div>
             </React.Fragment>
         )
     }

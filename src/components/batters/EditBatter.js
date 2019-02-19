@@ -54,7 +54,8 @@ export default class EditBatter extends Component {
     render() {
       return (
         <React.Fragment>
-                     <form className="batters">
+          <div id="home">
+          <form className="batters">
             <div className="batter">
               <label htmlFor="runsScored">Runs Scored: </label>
               <input type="text" required
@@ -89,6 +90,7 @@ export default class EditBatter extends Component {
             </div>
             <button type="submit" onClick={this.updateExistingBatter} className="btn btn-primary">Update</button>
           </form>
+          </div>
         </React.Fragment>
       )
     }

@@ -52,6 +52,7 @@ export default class LoginForm extends Component {
         render() {
             return (
                 <React.Fragment>
+                    <div id="home">
                     <form  className="LoginForm">
                         <div className="form-group">
                             <h1>Register Here</h1>
@@ -91,6 +92,7 @@ export default class LoginForm extends Component {
 
                         <button type="submit"  onClick = {this.onRegister}  className="btn btn-primary">Submit</button>
                     </form>
+                    </div>
                 </React.Fragment>
             )
         }
