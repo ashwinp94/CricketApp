@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import {Link} from "react-router-dom"
-
+import moment from "moment"
 
 
 export default class BowlerDetail extends Component {
@@ -18,7 +18,7 @@ export default class BowlerDetail extends Component {
                 <div key={bowler.id} className="card">
                     <div className="card-body">
                         <div className="card-title">
-                        <h3>Date: {bowler.bowlDate}</h3>
+                        <h3>Date: {moment(bowler.bowlDate).format('MMMM Do YYYY')}</h3>
                         <p>Runs Conceded: {bowler.runsConceded}</p>
                         <p>Total Overs Bowled: {bowler.oversBowled}</p>
                         <p>Wickets: {bowler.wickets}</p>

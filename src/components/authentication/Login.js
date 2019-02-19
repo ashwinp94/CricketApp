@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import "./Login.css"
+import logo from "../images/official.png"
 export default class Login extends Component {
 
     // Set initial state
@@ -49,6 +50,7 @@ onLogin = (evt) => {
 render() {
     return (
         <form className="logInForm" onSubmit={this.onLogin}>
+        <img src={logo} alt="Logo" />
             <h1 className="h3 mb-3 font-weight-normal title">Please sign in</h1>
             <label htmlFor="inputUsername">
                 Username

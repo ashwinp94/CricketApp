@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import moment from "moment"
 export default class BowlerList extends Component {
   render() {
     const sortedBowlerItems = [].concat(this.props.bowlers)
@@ -9,7 +9,7 @@ export default class BowlerList extends Component {
                           .map(bowler =>
                                   <div key={bowler.id} className="card">
                                     <div className="card-body">
-                                      <h3>Date: {bowler.bowlDate}</h3>
+                                      <h3>Date: {moment(bowler.bowlDate).format('MMMM Do YYYY')} </h3>
                                       <button type="button"
                                           id="deleteButton"
                                           onClick={() => this.props.deleteBowler(bowler.id)}

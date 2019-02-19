@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import {Link} from "react-router-dom"
 import FriendManager from "../../modules/FriendManager"
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
-
+import moment from "moment"
 import "./FriendDetail.css"
 
 export default class FriendDetail extends Component {
@@ -97,15 +97,16 @@ componentDidMount(){
         const events = this.state.friendsEvents.filter(o => o.id === parseInt(this.props.match.params.id))
 
         return (
-            <React.Fragment>
-                             <section className="friendsData">
+        <React.Fragment>
+        <section className="friendsData">
             {
                 friends.map(friend =>
-                <div key={friend.id} className="card">
+                <div key={friend.id}>
                     <h4>{friend.username}</h4>
                     <h4>{friend.age}</h4>
                     <h4 id ="roles">{friend.role}</h4>
-                    <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Batting Practices</Button>
+            <section id="allPractices">
+                <Button id ="bPractice" color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Batting Practices</Button>
                     <Collapse isOpen={this.state.collapse}>
 
                         {
@@ -113,7 +114,7 @@ componentDidMount(){
                             <Card>
                                 <CardBody>
                                 <section key = {bat.id} id= "practices">
-                                    <h3>{bat.batDate}</h3>
+                                    <h3>{moment(bat.batDate).format('MMMM Do YYYY')}</h3>
                                     <p>{"Runs Scored: "}{bat.runsScored}</p>
                                     <p>{"Balls Faced: "}{bat.ballsFaced}</p>
                                     <p>{"# of 4's: "}{bat.numberofFours}</p>
@@ -124,24 +125,24 @@ componentDidMount(){
                             </Card>
                         )}
                     </Collapse>
-
+            </section>
                 </div>
                 )}
 
                 {/* bowling section  */}
 
-                <section>
+                <section id="allPractices">
                 {
                     bowling.map(bowler=>
-                    <div key={bowler.id} className="card">
-                     <Button color="primary" onClick={this.toggle1} style={{ marginBottom: '1rem' }}>Bowling Practices</Button>
+                    <div key={bowler.id}>
+                     <Button id ="bPractice" color="primary" onClick={this.toggle1} style={{ marginBottom: '1rem' }}>Bowling Practices</Button>
                      <Collapse isOpen={this.state.collapse1}>
                         {
                             bowler.bowlers.map(bowl =>
                                 <Card>
                                 <CardBody>
                                 <section id= "practices">
-                                    <h3>{bowl.bowlDate}</h3>
+                                    <h3>{moment(bowl.bowlDate).format('MMMM Do YYYY')}</h3>
                                     <p>{"Overs Bowled: "}{bowl.oversBowled}</p>
                                     <p>{"Runs Conceded: "}{bowl.runsConceded}</p>
                                     <p>{"Wickets: "}{bowl.wickets}</p>
@@ -159,18 +160,18 @@ componentDidMount(){
 
                 {/* events section */}
 
-                <section>
+                <section id="allPractices">
                 {
                     events.map(event=>
-                    <div key={event.id} className="card">
-                    <Button color="primary" onClick={this.toggle2} style={{ marginBottom: '1rem' }}>Their Events</Button>
+                    <div key={event.id}>
+                    <Button id ="bPractice" color="primary" onClick={this.toggle2} style={{ marginBottom: '1rem' }}>Their Events</Button>
                     <Collapse isOpen={this.state.collapse2}>
                         {
                             event.events.map(even =>
                             <Card>
                                 <CardBody>
                                 <section id= "practices">
-                                    <h3>{even.eventDate}</h3>
+                                    <h3>{moment(even.eventDate).format('MMMM Do YYYY')}</h3>
                                     <p>{"Event Name: "}{even.eventName}</p>
                                     <p>{"Event Time: "}{even.eventTime}</p>
                                     <p>{"Location: "}{even.eventLocation}</p>
@@ -182,12 +183,9 @@ componentDidMount(){
                     </div>
                 )}
                 </section>
-
-                <div className="card-body">
                         <Link className="nav-link" to={`/friends`}>Go Back </Link>
-                    </div>
-            </section>
-            </React.Fragment>
+        </section>
+        </React.Fragment>
         )
     }
 }

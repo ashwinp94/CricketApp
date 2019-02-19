@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import moment from "moment"
 export default class EventList extends Component {
   render() {
     const sortedEventItems =
@@ -11,7 +11,7 @@ export default class EventList extends Component {
                                   <div key={event.id} className="card">
                                     <div className="card-body">
                                       <p>{event.eventName}</p>
-                                      <p>{event.eventDate}</p>
+                                      <p>{moment(event.eventDate).format('MMMM Do YYYY')}</p>
                                       <p>{event.eventTime}</p>
                                       <p>{event.eventLocation}</p>
                                       <button type="button"
