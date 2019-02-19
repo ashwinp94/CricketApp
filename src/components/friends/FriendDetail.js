@@ -10,8 +10,13 @@ export default class FriendDetail extends Component {
     constructor(props) {
                 super(props);
                 this.toggle = this.toggle.bind(this)
+                this.toggle1 = this.toggle1.bind(this)
+                this.toggle2 = this.toggle2.bind(this)
+
                 this.state = {
                     collapse: false,
+                    collapse1: false,
+                    collapse2: false,
                     friendsBattingPractices: [],
                     friendsBowlingPractices: [],
                     friendsEvents:[],
@@ -19,6 +24,13 @@ export default class FriendDetail extends Component {
             }
     toggle() {
         this.setState({ collapse: !this.state.collapse });
+    }
+
+    toggle1() {
+        this.setState({ collapse1: !this.state.collapse1 });
+    }
+    toggle2() {
+        this.setState({ collapse2: !this.state.collapse2 });
     }
 
 
@@ -98,8 +110,8 @@ componentDidMount(){
 
                         {
                             friend.batters.map(bat =>
-                                <Card>
-                                    <CardBody>
+                            <Card>
+                                <CardBody>
                                 <section key = {bat.id} id= "practices">
                                     <h3>{bat.batDate}</h3>
                                     <p>{"Runs Scored: "}{bat.runsScored}</p>
@@ -109,7 +121,7 @@ componentDidMount(){
                                     <p>Average: {bat.runsScored / bat.ballsFaced * 100}</p>
                                 </section>
                                 </CardBody>
-                                </Card>
+                            </Card>
                         )}
                     </Collapse>
 
@@ -118,13 +130,16 @@ componentDidMount(){
 
                 {/* bowling section  */}
 
-                <section> Bowling Stats
+                <section>
                 {
                     bowling.map(bowler=>
                     <div key={bowler.id} className="card">
-
+                     <Button color="primary" onClick={this.toggle1} style={{ marginBottom: '1rem' }}>Bowling Practices</Button>
+                     <Collapse isOpen={this.state.collapse1}>
                         {
                             bowler.bowlers.map(bowl =>
+                                <Card>
+                                <CardBody>
                                 <section id= "practices">
                                     <h3>{bowl.bowlDate}</h3>
                                     <p>{"Overs Bowled: "}{bowl.oversBowled}</p>
@@ -134,29 +149,36 @@ componentDidMount(){
                                     <p>Final Figures: {bowl.wickets}{"/"}{(bowl.extras + bowl.runsConceded)}</p>
                                     <p>Average: {(bowl.extras + bowl.runsConceded)/ bowl.oversBowled}</p>
                                 </section>
+                                </CardBody>
+                                </Card>
                         )}
-
+                    </Collapse>
                     </div>
                 )}
                 </section>
 
                 {/* events section */}
 
-                <section> Their Events
+                <section>
                 {
                     events.map(event=>
                     <div key={event.id} className="card">
-
+                    <Button color="primary" onClick={this.toggle2} style={{ marginBottom: '1rem' }}>Their Events</Button>
+                    <Collapse isOpen={this.state.collapse2}>
                         {
                             event.events.map(even =>
+                            <Card>
+                                <CardBody>
                                 <section id= "practices">
                                     <h3>{even.eventDate}</h3>
                                     <p>{"Event Name: "}{even.eventName}</p>
                                     <p>{"Event Time: "}{even.eventTime}</p>
                                     <p>{"Location: "}{even.eventLocation}</p>
                                 </section>
+                                </CardBody>
+                            </Card>
                         )}
-
+                        </Collapse>
                     </div>
                 )}
                 </section>
