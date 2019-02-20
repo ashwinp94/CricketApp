@@ -1,39 +1,70 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
-
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem
+} from 'reactstrap';
 
 
 class NavBar extends Component {
+    constructor(props) {
+        super(props);
 
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+            isOpen: false
+        };
+    }
+
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
 
     render() {
         return (
-            <nav className="navbar navbar-dark bg-dark light-blue flex-md-nowrap p-0 shadow">
-                <ul className="nav nav-pills nav-fill">
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/profile">Profile</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/batters">Batting Practice</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/bowlers">Bowling Practice</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/events">Events</Link>
-                    </li>
-                    {/* <li className="nav-item">
-                        <Link className="nav-link" to="/search">Find Friends</Link>
-                    </li> */}
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/friends">Your Friends</Link>
-                    </li>
-                    <li onClick={this.props.logOut} className="nav-item">
-                        <Link  className="nav-link" to="/login" >Sign out</Link>
-                    </li>
-                </ul>
-            </nav>
+            <div >
+                <Navbar color="light" light expand="md">
+                    <NavbarBrand href="/profile">Profile</NavbarBrand>
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                            <UncontrolledDropdown nav inNavbar left>
+                                <DropdownToggle nav caret>
+                                    Practices
+                             </DropdownToggle>
+                                <DropdownMenu left>
+                                    <DropdownItem>
+                                        <NavLink href="/batters">Batting Practice</NavLink>
+                                    </DropdownItem>
+                                    <DropdownItem>
+                                        <NavLink href="/bowlers">Bowling Practice</NavLink>
+                                    </DropdownItem>
+                                </DropdownMenu>
+                            </UncontrolledDropdown>
+                            <NavItem>
+                                <NavLink href="/friends">Friends</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="/events">Events</NavLink>
+                            </NavItem>
+                            <NavItem onClick={this.props.logOut} className="nav-item">
+                                <NavLink href="/login">Sign Out</NavLink>
+                            </NavItem>
+                        </Nav>
+                    </Collapse>
+                </Navbar>
+            </div>
         )
     }
 }

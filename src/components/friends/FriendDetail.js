@@ -132,10 +132,10 @@ export default class FriendDetail extends Component {
 
                         {/* bowling section  */}
 
-                        <section id="allPractices">
+                        <section >
                             {
                                 bowling.map(bowler =>
-                                    <div key={bowler.id}>
+                                    <div id="allPractices" key={bowler.id}>
                                         <Button id="bPractice" color="primary" onClick={this.toggle1} style={{ marginBottom: '1rem' }}>Bowling Practices</Button>
                                         <Collapse isOpen={this.state.collapse1}>
                                             {
@@ -161,10 +161,10 @@ export default class FriendDetail extends Component {
 
                         {/* events section */}
 
-                        <section id="allPractices">
+                        <section >
                             {
                                 events.map(event =>
-                                    <div key={event.id}>
+                                    <div id="allPractices" key={event.id}>
                                         <Button id="bPractice" color="primary" onClick={this.toggle2} style={{ marginBottom: '1rem' }}>Their Events</Button>
                                         <Collapse isOpen={this.state.collapse2}>
                                             {
