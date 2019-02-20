@@ -99,94 +99,94 @@ export default class FriendDetail extends Component {
         return (
             <React.Fragment>
                 <div id="home">
-                <section className="friendsData">
-                    {
-                        friends.map(friend =>
-                            <div key={friend.id}>
-                                <h4>{friend.username}</h4>
-                                <h4>{friend.age}</h4>
-                                <h4 id="roles">{friend.role}</h4>
-                                <section id="allPractices">
-                                    <Button id="bPractice" color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Batting Practices</Button>
-                                    <Collapse isOpen={this.state.collapse}>
-
-                                        {
-                                            friend.batters.map(bat =>
-                                                <Card>
-                                                    <CardBody>
-                                                        <section key={bat.id} id="practices">
-                                                            <h3>{moment(bat.batDate).format('MMMM Do YYYY')}</h3>
-                                                            <p>{"Runs Scored: "}{bat.runsScored}</p>
-                                                            <p>{"Balls Faced: "}{bat.ballsFaced}</p>
-                                                            <p>{"# of 4's: "}{bat.numberofFours}</p>
-                                                            <p>{"# of 6's: "}{bat.numberofSixes}</p>
-                                                            <p>Average: {bat.runsScored / bat.ballsFaced * 100}</p>
-                                                        </section>
-                                                    </CardBody>
-                                                </Card>
-                                            )}
-                                    </Collapse>
-                                </section>
-                            </div>
-                        )}
-
-                    {/* bowling section  */}
-
-                    <section id="allPractices">
+                    <section className="friendsData">
                         {
-                            bowling.map(bowler =>
-                                <div key={bowler.id}>
-                                    <Button id="bPractice" color="primary" onClick={this.toggle1} style={{ marginBottom: '1rem' }}>Bowling Practices</Button>
-                                    <Collapse isOpen={this.state.collapse1}>
-                                        {
-                                            bowler.bowlers.map(bowl =>
-                                                <Card>
-                                                    <CardBody>
-                                                        <section id="practices">
-                                                            <h3>{moment(bowl.bowlDate).format('MMMM Do YYYY')}</h3>
-                                                            <p>{"Overs Bowled: "}{bowl.oversBowled}</p>
-                                                            <p>{"Runs Conceded: "}{bowl.runsConceded}</p>
-                                                            <p>{"Wickets: "}{bowl.wickets}</p>
-                                                            <p>{"Extras: "}{bowl.extras}</p>
-                                                            <p>Final Figures: {bowl.wickets}{"/"}{(bowl.extras + bowl.runsConceded)}</p>
-                                                            <p>Average: {(bowl.extras + bowl.runsConceded) / bowl.oversBowled}</p>
-                                                        </section>
-                                                    </CardBody>
-                                                </Card>
-                                            )}
-                                    </Collapse>
+                            friends.map(friend =>
+                                <div key={friend.id}>
+                                    <h4>{friend.username}</h4>
+                                    <h4>{friend.age}</h4>
+                                    <h4 id="roles">{friend.role}</h4>
+                                    <section id="allPractices">
+                                        <Button id="bPractice" color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Batting Practices</Button>
+                                        <Collapse isOpen={this.state.collapse}>
+
+                                            {
+                                                friend.batters.map(bat =>
+                                                    <Card>
+                                                        <CardBody>
+                                                            <section key={bat.id} id="practices">
+                                                                <h3>{moment(bat.batDate).format('MMMM Do YYYY')}</h3>
+                                                                <p>{"Runs Scored: "}{bat.runsScored}</p>
+                                                                <p>{"Balls Faced: "}{bat.ballsFaced}</p>
+                                                                <p>{"# of 4's: "}{bat.numberofFours}</p>
+                                                                <p>{"# of 6's: "}{bat.numberofSixes}</p>
+                                                                <p>Average: {bat.runsScored / bat.ballsFaced * 100}</p>
+                                                            </section>
+                                                        </CardBody>
+                                                    </Card>
+                                                )}
+                                        </Collapse>
+                                    </section>
                                 </div>
                             )}
-                    </section>
 
-                    {/* events section */}
+                        {/* bowling section  */}
 
-                    <section id="allPractices">
-                        {
-                            events.map(event =>
-                                <div key={event.id}>
-                                    <Button id="bPractice" color="primary" onClick={this.toggle2} style={{ marginBottom: '1rem' }}>Their Events</Button>
-                                    <Collapse isOpen={this.state.collapse2}>
-                                        {
-                                            event.events.map(even =>
-                                                <Card>
-                                                    <CardBody>
-                                                        <section id="practices">
-                                                            <h3>{moment(even.eventDate).format('MMMM Do YYYY')}</h3>
-                                                            <p>{"Event Name: "}{even.eventName}</p>
-                                                            <p>{"Event Time: "}{even.eventTime}</p>
-                                                            <p>{"Location: "}{even.eventLocation}</p>
-                                                        </section>
-                                                    </CardBody>
-                                                </Card>
-                                            )}
-                                    </Collapse>
-                                </div>
-                            )}
+                        <section id="allPractices">
+                            {
+                                bowling.map(bowler =>
+                                    <div key={bowler.id}>
+                                        <Button id="bPractice" color="primary" onClick={this.toggle1} style={{ marginBottom: '1rem' }}>Bowling Practices</Button>
+                                        <Collapse isOpen={this.state.collapse1}>
+                                            {
+                                                bowler.bowlers.map(bowl =>
+                                                    <Card>
+                                                        <CardBody>
+                                                            <section id="practices">
+                                                                <h3>{moment(bowl.bowlDate).format('MMMM Do YYYY')}</h3>
+                                                                <p>{"Overs Bowled: "}{bowl.oversBowled}</p>
+                                                                <p>{"Runs Conceded: "}{bowl.runsConceded}</p>
+                                                                <p>{"Wickets: "}{bowl.wickets}</p>
+                                                                <p>{"Extras: "}{bowl.extras}</p>
+                                                                <p>Final Figures: {bowl.wickets}{"/"}{(bowl.extras + bowl.runsConceded)}</p>
+                                                                <p>Average: {(bowl.extras + bowl.runsConceded) / bowl.oversBowled}</p>
+                                                            </section>
+                                                        </CardBody>
+                                                    </Card>
+                                                )}
+                                        </Collapse>
+                                    </div>
+                                )}
+                        </section>
+
+                        {/* events section */}
+
+                        <section id="allPractices">
+                            {
+                                events.map(event =>
+                                    <div key={event.id}>
+                                        <Button id="bPractice" color="primary" onClick={this.toggle2} style={{ marginBottom: '1rem' }}>Their Events</Button>
+                                        <Collapse isOpen={this.state.collapse2}>
+                                            {
+                                                event.events.map(even =>
+                                                    <Card>
+                                                        <CardBody>
+                                                            <section id="practices">
+                                                                <h3>{moment(even.eventDate).format('MMMM Do YYYY')}</h3>
+                                                                <p>{"Event Name: "}{even.eventName}</p>
+                                                                <p>{"Event Time: "}{even.eventTime}</p>
+                                                                <p>{"Location: "}{even.eventLocation}</p>
+                                                            </section>
+                                                        </CardBody>
+                                                    </Card>
+                                                )}
+                                        </Collapse>
+                                    </div>
+                                )}
+                        </section>
+                        <Link className="nav-link" to={`/friends`}>Go Back </Link>
                     </section>
-                    <Link className="nav-link" to={`/friends`}>Go Back </Link>
-                </section>
-                            </div>
+                </div>
             </React.Fragment>
         )
     }

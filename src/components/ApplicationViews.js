@@ -42,7 +42,7 @@ export default class ApplicationViews extends Component {
     events: [],
     friends: [],
     roles: [],
-    currentUser:[],
+    currentUser: [],
     userId: Number(sessionStorage.getItem("user"))
   };
 
@@ -292,16 +292,16 @@ export default class ApplicationViews extends Component {
       bowlers: [],
       events: [],
       friends: [],
-      currentUser:[],
+      currentUser: [],
     })
   }
 
 
   // show functions
   showNav = () => {
-		if (this.isAuthenticated()) {
-			return <NavBar {...this.props}
-      logOut={this.logOut} />
+    if (this.isAuthenticated()) {
+      return <NavBar {...this.props}
+        logOut={this.logOut} />
     }
   }
 
@@ -309,7 +309,7 @@ export default class ApplicationViews extends Component {
     return (
       <React.Fragment>
 
-       {this.showNav()}
+        {this.showNav()}
 
         {/* login sections */}
 
@@ -351,11 +351,11 @@ export default class ApplicationViews extends Component {
           if (this.isAuthenticated()) {
             return <EditProfile {...props}
               updateUser={this.updateUser}
-              roles={this.state.roles}/>
+              roles={this.state.roles} />
           } else {
             return <Redirect to="/login" />
           }
-          })} />
+        })} />
 
         {/* Battting sections */}
 

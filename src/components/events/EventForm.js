@@ -7,7 +7,7 @@ export default class EventForm extends Component {
     eventTime: [],
     eventLocation: [],
     userId: Number(sessionStorage.getItem("user"))
-}
+  }
 
   handleFieldChange = evt => {
     const stateToChange = {}
@@ -27,7 +27,7 @@ export default class EventForm extends Component {
     }
 
     this.props.addEvent(event).then(() =>
-    this.props.history.push("/events"))
+      this.props.history.push("/events"))
   }
 
 
@@ -36,44 +36,44 @@ export default class EventForm extends Component {
     return (
       <React.Fragment>
         <div id="home">
-                 <form className="eventForm">
-          <div className="form-group">
-            <label htmlFor="eventName">Name</label>
-            <input type="text" required
-                   className="form-control"
-                   onChange={this.handleFieldChange}
-                   id="eventName"
-                   placeholder="Event Name" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="eventDate">Date</label>
-            <input type="date" required
-                   className="form-control"
-                   onChange={this.handleFieldChange}
-                   id="eventDate"
-                   placeholder="Event Date" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="eventTime">Time</label>
-            <input type="time" required
-                   className="form-control"
-                   onChange={this.handleFieldChange}
-                   id="eventTime"
-                   placeholder="Event Time" />
-          </div>
-          <div className="form-group">
-            <label htmlFor="eventLocation">Location</label>
-            <input type="text" required
-                   className="form-control"
-                   onChange={this.handleFieldChange}
-                   id="eventLocation"
-                   placeholder="Event Location" />
-          </div>
+          <form className="eventForm">
+            <div className="form-group">
+              <label htmlFor="eventName">Name</label>
+              <input type="text" required
+                className="form-control"
+                onChange={this.handleFieldChange}
+                id="eventName"
+                placeholder="Event Name" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="eventDate">Date</label>
+              <input type="date" required
+                className="form-control"
+                onChange={this.handleFieldChange}
+                id="eventDate"
+                placeholder="Event Date" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="eventTime">Time</label>
+              <input type="time" required
+                className="form-control"
+                onChange={this.handleFieldChange}
+                id="eventTime"
+                placeholder="Event Time" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="eventLocation">Location</label>
+              <input type="text" required
+                className="form-control"
+                onChange={this.handleFieldChange}
+                id="eventLocation"
+                placeholder="Event Location" />
+            </div>
 
-          <button type="submit" onClick={this.saveEvent} className="btn btn-primary">Save</button>
+            <button type="submit" onClick={this.saveEvent} className="btn btn-primary">Save</button>
 
-        </form>
-                   </div>
+          </form>
+        </div>
       </React.Fragment>
     )
   }

@@ -28,67 +28,67 @@ export default class BowlerForm extends Component {
      */
     constructNewSession = evt => {
         evt.preventDefault()
-            const Bowler = {
-                userId: parseInt(this.state.userId),
-                oversBowled: parseInt(this.state.oversBowled),
-                runsConceded: parseInt(this.state.runsConceded),
-                wickets: parseInt(this.state.wickets),
-                extras: parseInt(this.state.extras),
-                bowlDate: this.state.bowlDate
-            };
+        const Bowler = {
+            userId: parseInt(this.state.userId),
+            oversBowled: parseInt(this.state.oversBowled),
+            runsConceded: parseInt(this.state.runsConceded),
+            wickets: parseInt(this.state.wickets),
+            extras: parseInt(this.state.extras),
+            bowlDate: this.state.bowlDate
+        };
 
-            // Create the animal and redirect user to animal list
-            this.props.addBowler(Bowler)
+        // Create the animal and redirect user to animal list
+        this.props.addBowler(Bowler)
             .then(() => this.props.history.push("/bowlers"));
-        }
+    }
 
     render() {
         return (
             <React.Fragment>
                 <div id="home">
-                <form className="BowlerForm">
-                    <div className="form-group">
-                        <label htmlFor="oversBowled">Add Overs: </label>
-                        <input type="number" required
-                               className="form-control"
-                               onChange={this.handleFieldChange}
-                               id="oversBowled"
-                               placeholder="" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="runsConceded">Runs Conceded</label>
-                        <input type="number" required
-                               className="form-control"
-                               onChange={this.handleFieldChange}
-                               id="runsConceded"
-                               placeholder="" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="wickets">Wickets: </label>
-                        <input type="number" required
-                               className="form-control"
-                               onChange={this.handleFieldChange}
-                               id="wickets"
-                               placeholder="" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="extras">Extras: </label>
-                        <input type="number" required
-                               className="form-control"
-                               onChange={this.handleFieldChange}
-                               id="extras"
-                               placeholder="" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="">Date</label>
-                        <input type="date" required
-                        className="form-control"
-                        onChange={this.handleFieldChange}
-                        id="bowlDate"
-                        placeholder="" />
-                    </div>
+                    <form className="BowlerForm">
+                        <div className="form-group">
+                            <label htmlFor="oversBowled">Add Overs: </label>
+                            <input type="number" required
+                                className="form-control"
+                                onChange={this.handleFieldChange}
+                                id="oversBowled"
+                                placeholder="" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="runsConceded">Runs Conceded</label>
+                            <input type="number" required
+                                className="form-control"
+                                onChange={this.handleFieldChange}
+                                id="runsConceded"
+                                placeholder="" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="wickets">Wickets: </label>
+                            <input type="number" required
+                                className="form-control"
+                                onChange={this.handleFieldChange}
+                                id="wickets"
+                                placeholder="" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="extras">Extras: </label>
+                            <input type="number" required
+                                className="form-control"
+                                onChange={this.handleFieldChange}
+                                id="extras"
+                                placeholder="" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="">Date</label>
+                            <input type="date" required
+                                className="form-control"
+                                onChange={this.handleFieldChange}
+                                id="bowlDate"
+                                placeholder="" />
+                        </div>
 
-                    {/* <div className="form-group">
+                        {/* <div className="form-group">
                         <label htmlFor="employee">Assign to caretaker</label>
                         <select
                         defaultValue=""
@@ -101,9 +101,9 @@ export default class BowlerForm extends Component {
                         }
                         </select>
                     </div> */}
-                    <button type="submit" onClick={this.constructNewSession} className="btn btn-primary">Submit</button>
-                </form>
-            </div>
+                        <button type="submit" onClick={this.constructNewSession} className="btn btn-primary">Submit</button>
+                    </form>
+                </div>
             </React.Fragment>
         )
     }
