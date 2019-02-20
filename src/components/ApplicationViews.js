@@ -286,6 +286,7 @@ export default class ApplicationViews extends Component {
 
   logOut = evt => {
     evt.preventDefault()
+
     sessionStorage.removeItem("user");
     this.setState({
       batters: [],
@@ -300,6 +301,7 @@ export default class ApplicationViews extends Component {
   // show functions
   showNav = () => {
     if (this.isAuthenticated()) {
+
       return <NavBar {...this.props}
         logOut={this.logOut} />
     }

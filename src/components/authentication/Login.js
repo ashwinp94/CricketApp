@@ -15,8 +15,6 @@ export default class Login extends Component {
         userId: Number(sessionStorage.getItem("user")),
     }
 
-
-
     // Update state whenever an input field is edited
     handleFieldChange = (evt) => {
         const stateToChange = {}
@@ -51,7 +49,7 @@ export default class Login extends Component {
         return (
             <div id="home">
                 <form className="logInForm" onSubmit={this.onLogin}>
-                    <img src={logo} alt="Logo" />
+                    <img id="image"src={logo} alt="Logo" width="250" height="300"/>
                     <h1 className="h3 mb-3 font-weight-normal title">Please sign in</h1>
                     <label htmlFor="inputUsername">
                         Username

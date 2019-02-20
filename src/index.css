@@ -1,16 +1,18 @@
 body {
   margin: 0;
   padding: 0;
-
+  background-color: linear-gradient(#8e9eab, #eef2f3);
+  /* background-repeat: round; */
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-#home{
-  background-color: aqua;
+#home {
+  background-color: rgb(230, 213, 219)
 }
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;

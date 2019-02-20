@@ -17,6 +17,7 @@ export default class FriendDetail extends Component {
             collapse: false,
             collapse1: false,
             collapse2: false,
+
             friendsBattingPractices: [],
             friendsBowlingPractices: [],
             friendsEvents: [],

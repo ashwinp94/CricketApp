@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 import {
     Collapse,
@@ -13,7 +12,8 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem
-} from 'reactstrap';
+    }
+from 'reactstrap';
 
 
 class NavBar extends Component {
@@ -36,7 +36,7 @@ class NavBar extends Component {
         return (
             <div >
                 <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/profile">Profile</NavbarBrand>
+                    <NavbarBrand left href="/profile">Profile</NavbarBrand>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <UncontrolledDropdown nav inNavbar left>
@@ -53,10 +53,10 @@ class NavBar extends Component {
                                 </DropdownMenu>
                             </UncontrolledDropdown>
                             <NavItem>
-                                <NavLink href="/friends">Friends</NavLink>
+                                <NavLink href="/events">Events</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="/events">Events</NavLink>
+                                <NavLink href="/friends">Friends</NavLink>
                             </NavItem>
                             <NavItem onClick={this.props.logOut} className="nav-item">
                                 <NavLink href="/login">Sign Out</NavLink>
