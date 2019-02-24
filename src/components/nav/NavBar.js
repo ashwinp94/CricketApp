@@ -35,7 +35,7 @@ class NavBar extends Component {
     render() {
         return (
             <div >
-                <Navbar color="light" light expand="md">
+                <Navbar id="navbar" color="light"  expand="md">
                     <NavbarBrand left href="/profile">Profile</NavbarBrand>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>

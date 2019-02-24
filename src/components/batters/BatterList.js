@@ -16,13 +16,14 @@ export default class BatterList extends Component {
             <div className="card-body">
               <CardText tag="h3">Date: {moment(batter.batDate).format('MMMM Do YYYY')}</CardText>
               <Button type="button"
+              color="success"
                 id="deleteButton"
                 onClick={() => this.props.deleteBatter(batter.id)}
                 className="btn btn-success">
                 Delete
-                                      </Button>
-              <Link className="nav-link" to={`/batters/${batter.id}/edit`}> Edit     </Link>
-              <Link className="nav-link" to={`/batters/${batter.id}`}>  Details </Link>
+                </Button>
+              <Button tag={Link} color="primary" className="nav-link" to={`/batters/${batter.id}/edit`}> Edit     </Button>
+              <Button tag={Link} color="info" className="nav-link" to={`/batters/${batter.id}`}>  Details </Button>
             </div>
           </Card>
         </div>

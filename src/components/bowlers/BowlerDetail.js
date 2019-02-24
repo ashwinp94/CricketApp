@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import moment from "moment"
+import {Button} from "reactstrap"
 
 
 export default class BowlerDetail extends Component {
@@ -27,12 +28,12 @@ export default class BowlerDetail extends Component {
                                     <p>Final Figures: {bowler.wickets}{"/"}{(bowler.extras + bowler.runsConceded)}</p>
                                     <p>Average: {(bowler.extras + bowler.runsConceded) / bowler.oversBowled}</p>
                                 </div>
-                                <a href="#"
+                                <Button href="#"
                                     onClick={() => this.props.deleteBowler(bowler.id)
                                         .then(() => this.props.history.push("/bowlers"))}
-                                    className="card-link">Delete</a>
-                                <Link className="nav-link" to={`/bowlers/${bowler.id}/edit`}>Edit</Link>
-                                <Link className="nav-link" to={`/bowlers`}>Go Back </Link>
+                                    className="card-link">Delete</Button>
+                                <Button tag={Link}className="nav-link" to={`/bowlers/${bowler.id}/edit`}>Edit</Button>
+                                <Button tag={Link} className="nav-link" to={`/bowlers`}>Go Back </Button>
 
                             </div>
                         </div>

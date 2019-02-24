@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment"
+import { Card, Button, CardText, } from 'reactstrap';
+
 export default class BowlerList extends Component {
   render() {
     const sortedBowlerItems = [].concat(this.props.bowlers)
@@ -8,17 +10,20 @@ export default class BowlerList extends Component {
       .reverse()
       .map(bowler =>
         <div key={bowler.id} className="card">
+        <Card color="primary"
+            body outline="info">
           <div className="card-body">
-            <h3>Date: {moment(bowler.bowlDate).format('MMMM Do YYYY')} </h3>
-            <button type="button"
+            <CardText tag="h3">Date: {moment(bowler.bowlDate).format('MMMM Do YYYY')} </CardText>
+            <Button type="button"
               id="deleteButton"
               onClick={() => this.props.deleteBowler(bowler.id)}
               className="btn btn-success">
               Delete
-              </button>
-            <Link className="nav-link" to={`/bowlers/${bowler.id}`}>  Details </Link>
-            <Link className="nav link" to={`/bowlers/${bowler.id}/edit`}>Edit</Link>
+              </Button>
+              <Button tag={Link} color="primary" className="nav-link" to={`/bowlers/${bowler.id}/edit`}> Edit     </Button>
+              <Button tag={Link} color="info" className="nav-link" to={`/bowlers/${bowler.id}`}>  Details </Button>
           </div>
+          </Card>
         </div>
       )
 
