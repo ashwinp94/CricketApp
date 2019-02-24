@@ -23,6 +23,7 @@
 .signIn{
   margin-top:25px;
   text-align:center;
+
 }
 .signInButton:hover{
   cursor:pointer;
@@ -31,16 +32,17 @@
 .signInButton{
   background-color:#00ce00;
   margin-top:15px;
-  color:black;
+  color:white;
   padding:8px;
   border:0;
+  box-shadow:2px 1px 8px black;
   transition:all .5 s ;
   margin-bottom:10px;
 }
 .registerButton{
   margin-top:15px;
   background-color:rgb(55, 66, 214);
-  color: black;
+  color: white;
   padding:8px;
   border:0;
   box-shadow:2px 2px 8px black;
@@ -49,7 +51,17 @@
 .title{
   text-align:center;
 }
-body{
+#home1{
+  padding-top: 10px;
+  padding-bottom: 200px;
   background-image: url(http://www.bhmpics.com/walls/cricket_ball_in_the_grass-wide.jpg);
+}
 
+#home{
+
+  padding-bottom: 700px;
+  background-image: url('../images/15522893.jpg');
+  background-size:     cover;                      /* <------ */
+  background-repeat:   no-repeat;
+  background-position: center center;
 }

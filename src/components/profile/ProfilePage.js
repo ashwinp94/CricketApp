@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import "./ProfilePage.css"
 import { Link } from 'react-router-dom'
 
 export default class ProfilePage extends Component {
@@ -13,8 +13,8 @@ export default class ProfilePage extends Component {
                         <section className="friends">
 
                             <div id="card">
-                                <div className="card-body"
-                                    id={this.props.currentUser.id}
+                                <div  className="card-body"
+                                    id="card-body"
                                     key={this.props.currentUser.id}>
                                     <Link className="nav link" to={`/profile/${this.props.currentUser.id}/edit`}>Edit</Link>
                                     <h2>{this.props.currentUser.username}</h2>

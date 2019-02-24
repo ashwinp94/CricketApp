@@ -52,7 +52,7 @@ export default class LoginForm extends Component {
     render() {
         return (
             <React.Fragment>
-                <div id="home">
+                <div id="home1">
                     <form className="LoginForm">
                         <div className="form-group">
                             <h1>Register Here</h1>

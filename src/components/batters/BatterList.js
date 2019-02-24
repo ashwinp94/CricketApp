@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import "./BatterList.css"
 import { Card, Button, CardText, } from 'reactstrap';
 import moment from "moment"
 export default class BatterList extends Component {

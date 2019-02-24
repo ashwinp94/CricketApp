@@ -15,7 +15,7 @@ export default class BowlerList extends Component {
               onClick={() => this.props.deleteBowler(bowler.id)}
               className="btn btn-success">
               Delete
-                                      </button>
+              </button>
             <Link className="nav-link" to={`/bowlers/${bowler.id}`}>  Details </Link>
             <Link className="nav link" to={`/bowlers/${bowler.id}/edit`}>Edit</Link>
           </div>
@@ -41,6 +41,6 @@ export default class BowlerList extends Component {
           </div>
         </div>
       </React.Fragment>
-    )
-  }
+        )
+      }
 }
