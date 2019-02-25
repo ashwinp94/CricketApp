@@ -60,12 +60,9 @@
 #home{
 
   padding-bottom: 700px;
-  background-image: url('../images/15522893.jpg');
+  background-image:linear-gradient(#0052D4, #6DD5FA);
   background-size:     cover;                      /* <------ */
   background-repeat:   no-repeat;
   background-position: center center;
 }
 
-Link{
-  color: black
-}

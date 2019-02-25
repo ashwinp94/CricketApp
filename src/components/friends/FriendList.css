@@ -3,3 +3,9 @@
     border-style: solid;
     border: 5px;
 }
+.nav-link{
+    width:100px
+}
+#addbutton{
+    width:50em;
+}

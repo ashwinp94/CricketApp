@@ -530,7 +530,7 @@ export default class ApplicationViews extends Component {
           }}
         />
         <Route
-          path="/search"
+         exact path="/searchResults"
           render={props => {
             if (this.isAuthenticated()) {
 

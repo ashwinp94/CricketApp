@@ -14,10 +14,11 @@ export default class BowlerList extends Component {
             body outline="info">
           <div className="card-body">
             <CardText tag="h3">Date: {moment(bowler.bowlDate).format('MMMM Do YYYY')} </CardText>
-            <Button type="button"
+            <Button
+              color="success"
               id="deleteButton"
               onClick={() => this.props.deleteBowler(bowler.id)}
-              className="btn btn-success">
+              className="nav-link">
               Delete
               </Button>
               <Button tag={Link} color="primary" className="nav-link" to={`/bowlers/${bowler.id}/edit`}> Edit     </Button>
@@ -35,14 +36,15 @@ export default class BowlerList extends Component {
             <div className="card-items">{sortedBowlerItems}</div>
           </section>
           <div className="eventBtn">
-            <button type="button"
-              className="btn btn-success"
+            <Button type="button"
+            id="addbutton"
+            color="success"
               onClick={() => {
                 this.props.history.push("/bowlers/new")
               }
               }>
               Add Bowling Session
-            </button>
+            </Button>
           </div>
         </div>
       </React.Fragment>

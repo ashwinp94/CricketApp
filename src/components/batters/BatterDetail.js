@@ -25,12 +25,14 @@ export default class BatterDetail extends Component {
                                     <p>Number of Sixes: {batter.numberofSixes}</p>
                                     <p>Average: {batter.runsScored / batter.ballsFaced * 100}</p>
                                 </div>
-                                <Button href="#"
+                                <Button
+                                color="success"
+                                className="nav-link"
                                     onClick={() => this.props.deleteBatter(batter.id)
                                         .then(() => this.props.history.push("/batters"))}
-                                    className="card-link">Delete</Button>
-                                <Button tag= {Link} className="nav-link" to={`/batters/${batter.id}/edit`}>Edit</Button>
-                                <Button tag= {Link} className="nav-link" to={`/batters`}>Go Back </Button>
+                                    >Delete</Button>
+                                <Button tag= {Link} color="info" className="nav-link" to={`/batters/${batter.id}/edit`}>Edit</Button>
+                                <Button tag= {Link} color="warning" className="nav-link" to={`/batters`}>Go Back </Button>
 
                             </div>
                         </div>

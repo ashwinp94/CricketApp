@@ -15,11 +15,11 @@ export default class BatterList extends Component {
             body outline="info">
             <div className="card-body">
               <CardText tag="h3">Date: {moment(batter.batDate).format('MMMM Do YYYY')}</CardText>
-              <Button type="button"
+              <Button
               color="success"
-                id="deleteButton"
-                onClick={() => this.props.deleteBatter(batter.id)}
-                className="btn btn-success">
+              onClick={() => this.props.deleteBatter(batter.id)}
+              className="nav-link"
+              id="deleteButton">
                 Delete
                 </Button>
               <Button tag={Link} color="primary" className="nav-link" to={`/batters/${batter.id}/edit`}> Edit     </Button>
@@ -38,19 +38,18 @@ export default class BatterList extends Component {
           <section className="batters">
             <h2>Your Batting Practices</h2>
             <div className="card-items">
-
               {sortedBatterItems}</div>
-
           </section>
           <div className="batterBtn">
-            <button type="button"
-              className="btn btn-success"
+            <Button
+              color="success"
+              id="addbutton"
               onClick={() => {
                 this.props.history.push("/batters/new")
               }
               }>
               Add Session
-            </button>
+            </Button>
           </div>
         </div>
       </React.Fragment>

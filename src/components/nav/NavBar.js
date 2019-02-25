@@ -39,19 +39,14 @@ class NavBar extends Component {
                     <NavbarBrand left href="/profile">Profile</NavbarBrand>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
-                            <UncontrolledDropdown nav inNavbar left>
-                                <DropdownToggle nav caret>
-                                    Practices
-                             </DropdownToggle>
-                                <DropdownMenu left>
-                                    <DropdownItem>
-                                        <NavLink href="/batters">Batting Practice</NavLink>
-                                    </DropdownItem>
-                                    <DropdownItem>
-                                        <NavLink href="/bowlers">Bowling Practice</NavLink>
-                                    </DropdownItem>
-                                </DropdownMenu>
-                            </UncontrolledDropdown>
+
+                            <NavItem>
+                                <NavLink href="/batters">Batting </NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="/bowlers">Bowling </NavLink>
+                            </NavItem>
+
                             <NavItem>
                                 <NavLink href="/events">Events</NavLink>
                             </NavItem>

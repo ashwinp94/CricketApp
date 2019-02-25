@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import FriendManager from "../../modules/FriendManager";
 import { Link } from 'react-router-dom'
+import {Button} from 'reactstrap'
 import "./FriendList.css"
 
 export default class FriendList extends Component {
@@ -33,7 +34,7 @@ export default class FriendList extends Component {
             <React.Fragment>
                 <div id="home">
                     <div>
-                        <Link type="button" className="nav-link" to="/search">Add Friend</Link>
+                        <Button  color="success" tag={Link}  id="addbutton" to="/search">Add Friend</Button>
                         <section className="friends">
                             {
                                 this.state.friends.map(friend =>
@@ -41,12 +42,14 @@ export default class FriendList extends Component {
                                         <div className="card-body" id={friend.id} key={friend.user.id}>
                                             <h2>{friend.user.username}</h2>
 
-                                            <Link className="nav-link" to={`/friends/${friend.user.id}`}>Details</Link>
-                                            <button
+                                            <Button tag={Link} color="warning" className="nav-link" to={`/friends/${friend.user.id}`}>Details</Button>
+                                            <Button
+                                            className="nav-link"
+                                                color="secondary"
                                                 type="button"
                                                 onClick={() => this.props.deleteFriend(friend.id)
                                                     .then(() => this.props.history.push("/friends"))}
-                                                className="card-link">Delete</button>
+                                                >Delete</Button>
                                         </div>
                                     </div>
                                 )}

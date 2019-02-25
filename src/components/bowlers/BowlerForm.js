@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-
+import { Form, FormGroup, Label, Input, FormText } from 'reactstrap'
 export default class BowlerForm extends Component {
     // Set initial state
 
@@ -46,15 +46,14 @@ export default class BowlerForm extends Component {
         return (
             <React.Fragment>
                 <div id="home">
-                    <form className="BowlerForm">
-                        <div className="form-group">
-                            <label htmlFor="oversBowled">Add Overs: </label>
-                            <input type="number" required
-                                className="form-control"
+                    <Form className="BowlerForm">
+                        <FormGroup>
+                            <Label htmlFor="oversBowled">Add Overs: </Label>
+                            <Input type="number" required
                                 onChange={this.handleFieldChange}
                                 id="oversBowled"
                                 placeholder="" />
-                        </div>
+                        </FormGroup>
                         <div className="form-group">
                             <label htmlFor="runsConceded">Runs Conceded</label>
                             <input type="number" required
@@ -102,7 +101,7 @@ export default class BowlerForm extends Component {
                         </select>
                     </div> */}
                         <button type="submit" onClick={this.constructNewSession} className="btn btn-primary">Submit</button>
-                    </form>
+                    </Form>
                 </div>
             </React.Fragment>
         )

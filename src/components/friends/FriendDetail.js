@@ -108,7 +108,7 @@ export default class FriendDetail extends Component {
                                     <h4>{friend.age}</h4>
                                     <h4 id="roles">{friend.role}</h4>
                                     <section id="allPractices">
-                                        <Button id="bPractice" color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Batting Practices</Button>
+                                        <Button id="bPractice" color="success" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Batting Practices</Button>
                                         <Collapse isOpen={this.state.collapse}>
 
                                             {
@@ -137,7 +137,7 @@ export default class FriendDetail extends Component {
                             {
                                 bowling.map(bowler =>
                                     <div id="allPractices" key={bowler.id}>
-                                        <Button id="bPractice" color="primary" onClick={this.toggle1} style={{ marginBottom: '1rem' }}>Bowling Practices</Button>
+                                        <Button id="bPractice" color="success" onClick={this.toggle1} style={{ marginBottom: '1rem' }}>Bowling Practices</Button>
                                         <Collapse isOpen={this.state.collapse1}>
                                             {
                                                 bowler.bowlers.map(bowl =>
@@ -166,7 +166,7 @@ export default class FriendDetail extends Component {
                             {
                                 events.map(event =>
                                     <div id="allPractices" key={event.id}>
-                                        <Button id="bPractice" color="primary" onClick={this.toggle2} style={{ marginBottom: '1rem' }}>Their Events</Button>
+                                        <Button  id="bPractice" color="success" onClick={this.toggle2} style={{ marginBottom: '1rem' }}>Their Events</Button>
                                         <Collapse isOpen={this.state.collapse2}>
                                             {
                                                 event.events.map(even =>
@@ -185,7 +185,7 @@ export default class FriendDetail extends Component {
                                     </div>
                                 )}
                         </section>
-                        <Link className="nav-link" to={`/friends`}>Go Back </Link>
+                        <Button tag={Link} className="nav-link" to={`/friends`}>Go Back </Button>
                     </section>
                 </div>
             </React.Fragment>
