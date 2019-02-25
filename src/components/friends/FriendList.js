@@ -45,7 +45,7 @@ export default class FriendList extends Component {
                                             <Button tag={Link} color="warning" className="nav-link" to={`/friends/${friend.user.id}`}>Details</Button>
                                             <Button
                                             className="nav-link"
-                                                color="secondary"
+                                                color="danger"
                                                 type="button"
                                                 onClick={() => this.props.deleteFriend(friend.id)
                                                     .then(() => this.props.history.push("/friends"))}

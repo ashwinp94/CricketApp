@@ -103,18 +103,18 @@ export default class FriendDetail extends Component {
                     <section className="friendsData">
                         {
                             friends.map(friend =>
-                                <div key={friend.id}>
-                                    <h4>{friend.username}</h4>
-                                    <h4>{friend.age}</h4>
-                                    <h4 id="roles">{friend.role}</h4>
+                                <div key={friend.id} >
+                                    <h3 id="friendsHeader">{friend.username}'s Profile</h3>
+                                    <h3 id="friendsHeader">{friend.age}</h3>
+                                    <h3 id="friendsHeader">{friend.role}</h3>
                                     <section id="allPractices">
                                         <Button id="bPractice" color="success" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Batting Practices</Button>
                                         <Collapse isOpen={this.state.collapse}>
 
                                             {
                                                 friend.batters.map(bat =>
-                                                    <Card>
-                                                        <CardBody>
+                                                    <Card id="practiceCard">
+                                                        <CardBody >
                                                             <section key={bat.id} id="practices">
                                                                 <h3>{moment(bat.batDate).format('MMMM Do YYYY')}</h3>
                                                                 <p>{"Runs Scored: "}{bat.runsScored}</p>
@@ -141,7 +141,7 @@ export default class FriendDetail extends Component {
                                         <Collapse isOpen={this.state.collapse1}>
                                             {
                                                 bowler.bowlers.map(bowl =>
-                                                    <Card>
+                                                    <Card id="practiceCard">
                                                         <CardBody>
                                                             <section id="practices">
                                                                 <h3>{moment(bowl.bowlDate).format('MMMM Do YYYY')}</h3>
@@ -170,7 +170,7 @@ export default class FriendDetail extends Component {
                                         <Collapse isOpen={this.state.collapse2}>
                                             {
                                                 event.events.map(even =>
-                                                    <Card>
+                                                    <Card id="practiceCard">
                                                         <CardBody>
                                                             <section id="practices">
                                                                 <h3>{moment(even.eventDate).format('MMMM Do YYYY')}</h3>

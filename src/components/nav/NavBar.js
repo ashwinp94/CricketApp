@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
+import logo from "../images/official.png"
+
 import {
     Collapse,
     Navbar,
@@ -56,6 +58,7 @@ class NavBar extends Component {
                             <NavItem onClick={this.props.logOut} className="nav-item">
                                 <NavLink href="/login">Sign Out</NavLink>
                             </NavItem>
+                            <img id="image"src={logo} alt="Logo" width="30" height="35" margin-top="5px"/>
                         </Nav>
                     </Collapse>
                 </Navbar>

@@ -188,10 +188,10 @@ export default class ApplicationViews extends Component {
   //Edit Functions
   updateBatter = (batterId, editedBatterObj) => {
     return BatterManager.put(batterId, editedBatterObj)
-      .then(() => LoginManager.getUser(Number(sessionStorage.getItem("user"))))
-      .then(user => {
+      .then(() => BatterManager.getYourBatters(Number(sessionStorage.getItem("user"))))
+      .then(batter => {
         this.setState({
-          currentUser: user
+          batters: batter
         })
       })
   }
