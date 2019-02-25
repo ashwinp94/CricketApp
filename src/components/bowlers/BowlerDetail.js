@@ -17,7 +17,7 @@ export default class BowlerDetail extends Component {
             <React.Fragment>
                 <div id="home">
                     <section className="bowler">
-                        <div key={bowler.id} className="card">
+                        <div key={bowler.id} className="card mx-auto">
                             <div className="card-body">
                                 <div className="card-title">
                                     <h3>Date: {moment(bowler.bowlDate).format('MMMM Do YYYY')}</h3>
@@ -34,7 +34,6 @@ export default class BowlerDetail extends Component {
                                     className="nav-link">Delete</Button>
                                 <Button tag={Link} color="info" className="nav-link" to={`/bowlers/${bowler.id}/edit`}>Edit</Button>
                                 <Button tag={Link} color="warning" className="nav-link" to={`/bowlers`}>Go Back </Button>
-
                             </div>
                         </div>
                     </section>

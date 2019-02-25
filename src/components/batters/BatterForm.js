@@ -45,7 +45,7 @@ export default class BatterForm extends Component {
         return (
             <React.Fragment>
                 <div id="home">
-                    <form className="BatterForm">
+                    <form className="BatterForm mx-auto">
                         <div className="form-group">
                             <label htmlFor="runsScored">Add Runs: </label>
                             <input type="number" required

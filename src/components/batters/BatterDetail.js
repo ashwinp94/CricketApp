@@ -15,7 +15,7 @@ export default class BatterDetail extends Component {
             <React.Fragment>
                 <div id="home">
                     <section className="batter">
-                        <div key={batter.id} className="card">
+                        <div key={batter.id} className="card mx-auto">
                             <div className="card-body">
                                 <div className="card-title">
                                     <h3>Date: {moment(batter.batDate).format('MMMM Do YYYY')}</h3>

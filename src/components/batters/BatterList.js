@@ -10,7 +10,7 @@ export default class BatterList extends Component {
       .sort((a, b) => { return new Date(a.batDate) - new Date(b.batDate) })
       .reverse()
       .map(batter =>
-        <div key={batter.id} className="card">
+        <div key={batter.id} className="card mx-auto">
           <Card color="primary"
             body outline="info">
             <div className="card-body">
@@ -40,8 +40,9 @@ export default class BatterList extends Component {
             <div className="card-items">
               {sortedBatterItems}</div>
           </section>
-          <div className="batterBtn">
+          <div className="batterBtn text-center">
             <Button
+
               color="success"
               id="addbutton"
               onClick={() => {

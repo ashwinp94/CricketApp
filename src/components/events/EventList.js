@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { Card, Button, CardText, } from 'reactstrap';
+
 import moment from "moment"
+import "./Events.css"
 export default class EventList extends Component {
   render() {
     const sortedEventItems =
@@ -8,20 +11,24 @@ export default class EventList extends Component {
         .sort((a, b) => { return new Date(a.eventDate) - new Date(b.eventDate) })
         .reverse()
         .map(event =>
-          <div key={event.id} className="card">
+          <div key={event.id} className="card mx-auto">
+          <Card color="primary"
+            body outline="info">
             <div className="card-body">
-              <p>{event.eventName}</p>
+              <CardText tag="h3">{event.eventName}</CardText>
               <p>{moment(event.eventDate).format('MMMM Do YYYY')}</p>
               <p>{event.eventTime}</p>
               <p>{event.eventLocation}</p>
-              <button type="button"
+              <Button type="button"
+                color="warning"
                 id="deleteButton"
                 onClick={() => this.props.deleteEvent(event.id)}
-                className="btn btn-success">
+                className="nav-link">
                 Delete
-                                      </button>
-              <Link className="nav-link" to={`/events/${event.id}/edit`}>Edit</Link>
+                                      </Button>
+              <Button tag={Link} color ="primary" className="nav-link" to={`/events/${event.id}/edit`}>Edit</Button>
             </div>
+            </Card>
           </div>
         )
 
@@ -34,15 +41,16 @@ export default class EventList extends Component {
               {sortedEventItems}
             </div>
           </section>
-          <div className="eventBtn">
-            <button type="button"
-              className="btn btn-success"
+          <div className="eventBtn text-center">
+            <Button type="button"
+            color="success"
+              id="addbutton"
               onClick={() => {
                 this.props.history.push("/events/new")
               }
               }>
               Add Event
-            </button>
+            </Button>
           </div>
 
         </div>

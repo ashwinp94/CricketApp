@@ -9,7 +9,7 @@ export default class BowlerList extends Component {
       .sort((a, b) => { return new Date(a.bowlDate) - new Date(b.bowlDate) })
       .reverse()
       .map(bowler =>
-        <div key={bowler.id} className="card">
+        <div key={bowler.id} className="card mx-auto">
         <Card color="primary"
             body outline="info">
           <div className="card-body">
@@ -35,7 +35,7 @@ export default class BowlerList extends Component {
             <h2>Your Bowling Practice Sessions</h2>
             <div className="card-items">{sortedBowlerItems}</div>
           </section>
-          <div className="eventBtn">
+          <div className="eventBtn text-center">
             <Button type="button"
             id="addbutton"
             color="success"

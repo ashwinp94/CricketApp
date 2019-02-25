@@ -55,7 +55,7 @@ export default class EditBowling extends Component {
     return (
       <React.Fragment>
         <div id="home">
-          <form className="bowlers">
+          <form className="BowlerForm mx-auto">
             <div className="bowler">
               <label htmlFor="runsConceded">Runs Conceded: </label>
               <input type="text" required

@@ -55,7 +55,7 @@ export default class EditBatter extends Component {
     return (
       <React.Fragment>
         <div id="home">
-          <form className="batters">
+          <form className="BatterForm mx-auto">
             <div className="batter">
               <label htmlFor="runsScored">Runs Scored: </label>
               <input type="text" required

@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import "./Events.css"
 
 export default class EventForm extends Component {
   state = {
@@ -36,7 +37,7 @@ export default class EventForm extends Component {
     return (
       <React.Fragment>
         <div id="home">
-          <form className="eventForm">
+          <form className="EventForm mx-auto">
             <div className="form-group">
               <label htmlFor="eventName">Name</label>
               <input type="text" required
