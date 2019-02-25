@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom"
-
+import {Button} from "reactstrap"
+import "./SearchInput.css"
 // import FriendManager from "../../modules/FriendManager"
 export default class SearchResults extends Component {
 
@@ -34,14 +35,15 @@ export default class SearchResults extends Component {
       <React.Fragment>
         <div id="home">
           <section className="search--results">
-            <h3>{Object.keys(this.props)[0]}</h3>
+            <h3 id="resultName">{Object.keys(this.props)[0]}</h3>
             {this.props.users.map(result => (
               <div key={result.id}>
-                <p>{result.username}</p>
-                <Link type="button"
+                <h3>{result.username}</h3>
+                <Button tag={Link}
+                color="success"
                   onClick={() => this.saveFriend(result.id)}
                   to="/friends"
-                  className="btn btn-primary">Save</Link>
+                  className="btn btn-primary">Save</Button>
               </div>
             ))}
           </section>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from 'react-router-dom'
-import {  Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-
+import { Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import "./SearchInput.css"
 class SearchInput extends Component {
   // Set initial state
   state = {
@@ -25,15 +25,16 @@ class SearchInput extends Component {
     return (
       <React.Fragment>
         <div id="home">
-          <Form  onSubmit={this.handleSearch}>
-          <FormGroup>
-            <Label>Find Friends!</Label>
-            {/* The id of the input matches the key of the property that reflects the user input in state so that we can write a reusable method (handleFieldChange) to update state for all input fields */}
-            <Input
-              type="text"
-              onChange={this.handleFieldChange}
-              id="searchQuery" />
-          </FormGroup>
+          <Form onSubmit={this.handleSearch}>
+            <FormGroup>
+              <h2 color=" white">Find Friends!</h2>
+              {/* The id of the input matches the key of the property that reflects the user input in state so that we can write a reusable method (handleFieldChange) to update state for all input fields */}
+              <Input
+                type="text"
+
+                onChange={this.handleFieldChange}
+                id="searchQuery" />
+            </FormGroup>
           </Form>
         </div>
       </React.Fragment>
