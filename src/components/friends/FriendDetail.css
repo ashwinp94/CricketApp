@@ -3,6 +3,25 @@
     margin-bottom: 40px;
 }
 
-#roles {
+#roles  {
     margin-bottom: 20px
+}
+
+#bPractice {
+    width: 10em;
+
+}
+
+#allPractices {
+    display: flex;
+    flex-direction: row
+}
+#friendsHeader{
+    color: white
+}
+.friendsData{
+    padding-left: 5px
+}
+#practiceCard{
+    width:25em;
 }

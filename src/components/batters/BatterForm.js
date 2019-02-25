@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-
 export default class BatterForm extends Component {
     // Set initial state
 
@@ -28,66 +27,67 @@ export default class BatterForm extends Component {
      */
     constructNewSession = evt => {
         evt.preventDefault()
-            const Batter = {
-                userId: parseInt(this.state.userId),
-                runsScored: parseInt(this.state.runsScored),
-                ballsFaced: parseInt(this.state.ballsFaced),
-                numberofFours: parseInt(this.state.numberofFours),
-                numberofSixes: parseInt(this.state.numberofSixes),
-                batDate: this.state.batDate
-            };
+        const Batter = {
+            userId: parseInt(this.state.userId),
+            runsScored: parseInt(this.state.runsScored),
+            ballsFaced: parseInt(this.state.ballsFaced),
+            numberofFours: parseInt(this.state.numberofFours),
+            numberofSixes: parseInt(this.state.numberofSixes),
+            batDate: this.state.batDate
+        };
 
-            // Create the animal and redirect user to animal list
-            this.props.addBatter(Batter)
+        // Create the animal and redirect user to animal list
+        this.props.addBatter(Batter)
             .then(() => this.props.history.push("/batters"));
-        }
+    }
 
     render() {
         return (
             <React.Fragment>
-                                 <form className="BatterForm">
-                    <div className="form-group">
-                        <label htmlFor="runsScored">Add Runs: </label>
-                        <input type="number" required
-                               className="form-control"
-                               onChange={this.handleFieldChange}
-                               id="runsScored"
-                               placeholder="" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="ballsFaced">Total Balls Played:</label>
-                        <input type="number" required
-                               className="form-control"
-                               onChange={this.handleFieldChange}
-                               id="ballsFaced"
-                               placeholder="" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="numberofFours">4's: </label>
-                        <input type="number" required
-                               className="form-control"
-                               onChange={this.handleFieldChange}
-                               id="numberofFours"
-                               placeholder="" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="numberofSixes">6's: </label>
-                        <input type="number" required
-                               className="form-control"
-                               onChange={this.handleFieldChange}
-                               id="numberofSixes"
-                               placeholder="" />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="">Date</label>
-                        <input type="date" required
-                        className="form-control"
-                        onChange={this.handleFieldChange}
-                        id="batDate"
-                        placeholder="" />
-                    </div>
+                <div id="home">
+                    <form className="BatterForm mx-auto">
+                        <div className="form-group">
+                            <label htmlFor="runsScored">Add Runs: </label>
+                            <input type="number" required
+                                className="form-control"
+                                onChange={this.handleFieldChange}
+                                id="runsScored"
+                                placeholder="" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="ballsFaced">Total Balls Played:</label>
+                            <input type="number" required
+                                className="form-control"
+                                onChange={this.handleFieldChange}
+                                id="ballsFaced"
+                                placeholder="" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="numberofFours">4's: </label>
+                            <input type="number" required
+                                className="form-control"
+                                onChange={this.handleFieldChange}
+                                id="numberofFours"
+                                placeholder="" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="numberofSixes">6's: </label>
+                            <input type="number" required
+                                className="form-control"
+                                onChange={this.handleFieldChange}
+                                id="numberofSixes"
+                                placeholder="" />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="">Date</label>
+                            <input type="date" required
+                                className="form-control"
+                                onChange={this.handleFieldChange}
+                                id="batDate"
+                                placeholder="" />
+                        </div>
 
-                    {/* <div className="form-group">
+                        {/* <div className="form-group">
                         <label htmlFor="employee">Assign to caretaker</label>
                         <select
                         defaultValue=""
@@ -100,8 +100,9 @@ export default class BatterForm extends Component {
                         }
                         </select>
                     </div> */}
-                    <button type="submit" onClick={this.constructNewSession} className="btn btn-primary">Submit</button>
-                </form>
+                        <button type="submit" onClick={this.constructNewSession} className="btn btn-primary">Submit</button>
+                    </form>
+                </div>
             </React.Fragment>
         )
     }

@@ -1,36 +1,68 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
+import logo from "../images/official.png"
 
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem
+    }
+from 'reactstrap';
 
 
 class NavBar extends Component {
+    constructor(props) {
+        super(props);
 
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+            isOpen: false
+        };
+    }
+
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
 
     render() {
         return (
-            <nav className="navbar navbar-dark bg-dark light-blue flex-md-nowrap p-0 shadow">
-                <ul className="nav nav-pills nav-fill">
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/batters">Batting Practice</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/bowlers">Bowling Practice</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/events">Events</Link>
-                    </li>
-                    {/* <li className="nav-item">
-                        <Link className="nav-link" to="/search">Find Friends</Link>
-                    </li> */}
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/friends">Your Friends</Link>
-                    </li>
-                    <li onClick={this.props.logOut} className="nav-item">
-                        <Link  className="nav-link" to="/login" >Sign out</Link>
-                    </li>
-                </ul>
-            </nav>
+            <div >
+                <Navbar id="navbar" color="light"  expand="md">
+                    <NavbarBrand left href="/profile">Profile</NavbarBrand>
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+
+                            <NavItem>
+                                <NavLink href="/batters">Batting </NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="/bowlers">Bowling </NavLink>
+                            </NavItem>
+
+                            <NavItem>
+                                <NavLink href="/events">Events</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="/friends">Friends</NavLink>
+                            </NavItem>
+                            <NavItem onClick={this.props.logOut} className="nav-item">
+                                <NavLink href="/login">Sign Out</NavLink>
+                            </NavItem>
+                            <img id="image"src={logo} alt="Logo" width="30" height="35" margin-top="5px"/>
+                        </Nav>
+                    </Collapse>
+                </Navbar>
+            </div>
         )
     }
 }

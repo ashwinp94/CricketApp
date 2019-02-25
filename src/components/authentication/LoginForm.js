@@ -12,13 +12,13 @@ export default class LoginForm extends Component {
         users: [],
     }
 
-     componentDidUpdate(){
+    componentDidUpdate() {
 
         LoginManager.getUsername(this.state.username)
             .then(allUsers => this.setState({
-            users: allUsers
+                users: allUsers
             }))
-        }
+    }
 
 
     // Update state whenever an input field is edited
@@ -45,14 +45,15 @@ export default class LoginForm extends Component {
 
         } else {
             this.props.addUser(User)
-            .then(() => this.props.history.push("/login"));
+                .then(() => this.props.history.push("/login"));
         }
     }
 
-        render() {
-            return (
-                <React.Fragment>
-                    <form  className="LoginForm">
+    render() {
+        return (
+            <React.Fragment>
+                <div id="home1">
+                    <form className="LoginForm">
                         <div className="form-group">
                             <h1>Register Here</h1>
                             <label htmlFor="username">Username: </label>
@@ -89,9 +90,10 @@ export default class LoginForm extends Component {
                             </select>
                         </div>
 
-                        <button type="submit"  onClick = {this.onRegister}  className="btn btn-primary">Submit</button>
+                        <button type="submit" onClick={this.onRegister} className="btn btn-primary">Submit</button>
                     </form>
-                </React.Fragment>
-            )
-        }
+                </div>
+            </React.Fragment>
+        )
     }
+}

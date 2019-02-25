@@ -1,6 +1,7 @@
 import React, { Component } from "react"
-import {Link} from "react-router-dom"
-
+import { Link } from "react-router-dom"
+import moment from "moment"
+import {Button} from "reactstrap"
 export default class BatterDetail extends Component {
     render() {
         /*
@@ -12,27 +13,31 @@ export default class BatterDetail extends Component {
 
         return (
             <React.Fragment>
-                             <section className="batter">
-                <div key={batter.id} className="card">
-                    <div className="card-body">
-                        <div className="card-title">
-                        <h3>Date: {batter.batDate}</h3>
-                        <p>Runs Scored: {batter.runsScored}</p>
-                        <p>Total Balls Played: {batter.ballsFaced}</p>
-                        <p>Number of Fours Hit: {batter.numberofFours}</p>
-                        <p>Number of Sixes: {batter.numberofSixes}</p>
-                        <p>Average: {batter.runsScored / batter.ballsFaced * 100}</p>
-                        </div>
-                        <a href="#"
-                            onClick={() => this.props.deleteBatter(batter.id)
-                            .then(() => this.props.history.push("/batters"))}
-                            className="card-link">Delete</a>
-                        <Link className="nav-link" to={`/batters/${batter.id}/edit`}>Edit</Link>
-                        <Link className="nav-link" to={`/batters`}>Go Back </Link>
+                <div id="home">
+                    <section className="batter">
+                        <div key={batter.id} className="card mx-auto">
+                            <div className="card-body">
+                                <div className="card-title">
+                                    <h3>Date: {moment(batter.batDate).format('MMMM Do YYYY')}</h3>
+                                    <p>Runs Scored: {batter.runsScored}</p>
+                                    <p>Total Balls Played: {batter.ballsFaced}</p>
+                                    <p>Number of Fours Hit: {batter.numberofFours}</p>
+                                    <p>Number of Sixes: {batter.numberofSixes}</p>
+                                    <p>Average: {batter.runsScored / batter.ballsFaced * 100}</p>
+                                </div>
+                                <Button
+                                color="success"
+                                className="nav-link"
+                                    onClick={() => this.props.deleteBatter(batter.id)
+                                        .then(() => this.props.history.push("/batters"))}
+                                    >Delete</Button>
+                                <Button tag= {Link} color="info" className="nav-link" to={`/batters/${batter.id}/edit`}>Edit</Button>
+                                <Button tag= {Link} color="warning" className="nav-link" to={`/batters`}>Go Back </Button>
 
-                    </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-            </section>
             </React.Fragment>
         )
     }

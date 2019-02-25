@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import {Link} from "react-router-dom"
-
+import { Link } from "react-router-dom"
+import {Button} from "reactstrap"
+import "./SearchInput.css"
 // import FriendManager from "../../modules/FriendManager"
 export default class SearchResults extends Component {
 
@@ -10,13 +11,13 @@ export default class SearchResults extends Component {
   //     userId: [],
   //   }],
   // }
-// componentDidMount(){
-//   FriendManager.getYourFriends(Number(sessionStorage.getItem("user"))).then(allFriends => {
-//     this.setState({
-//       friends: allFriends
-//     })
-//   })
-// }
+  // componentDidMount(){
+  //   FriendManager.getYourFriends(Number(sessionStorage.getItem("user"))).then(allFriends => {
+  //     this.setState({
+  //       friends: allFriends
+  //     })
+  //   })
+  // }
 
   saveFriend = (userId) => {
 
@@ -27,23 +28,26 @@ export default class SearchResults extends Component {
 
     this.props.addFriend(friend)
   }
-    // window.location.reload()
+  // window.location.reload()
 
   render() {
     return (
       <React.Fragment>
-                 <section className="search--results">
-          <h3>{Object.keys(this.props)[0]}</h3>
-          {this.props.users.map(result => (
-            <div key={result.id}>
-            <p>{result.username}</p>
-            <Link type="button"
-            onClick={() => this.saveFriend(result.id)}
-            to = "/friends"
-            className="btn btn-primary">Save</Link>
-          </div>
-          ))}
-        </section>
+        <div id="home">
+          <section className="search--results">
+            <h3 id="resultName">{Object.keys(this.props)[0]}</h3>
+            {this.props.users.map(result => (
+              <div key={result.id}>
+                <h3>{result.username}</h3>
+                <Button tag={Link}
+                color="success"
+                  onClick={() => this.saveFriend(result.id)}
+                  to="/friends"
+                  className="btn btn-primary">Save</Button>
+              </div>
+            ))}
+          </section>
+        </div>
       </React.Fragment>
     );
   }
