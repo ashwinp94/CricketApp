@@ -23,7 +23,7 @@ export default class BatterDetail extends Component {
                                     <p>Total Balls Played: {batter.ballsFaced}</p>
                                     <p>Number of Fours Hit: {batter.numberofFours}</p>
                                     <p>Number of Sixes: {batter.numberofSixes}</p>
-                                    <p>Average: {batter.runsScored / batter.ballsFaced * 100}</p>
+                                    <p>Strike Rate: {batter.runsScored / batter.ballsFaced * 100}</p>
                                 </div>
                                 <Button
                                 color="success"

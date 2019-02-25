@@ -25,8 +25,8 @@ export default class BowlerDetail extends Component {
                                     <p>Total Overs Bowled: {bowler.oversBowled}</p>
                                     <p>Wickets: {bowler.wickets}</p>
                                     <p>Extras: {bowler.extras}</p>
-                                    <p>Final Figures: {bowler.wickets}{"/"}{(bowler.extras + bowler.runsConceded)}</p>
-                                    <p>Average: {(bowler.extras + bowler.runsConceded) / bowler.oversBowled}</p>
+                                    <p>Final Figures: {bowler.wickets}{"/"}{bowler.extras + bowler.runsConceded}</p>
+                                    <p>Average: {(bowler.extras + bowler.runsConceded) / (bowler.oversBowled)}</p>
                                 </div>
                                 <Button color="success"
                                     onClick={() => this.props.deleteBowler(bowler.id)

@@ -38,6 +38,7 @@ export default class BowlerList extends Component {
           <div className="eventBtn text-center">
             <Button type="button"
             id="addbutton"
+            className="addbutton1"
             color="success"
               onClick={() => {
                 this.props.history.push("/bowlers/new")

@@ -34,7 +34,7 @@ export default class FriendList extends Component {
             <React.Fragment>
                 <div id="home">
                     <div>
-                        <Button  color="success" tag={Link}  id="addbutton" to="/search">Add Friend</Button>
+                        <Button  color="success" tag={Link}  className="addbutton1" to="/search">Add Friend</Button>
                         <section className="friends">
                             {
                                 this.state.friends.map(friend =>

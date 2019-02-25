@@ -6,10 +6,7 @@
   margin:0 auto;
   margin-top:50px;
   color:white;
-  padding-left:220px;
-  padding-right:220px;
-  padding-bottom:110px;
-  border-radius:25px;
+
 
 }
 
@@ -52,14 +49,13 @@
   text-align:center;
 }
 #home1{
-  padding-top: 10px;
+   padding-top: 10px;
   padding-bottom: 200px;
   background-image: url(http://www.bhmpics.com/walls/cricket_ball_in_the_grass-wide.jpg);
 }
 
 #home{
-
-  padding-bottom: 900px;
+  padding-bottom: 800px;
   background-image:linear-gradient(#0052D4, #6DD5FA);
   background-size:     cover;                      /* <------ */
   background-repeat:   no-repeat;

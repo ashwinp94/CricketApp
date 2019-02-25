@@ -49,7 +49,7 @@ export default class Login extends Component {
         return (
             <div id="home1">
                 <form className="logInForm" onSubmit={this.onLogin}>
-                    <img id="image"src={logo} alt="Logo" width="250" height="300" margin-left="100em    "/>
+                    <img id="image"src={logo} alt="Logo" width="220" height="270" margin-left="90em    "/>
                     <h1 className="h3 mb-3 font-weight-normal title">Please sign in</h1>
                     <label htmlFor="inputUsername">
                         Username

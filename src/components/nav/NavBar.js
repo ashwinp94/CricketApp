@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import "bootstrap/dist/css/bootstrap.min.css"
 import logo from "../images/official.png"
-
+import "./NavBar.css"
 import {
     Collapse,
     Navbar,
@@ -14,8 +14,8 @@ import {
     DropdownToggle,
     DropdownMenu,
     DropdownItem
-    }
-from 'reactstrap';
+}
+    from 'reactstrap';
 
 
 class NavBar extends Component {
@@ -37,30 +37,34 @@ class NavBar extends Component {
     render() {
         return (
             <div >
-                <Navbar id="navbar" color="light"  expand="md">
-                    <NavbarBrand left href="/profile">Profile</NavbarBrand>
-                    <Collapse isOpen={this.state.isOpen} navbar>
-                        <Nav className="ml-auto" navbar>
-
-                            <NavItem>
-                                <NavLink href="/batters">Batting </NavLink>
-                            </NavItem>
-                            <NavItem>
+                <Navbar id="" color="light"  >
+                    <NavbarBrand href="/profile">Profile</NavbarBrand>
+                    <Nav className="" >
+                        <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                                Options
+                            </DropdownToggle>
+                            <DropdownMenu right>
+                            <DropdownItem>
                                 <NavLink href="/bowlers">Bowling </NavLink>
-                            </NavItem>
+                            </DropdownItem>
+                            <DropdownItem>
+                                <NavLink href="/batters">Batting </NavLink>
+                            </DropdownItem>
+                                <DropdownItem>
+                                    <NavLink href="/events">Events</NavLink>
+                                </DropdownItem>
+                                <DropdownItem>
+                                    <NavLink href="/friends">Friends</NavLink>
+                                </DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
 
-                            <NavItem>
-                                <NavLink href="/events">Events</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink href="/friends">Friends</NavLink>
-                            </NavItem>
-                            <NavItem onClick={this.props.logOut} className="nav-item">
-                                <NavLink href="/login">Sign Out</NavLink>
-                            </NavItem>
-                            <img id="image"src={logo} alt="Logo" width="30" height="35" margin-top="5px"/>
-                        </Nav>
-                    </Collapse>
+                        <NavItem onClick={this.props.logOut} className="nav-item">
+                            <NavLink href="/login">Sign Out</NavLink>
+                        </NavItem>
+                        <img id="image" src={logo} alt="Logo" width="30" height="35" margin-top="5px" />
+                    </Nav>
                 </Navbar>
             </div>
         )

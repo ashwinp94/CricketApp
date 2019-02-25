@@ -44,6 +44,7 @@ export default class EventList extends Component {
           <div className="eventBtn text-center">
             <Button type="button"
             color="success"
+            className="addbutton1"
               id="addbutton"
               onClick={() => {
                 this.props.history.push("/events/new")
