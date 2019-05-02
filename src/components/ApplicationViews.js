@@ -315,7 +315,7 @@ export default class ApplicationViews extends Component {
 
         {/* login sections */}
 
-        <Route exact path="/login"
+        <Route exact path="/"
           render={(props) => {
 
             return <Login {...props}
@@ -325,7 +325,7 @@ export default class ApplicationViews extends Component {
               users={this.state.users} />
           }} />
 
-        <Route exact path="/login/new"
+        <Route exact path="/new"
           render={(props) => {
             return <LoginForm {...props}
               users={this.state.users}

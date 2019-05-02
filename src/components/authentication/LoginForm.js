@@ -45,7 +45,7 @@ export default class LoginForm extends Component {
 
         } else {
             this.props.addUser(User)
-                .then(() => this.props.history.push("/login"));
+                .then(() => this.props.history.push("/"));
         }
     }
 
