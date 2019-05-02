@@ -117,5 +117,5 @@ The Kirriket application utilizes React, React-Router-Dom, and Bootstrap.
 }
 ```
 4. `npm start` in root directory to start react server
-5. 'npm install react router dom' and npm install moment
+5. 'npm install react router dom' and 'npm install' moment
 6. create a new account and login
