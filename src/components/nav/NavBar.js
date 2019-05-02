@@ -56,7 +56,7 @@ class NavBar extends Component {
                                 <NavLink href="/friends">Friends</NavLink>
                             </NavItem>
                             <NavItem onClick={this.props.logOut} className="nav-item">
-                                <NavLink href="/login">Sign Out</NavLink>
+                                <NavLink href="/">Sign Out</NavLink>
                             </NavItem>
                             <img id="image"src={logo} alt="Logo" width="30" height="35" margin-top="5px"/>
                         </Nav>
