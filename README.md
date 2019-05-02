@@ -10,7 +10,7 @@ Kirriket is my first simple CRUD application using React. Kirriket originated as
 The Kirriket application utilizes React, React-Router-Dom, and Bootstrap.
 1. clone repo
 2. run `npm install` to pull in dependencies
-3. mkdir /API in root folder then cd /API
+3. `mkdir /API` in root folder then `cd /API`
 4. run the JSON server at `json-server -p 5002 -w database.json` ( `npm install -g json-server` if necessary )
 5. Populate the database with sample data
 ```
