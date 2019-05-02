@@ -12,6 +12,7 @@ The Kirriket application utilizes React, React-Router-Dom, and Bootstrap.
 2. run `npm install` to pull in dependencies
 3. run the JSON server at `json-server -p 5002 -w database.json` ( `npm install -g json-server` if necessary )
 4. Populate the database with sample data
+```
 {
   "users": [
     {
@@ -114,6 +115,7 @@ The Kirriket application utilizes React, React-Router-Dom, and Bootstrap.
     }
   ]
 }
+```
 4. `npm start` in root directory to start react server
 5. 'npm install react router dom' and npm install moment
 6. create a new account and login
